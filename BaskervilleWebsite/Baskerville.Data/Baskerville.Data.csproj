@@ -60,10 +60,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaskervilleContext.cs" />
+    <Compile Include="Migrations\201703251340577_InitialCreate.cs" />
+    <Compile Include="Migrations\201703251340577_InitialCreate.Designer.cs">
+      <DependentUpon>201703251340577_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -71,6 +78,11 @@
       <Project>{6a6381c4-d74d-4d0d-92ab-2d0031ff16b4}</Project>
       <Name>Baskerville.Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201703251340577_InitialCreate.resx">
+      <DependentUpon>201703251340577_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
