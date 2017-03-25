@@ -28,6 +28,6 @@ namespace Baskerville.Models.DataModels
 
         public int UnitId { get; set; }
 
-        public Unit Unit { get; set; }
+        public MeasurementUnit Unit { get; set; }
     }
 }

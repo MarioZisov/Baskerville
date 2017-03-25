@@ -16,6 +16,18 @@ namespace Baskerville.Data
             return new BaskervilleContext();
         }
 
+        public DbSet<Subscriber> Subscribers { get; set; }
+
+        public DbSet<Event> Events { get; set; }
+
+        public DbSet<Promotion> Promotions { get; set; }
+
+        public DbSet<Product> Products { get; set; }
+
+        public DbSet<ProductCategory> ProductsCategories { get; set; }
+
+        public DbSet<MeasurementUnit> MeasurenmentUnits { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             Database.SetInitializer<BaskervilleContext>(null);

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Baskerville.Models.DataModels
 {
-    public class Unit
+    public class MeasurementUnit
     {
         public int Id { get; set; }
 
