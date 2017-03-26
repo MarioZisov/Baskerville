@@ -1,0 +1,5 @@
+ What's New in version 3.0? 
+
+Added:
+- Video Background as a header - https://github.com/linnett/backgroundVideo
+  [File is provided by http://www.coverr.co/] 
