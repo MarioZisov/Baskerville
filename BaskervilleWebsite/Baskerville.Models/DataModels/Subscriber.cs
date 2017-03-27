@@ -17,11 +17,11 @@ namespace Baskerville.Models.DataModels
 
         public Language PreferedLanguage { get; set; }
 
-        public DateTime SubscriptionPendingDate { get; set; }
+        public DateTime? SubscriptionPendingDate { get; set; }
 
-        public DateTime SubscriptionDate { get; set; }
+        public DateTime? SubscriptionDate { get; set; }
 
-        public DateTime UnsubscribeDate { get; set; }
+        public DateTime? UnsubscribeDate { get; set; }
 
         public string SubscriptionVerificationCode { get; set; }
 

@@ -20,8 +20,8 @@ namespace Baskerville.Models.DataModels
 
         public string ImageUrl { get; set; }
 
-        public bool IsActive { get; set; }
-
         public bool IsRemoved { get; set; }
+
+        public bool IsPublic { get; set; }
     }
 }
