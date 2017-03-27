@@ -1,9 +1,11 @@
 namespace Baskerville.Data
 {
+    using Contracts.Repository;
     using Microsoft.AspNet.Identity.EntityFramework;
     using Models.DataModels;
     using Repository;
     using System.Data.Entity;
+    using System;
 
     public class BaskervilleContext : IdentityDbContext<ApplicationUser>, IDbContext
     {
@@ -52,6 +54,11 @@ namespace Baskerville.Data
 
             modelBuilder.Entity<IdentityUserLogin>()
                 .ToTable("UserLogins");
+        }
+
+        public new IDbSet<TEntity> Set<TEntity>() where TEntity : class
+        {
+            return base.Set<TEntity>();
         }
     }
 }
