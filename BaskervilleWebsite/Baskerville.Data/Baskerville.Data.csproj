@@ -68,6 +68,18 @@
     <Compile Include="Migrations\201703252207507_AddMainDataModels.Designer.cs">
       <DependentUpon>201703252207507_AddMainDataModels.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703272034477_IncludeIsPublicProperty.cs" />
+    <Compile Include="Migrations\201703272034477_IncludeIsPublicProperty.Designer.cs">
+      <DependentUpon>201703272034477_IncludeIsPublicProperty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703272104467_TempRemoveProductUnit.cs" />
+    <Compile Include="Migrations\201703272104467_TempRemoveProductUnit.Designer.cs">
+      <DependentUpon>201703272104467_TempRemoveProductUnit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703272156007_SetNullableDateTime.cs" />
+    <Compile Include="Migrations\201703272156007_SetNullableDateTime.Designer.cs">
+      <DependentUpon>201703272156007_SetNullableDateTime.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Contracts\IDbContext.cs" />
@@ -92,6 +104,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703252207507_AddMainDataModels.resx">
       <DependentUpon>201703252207507_AddMainDataModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703272034477_IncludeIsPublicProperty.resx">
+      <DependentUpon>201703272034477_IncludeIsPublicProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703272104467_TempRemoveProductUnit.resx">
+      <DependentUpon>201703272104467_TempRemoveProductUnit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703272156007_SetNullableDateTime.resx">
+      <DependentUpon>201703272156007_SetNullableDateTime.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
