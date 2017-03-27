@@ -7,6 +7,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Baskerville.Models.ViewModels.Account;
 using Baskerville.Models.DataModels;
+using Baskerville.Services;
+using Baskerville.Data;
 
 namespace Baskerville.App.Controllers
 {
@@ -15,9 +17,11 @@ namespace Baskerville.App.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private RegisterService service;
 
         public AccountController()
         {
+            this.service = new RegisterService(new BaskervilleContext());
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -137,7 +141,9 @@ namespace Baskerville.App.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            return View();
+            var registerModel = new RegisterViewModel();
+            registerModel.RolesNames = this.service.GetRolesNames();
+            return View(registerModel);
         }
 
         //
