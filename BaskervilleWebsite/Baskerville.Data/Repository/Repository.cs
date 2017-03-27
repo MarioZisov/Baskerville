@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Linq.Expressions;
 
 namespace Baskerville.Data.Repository
 {
@@ -83,6 +84,36 @@ namespace Baskerville.Data.Repository
                 throw new ArgumentNullException();
 
             this.context.SaveChanges();
+        }
+
+        public IQueryable<T> GetAll()
+        {
+            return this.Entities;
+        }
+
+        public IQueryable<T> Find(Expression<Func<T, bool>> predicate)
+        {
+            return this.Entities.Where(predicate);
+        }
+
+        public bool Exists(Expression<Func<T, bool>> predicate)
+        {
+            return this.Entities.Any(predicate);
+        }
+
+        public bool Exists()
+        {
+            return this.Entities.Any();
+        }
+
+        public T GetFirst(Expression<Func<T, bool>> predicate)
+        {
+            return this.Entities.First(predicate);
+        }
+
+        public T GetFirstOrNull(Expression<Func<T, bool>> predicate)
+        {
+            return this.Entities.FirstOrDefault(predicate);
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,5 +23,17 @@ namespace Baskerville.Data.Contracts.Repository
         void Delete(T entity);
 
         void Delete(IEnumerable<T> entities);
+
+        IQueryable<T> GetAll();
+
+        IQueryable<T> Find(Expression<Func<T, bool>> predicate);
+
+        bool Exists(Expression<Func<T, bool>> predicate);
+
+        bool Exists();
+
+        T GetFirst(Expression<Func<T, bool>> predicate);
+
+        T GetFirstOrNull(Expression<Func<T, bool>> predicate);
     }
 }
