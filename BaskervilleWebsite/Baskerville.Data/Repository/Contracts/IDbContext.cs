@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Baskerville.Data.Repository
+namespace Baskerville.Data.Contracts.Repository
 {
     public interface IDbContext
     {
