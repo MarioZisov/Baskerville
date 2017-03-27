@@ -2,9 +2,10 @@ namespace Baskerville.Data
 {
     using Microsoft.AspNet.Identity.EntityFramework;
     using Models.DataModels;
+    using Repository;
     using System.Data.Entity;
 
-    public class BaskervilleContext : IdentityDbContext<ApplicationUser>
+    public class BaskervilleContext : IdentityDbContext<ApplicationUser>, IDbContext
     {
         public BaskervilleContext()
             : base("BaskervilleContext", throwIfV1Schema: false)
