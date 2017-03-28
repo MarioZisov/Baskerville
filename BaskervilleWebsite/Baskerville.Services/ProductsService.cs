@@ -24,10 +24,17 @@ namespace Baskerville.Services
         public IEnumerable<ProductViewModel> GetAllProducts()
         {
             var productViewModels = this.products
-                .GetAll()
+                .Find(p => !p.IsRemoved)                
                 .Select(Mapper.Map<Product, ProductViewModel>).ToList();
 
             return productViewModels;
+        }
+
+        public void RemoveProduct(int id)
+        {
+            var product = this.products.GetById(id);
+            product.IsRemoved = true;
+            this.products.Update(product);
         }
     }
 }
