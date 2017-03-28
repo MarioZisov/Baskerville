@@ -15,6 +15,7 @@ namespace Baskerville.Services
         {
             this.CreateMap<Subscriber, SubscriberViewModel>();
             this.CreateMap<Product, ProductViewModel>();
+            this.CreateMap<ProductViewModel, Product>();
         }
     }
 }

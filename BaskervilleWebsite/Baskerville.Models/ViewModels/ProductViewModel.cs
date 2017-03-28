@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Baskerville.Models.DataModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,11 @@ namespace Baskerville.Models.ViewModels
 {
     public class ProductViewModel
     {
+        public ProductViewModel()
+        {
+            this.Categories = new List<ProductCategory>();
+        }
+
         public int Id { get; set; }
 
         public string NameBg { get; set; }
@@ -22,10 +28,10 @@ namespace Baskerville.Models.ViewModels
 
         public double Price { get; set; }
 
-        public bool IsAvalible { get; set; }
-
-        public bool IsRemoved { get; set; }
+        public int CategoryId { get; set; }
 
         public bool IsPublic { get; set; }
+
+        public IEnumerable<ProductCategory> Categories { get; set; }
     }
 }

@@ -26,6 +26,10 @@ namespace Baskerville.Models.DataModels
 
         public bool IsRemoved { get; set; }
 
+        public int? CategoryId { get; set; }
+
+        public ProductCategory Category { get; set; }
+
         //public int UnitId { get; set; }
 
         //public MeasurementUnit Unit { get; set; }

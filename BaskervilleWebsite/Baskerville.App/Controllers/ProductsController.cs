@@ -1,4 +1,5 @@
 ﻿using Baskerville.Data;
+using Baskerville.Models.ViewModels;
 using Baskerville.Services;
 using System;
 using System.Collections.Generic;
@@ -34,11 +35,27 @@ namespace Baskerville.App.Controllers
             return View(model);
         }
 
+        public ActionResult Create()
+        {
+            var model = this.service.GetEmptyProduct();
+            return View(model);
+        }
+
         [HttpPost]
         public ActionResult Delete(int id)
         {
             this.service.RemoveProduct(id);
             return new HttpStatusCodeResult(HttpStatusCode.OK);
-        }    
+        }
+
+        [HttpPost]
+        public ActionResult Save(ProductViewModel model)
+        {
+            if (!ModelState.IsValid)
+                return View("Details", model);
+
+            this.service.UpdateProduct(model);
+            return this.RedirectToAction("Index");
+        }
     }
 }

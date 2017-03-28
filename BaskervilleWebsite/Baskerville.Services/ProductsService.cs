@@ -14,17 +14,20 @@ namespace Baskerville.Services
     public class ProductsService : Service
     {
         private IRepository<Product> products;
+        private IRepository<ProductCategory> categories;
 
-        public ProductsService(IDbContext context) 
+        public ProductsService(IDbContext context)
             : base(context)
         {
             this.products = new Repository<Product>(context);
+            this.categories = new Repository<ProductCategory>(context);
         }
 
         public ProductViewModel GetProduct(int id)
         {
             var product = this.products.GetFirstOrNull(p => !p.IsRemoved && p.Id == id);
             var productViewModel = Mapper.Map<Product, ProductViewModel>(product);
+            productViewModel.Categories = this.categories.GetAll().ToList();
 
             return productViewModel;
         }
@@ -32,16 +35,32 @@ namespace Baskerville.Services
         public IEnumerable<ProductViewModel> GetAllProducts()
         {
             var productViewModels = this.products
-                .Find(p => !p.IsRemoved)                
+                .Find(p => !p.IsRemoved)
                 .Select(Mapper.Map<Product, ProductViewModel>).ToList();
 
             return productViewModels;
+        }
+
+        public ProductViewModel GetEmptyProduct()
+        {
+            var productViewModel = new ProductViewModel();
+            productViewModel.Categories = this.categories.GetAll().ToList();
+
+            return productViewModel;
         }
 
         public void RemoveProduct(int id)
         {
             var product = this.products.GetById(id);
             product.IsRemoved = true;
+            this.products.Update(product);
+        }
+
+        public void UpdateProduct(ProductViewModel productViewModel)
+        {
+            var product = this.products.GetById(productViewModel.Id);
+            Mapper.Map(productViewModel, product);
+
             this.products.Update(product);
         }
     }
