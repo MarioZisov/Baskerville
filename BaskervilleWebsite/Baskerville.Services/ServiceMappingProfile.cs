@@ -14,6 +14,7 @@ namespace Baskerville.Services
         public ServiceMappingProfile()
         {
             this.CreateMap<Subscriber, SubscriberViewModel>();
+            this.CreateMap<Product, ProductViewModel>();
         }
     }
 }
