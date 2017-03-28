@@ -21,6 +21,14 @@ namespace Baskerville.Services
             this.products = new Repository<Product>(context);
         }
 
+        public ProductViewModel GetProduct(int id)
+        {
+            var product = this.products.GetFirstOrNull(p => !p.IsRemoved && p.Id == id);
+            var productViewModel = Mapper.Map<Product, ProductViewModel>(product);
+
+            return productViewModel;
+        }
+
         public IEnumerable<ProductViewModel> GetAllProducts()
         {
             var productViewModels = this.products

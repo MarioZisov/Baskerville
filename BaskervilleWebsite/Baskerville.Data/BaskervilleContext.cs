@@ -60,5 +60,7 @@ namespace Baskerville.Data
         {
             return base.Set<TEntity>();
         }
+
+        public System.Data.Entity.DbSet<Baskerville.Models.ViewModels.ProductViewModel> ProductViewModels { get; set; }
     }
 }

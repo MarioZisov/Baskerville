@@ -25,11 +25,20 @@ namespace Baskerville.App.Controllers
             return View(model);
         }
 
+        public ActionResult Details(int id)
+        {
+            var model = this.service.GetProduct(id);
+            if (model == null)
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+
+            return View(model);
+        }
+
         [HttpPost]
         public ActionResult Delete(int id)
         {
             this.service.RemoveProduct(id);
             return new HttpStatusCodeResult(HttpStatusCode.OK);
-        }
+        }    
     }
 }
