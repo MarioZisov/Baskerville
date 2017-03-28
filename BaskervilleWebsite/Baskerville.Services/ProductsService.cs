@@ -49,6 +49,12 @@ namespace Baskerville.Services
             return productViewModel;
         }
 
+        public void CreateProduct(ProductViewModel model)
+        {
+            var product = Mapper.Map<ProductViewModel, Product>(model);
+            this.products.Insert(product);
+        }
+
         public void RemoveProduct(int id)
         {
             var product = this.products.GetById(id);

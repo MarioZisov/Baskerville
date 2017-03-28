@@ -42,6 +42,19 @@ namespace Baskerville.App.Controllers
         }
 
         [HttpPost]
+        public ActionResult Create(ProductViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                model.Categories = this.service.GetAllCategories();
+                return View("Details", model);
+            }
+
+            this.service.CreateProduct(model);
+            return this.RedirectToAction("Index");
+        }
+
+        [HttpPost]
         public ActionResult Delete(int id)
         {
             this.service.RemoveProduct(id);
