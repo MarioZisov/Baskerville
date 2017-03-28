@@ -33,14 +33,31 @@
 {
     <script>
         $(document).ready(function () {
-            $("#subscribers .js-delete").on("click", function () {
+            $("#subscribers").DataTable({
+                "oLanguage": {
+                    "sSearch": "Търси",                    
+                    "sZeroRecords": "Няма намерени резултати",
+                    "sInfoFiltered": "- филтрирано от общо _MAX_ записа",
+                    "sInfo": "Страница _PAGE_ от _PAGES_ (_TOTAL_ резултата)",
+                    "sInfoEmpty": "Няма записи",
+                    "sLengthMenu": "Показвай _MENU_ резултата на страница",
+                    "oPaginate": {
+                        "sNext": "Следваща",
+                        "sPrevious": "Предишна"
+                    }
+                }
+            });
+
+            $("#subscribers").on("click", ".js-delete", function () {
                 var button = $(this);
 
-                bootbox.confirm("Сигурни ли сте, че искате да истриете абонат с имейл " + button.attr("subssubscriber-email") + "?", function (result) {
+                bootbox.confirm("Сигурни ли сте, че искате да изтриете абонат с имейл " + button.attr("subssubscriber-email") + "?", function (result) {
                     if (result) {
                         $.ajax({
-                            url: "/api/subscribers/" + button.attr("subscriber-id"),
-                            method: "DELETE",
+                            method: "POST",
+                            url: "/subscribers/delete",
+                            ajaxasync: true,
+                            data: { id: button.attr("subscriber-id")},
                             success: function () {
                                 button.parents("tr").remove();
                             }

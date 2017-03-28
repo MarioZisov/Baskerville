@@ -3,6 +3,7 @@ using Baskerville.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -22,6 +23,13 @@ namespace Baskerville.App.Controllers
         {
             var model = this.service.GetActiveSubscribers();
             return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Delete(int id)
+        {
+            this.service.RemoveSubscriber(id);
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
 
     }

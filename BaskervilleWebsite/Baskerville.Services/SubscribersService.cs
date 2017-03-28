@@ -30,5 +30,12 @@ namespace Baskerville.Services
 
             return subscribersViewModel;
         }
+
+        public void RemoveSubscriber(int id)
+        {
+            var subscriber = this.subscribers.GetById(id);           
+            subscriber.IsRemoved = true;
+            this.subscribers.Update(subscriber);
+        }
     }
 }
