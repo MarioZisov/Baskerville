@@ -22,3 +22,7 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.padded-checkbox{
+    padding: 24px;
+}
