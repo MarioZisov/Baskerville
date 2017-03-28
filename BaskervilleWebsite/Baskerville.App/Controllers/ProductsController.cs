@@ -52,7 +52,10 @@ namespace Baskerville.App.Controllers
         public ActionResult Save(ProductViewModel model)
         {
             if (!ModelState.IsValid)
+            {
+                model.Categories = this.service.GetAllCategories();
                 return View("Details", model);
+            }
 
             this.service.UpdateProduct(model);
             return this.RedirectToAction("Index");

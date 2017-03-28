@@ -27,7 +27,7 @@ namespace Baskerville.Services
         {
             var product = this.products.GetFirstOrNull(p => !p.IsRemoved && p.Id == id);
             var productViewModel = Mapper.Map<Product, ProductViewModel>(product);
-            productViewModel.Categories = this.categories.GetAll().ToList();
+            productViewModel.Categories = this.GetAllCategories();
 
             return productViewModel;
         }
@@ -44,7 +44,7 @@ namespace Baskerville.Services
         public ProductViewModel GetEmptyProduct()
         {
             var productViewModel = new ProductViewModel();
-            productViewModel.Categories = this.categories.GetAll().ToList();
+            productViewModel.Categories = this.GetAllCategories();
 
             return productViewModel;
         }
@@ -62,6 +62,11 @@ namespace Baskerville.Services
             Mapper.Map(productViewModel, product);
 
             this.products.Update(product);
+        }
+
+        public IEnumerable<ProductCategory> GetAllCategories()
+        {
+            return this.categories.GetAll().ToList();
         }
     }
 }
