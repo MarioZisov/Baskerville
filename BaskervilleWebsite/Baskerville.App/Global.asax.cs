@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Baskerville.App.App_Start;
+using Baskerville.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,12 @@ namespace Baskerville.App
     {
         protected void Application_Start()
         {
-            Mapper.Initialize(c => c.AddProfile<MappingProfile>());
+            Mapper.Initialize(p => 
+            {
+                p.AddProfile<MappingProfile>();
+                p.AddProfile<ServiceMappingProfile>();
+            });
+
             GlobalConfiguration.Configure(WebApiConfig.Register);
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
