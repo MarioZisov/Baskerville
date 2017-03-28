@@ -22,7 +22,7 @@
                 <td>@subscriber.Email</td>
                 <td>@subscriber.SubscriptionDate.ToShortDateString()</td>
                 <td>
-                    <button subscriber-id="@subscriber.Id" subssubscriber-email="@subscriber.Email" class="btn-link js-delete">Delete</button>
+                    <button subscriber-id="@subscriber.Id" subssubscriber-email="@subscriber.Email" class="btn-link js-delete">Премахни</button>
                 </td>
             </tr>
         }
@@ -36,7 +36,7 @@
             $("#subscribers .js-delete").on("click", function () {
                 var button = $(this);
 
-                bootbox.confirm("Are you sure you want to delete " + button.attr("subssubscriber-email") + "?", function (result) {
+                bootbox.confirm("Сигурни ли сте, че искате да истриете абонат с имейл " + button.attr("subssubscriber-email") + "?", function (result) {
                     if (result) {
                         $.ajax({
                             url: "/api/subscribers/" + button.attr("subscriber-id"),
