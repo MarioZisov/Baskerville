@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Baskerville.Data;
+using Baskerville.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +10,18 @@ namespace Baskerville.App.Controllers
 {
     public class SubscribersController : Controller
     {
+        private SubscribersService service;
+
+        public SubscribersController()
+        {
+            this.service = new SubscribersService(new BaskervilleContext());
+        }
+
         // GET: Subscribers
         public ActionResult Index()
         {
-            return View();
+            var model = this.service.GetActiveSubscribers();
+            return View(model);
         }
 
     }
