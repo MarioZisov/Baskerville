@@ -32,26 +32,13 @@ namespace Baskerville.App.Controllers
             if (model == null)
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
 
-            return View(model);
+            return View("ProductForm", model);
         }
 
         public ActionResult Create()
         {
             var model = this.service.GetEmptyProduct();
-            return View(model);
-        }
-
-        [HttpPost]
-        public ActionResult Create(ProductViewModel model)
-        {
-            if (!ModelState.IsValid)
-            {
-                model.PrimaryCategories = this.service.GetPrimaryCategories();
-                return View("Details", model);
-            }
-
-            this.service.CreateProduct(model);
-            return this.RedirectToAction("Index");
+            return this.View("ProductForm", model);
         }
 
         [HttpPost]
@@ -62,15 +49,21 @@ namespace Baskerville.App.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(ProductViewModel model)
         {
             if (!ModelState.IsValid)
             {
                 model.PrimaryCategories = this.service.GetPrimaryCategories();
-                return View("Details", model);
+                return View("ProductForm", model);
             }
 
-            this.service.UpdateProduct(model);
+            //Model is newly created and shoot be added to the database.
+            if (model.Id == 0)
+                this.service.CreateProduct(model);
+            else
+                this.service.UpdateProduct(model);
+                
             return this.RedirectToAction("Index");
         }
 

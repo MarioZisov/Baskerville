@@ -505,7 +505,7 @@
     <Content Include="Views\Main\Index.cshtml" />
     <Content Include="Views\Subscribers\Index.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
-    <Content Include="Views\Products\Details.cshtml" />
+    <Content Include="Views\Products\ProductForm.cshtml" />
     <Content Include="Views\Products\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>

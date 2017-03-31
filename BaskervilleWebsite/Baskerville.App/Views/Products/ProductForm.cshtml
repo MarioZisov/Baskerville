@@ -1,17 +1,27 @@
 ﻿@model Baskerville.Models.ViewModels.ProductViewModel
 
-@{
-    ViewBag.Title = "Details";
+@if (Model.Id == 0)
+{
+   ViewBag.Title = "Добави";
+}
+else
+{
+   ViewBag.Title = "Преглед";
 }
 
-<h2>Details</h2>
+<h2>@ViewBag.Title</h2> 
 
 @using (Html.BeginForm("Save", "Products", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>ProductViewModel</h4>
+
+        @if (Model.Id != 0)
+        {
+            <h4>@Model.NameBg</h4>
+        }
+        
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
