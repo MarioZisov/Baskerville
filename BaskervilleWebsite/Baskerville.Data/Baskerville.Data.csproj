@@ -60,34 +60,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaskervilleContext.cs" />
-    <Compile Include="Migrations\201703251340577_InitialCreate.cs" />
-    <Compile Include="Migrations\201703251340577_InitialCreate.Designer.cs">
-      <DependentUpon>201703251340577_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703252207507_AddMainDataModels.cs" />
-    <Compile Include="Migrations\201703252207507_AddMainDataModels.Designer.cs">
-      <DependentUpon>201703252207507_AddMainDataModels.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703272034477_IncludeIsPublicProperty.cs" />
-    <Compile Include="Migrations\201703272034477_IncludeIsPublicProperty.Designer.cs">
-      <DependentUpon>201703272034477_IncludeIsPublicProperty.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703272104467_TempRemoveProductUnit.cs" />
-    <Compile Include="Migrations\201703272104467_TempRemoveProductUnit.Designer.cs">
-      <DependentUpon>201703272104467_TempRemoveProductUnit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703272156007_SetNullableDateTime.cs" />
-    <Compile Include="Migrations\201703272156007_SetNullableDateTime.Designer.cs">
-      <DependentUpon>201703272156007_SetNullableDateTime.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703281905400_AddCategoryToProduct.cs" />
-    <Compile Include="Migrations\201703281905400_AddCategoryToProduct.Designer.cs">
-      <DependentUpon>201703281905400_AddCategoryToProduct.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703310915287_AddSubCategories.cs" />
-    <Compile Include="Migrations\201703310915287_AddSubCategories.Designer.cs">
-      <DependentUpon>201703310915287_AddSubCategories.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Contracts\IDbContext.cs" />
@@ -105,29 +77,6 @@
       <Project>{6a6381c4-d74d-4d0d-92ab-2d0031ff16b4}</Project>
       <Name>Baskerville.Models</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201703251340577_InitialCreate.resx">
-      <DependentUpon>201703251340577_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703252207507_AddMainDataModels.resx">
-      <DependentUpon>201703252207507_AddMainDataModels.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703272034477_IncludeIsPublicProperty.resx">
-      <DependentUpon>201703272034477_IncludeIsPublicProperty.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703272104467_TempRemoveProductUnit.resx">
-      <DependentUpon>201703272104467_TempRemoveProductUnit.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703272156007_SetNullableDateTime.resx">
-      <DependentUpon>201703272156007_SetNullableDateTime.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703281905400_AddCategoryToProduct.resx">
-      <DependentUpon>201703281905400_AddCategoryToProduct.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703310915287_AddSubCategories.resx">
-      <DependentUpon>201703310915287_AddSubCategories.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

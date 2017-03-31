@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,10 +30,6 @@ namespace Baskerville.Models.DataModels
         public int? CategoryId { get; set; }
 
         public ProductCategory Category { get; set; }
-
-        //public int UnitId { get; set; }
-
-        //public MeasurementUnit Unit { get; set; }
 
         public bool IsPublic { get; set; }
     }

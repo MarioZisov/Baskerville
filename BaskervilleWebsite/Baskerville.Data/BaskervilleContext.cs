@@ -29,13 +29,13 @@ namespace Baskerville.Data
 
         public DbSet<ProductCategory> ProductsCategories { get; set; }
 
-        public DbSet<MeasurementUnit> MeasurenmentUnits { get; set; }
+        //public DbSet<MeasurementUnit> MeasurenmentUnits { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ProductCategory>()
                 .HasOptional(p => p.PrimaryCategory)
-                .WithMany(p => p.SubCategories)
+                .WithMany(p => p.Subcategories)
                 .HasForeignKey(p => p.PrimaryCategoryId);
 
             Database.SetInitializer<BaskervilleContext>(null);
@@ -65,7 +65,5 @@ namespace Baskerville.Data
         {
             return base.Set<TEntity>();
         }
-
-        public System.Data.Entity.DbSet<Baskerville.Models.ViewModels.ProductViewModel> ProductViewModels { get; set; }
     }
 }
