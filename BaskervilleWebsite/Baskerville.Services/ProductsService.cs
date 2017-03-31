@@ -8,6 +8,8 @@ using Baskerville.Models.DataModels;
 using Baskerville.Data.Repository;
 using Baskerville.Models.ViewModels;
 using AutoMapper;
+using System.Web.Mvc;
+using System.Data.Entity;
 
 namespace Baskerville.Services
 {
@@ -25,11 +27,26 @@ namespace Baskerville.Services
 
         public ProductViewModel GetProduct(int id)
         {
-            var product = this.products.GetFirstOrNull(p => !p.IsRemoved && p.Id == id);
-            var productViewModel = Mapper.Map<Product, ProductViewModel>(product);
-            productViewModel.Categories = this.GetAllCategories();
+            var product = this.products
+                .GetAll()
+                .Include("Category")
+                .FirstOrDefault(p => !p.IsRemoved && p.Id == id);
+                /* GetFirstOrNull(p => !p.IsRemoved && p.Id == id);*/
+            var model = Mapper.Map<Product, ProductViewModel>(product);
 
-            return productViewModel;
+            //product.
+            if (product.Category.IsPrimary)
+                model.PrimaryCategoryId = (int)product.CategoryId;
+            else
+            {
+                model.PrimaryCategoryId = (int)product.Category.PrimaryCategoryId;
+                model.SubcategoryId = (int)product.CategoryId;
+            }
+
+            model.PrimaryCategories = this.GetPrimaryCategories();
+            model.Subcategories = this.GetSubCategories((int)model.PrimaryCategoryId);
+
+            return model;
         }
 
         public IEnumerable<ProductViewModel> GetAllProducts()
@@ -44,7 +61,7 @@ namespace Baskerville.Services
         public ProductViewModel GetEmptyProduct()
         {
             var productViewModel = new ProductViewModel();
-            productViewModel.Categories = this.GetAllCategories();
+            productViewModel.PrimaryCategories = this.GetPrimaryCategories();
 
             return productViewModel;
         }
@@ -52,6 +69,11 @@ namespace Baskerville.Services
         public void CreateProduct(ProductViewModel model)
         {
             var product = Mapper.Map<ProductViewModel, Product>(model);
+            if (model.SubcategoryId != null)
+                product.CategoryId = model.SubcategoryId;
+            else
+                product.CategoryId = model.PrimaryCategoryId;
+
             this.products.Insert(product);
         }
 
@@ -62,17 +84,34 @@ namespace Baskerville.Services
             this.products.Update(product);
         }
 
-        public void UpdateProduct(ProductViewModel productViewModel)
+        public void UpdateProduct(ProductViewModel model)
         {
-            var product = this.products.GetById(productViewModel.Id);
-            Mapper.Map(productViewModel, product);
+            var product = this.products.GetById(model.Id);
+            Mapper.Map(model, product);
+            if (model.SubcategoryId != null)
+                product.CategoryId = model.SubcategoryId;
+            else
+                product.CategoryId = model.PrimaryCategoryId;
 
             this.products.Update(product);
+        }        
+
+        public IEnumerable<ProductCategory> GetPrimaryCategories()
+        {
+            return this.categories.Find(c => c.IsPrimary).ToList();
         }
 
-        public IEnumerable<ProductCategory> GetAllCategories()
+        public IEnumerable<SelectListItem> GetSubCategories(int categoryId)
         {
-            return this.categories.GetAll().ToList();
+            List<SelectListItem> selectedCategories = new List<SelectListItem>();
+            IDictionary<string, string> categoriesDict = new Dictionary<string, string>();
+            var subCategories = this.categories.Find(c => c.PrimaryCategoryId == categoryId);
+            foreach (var subCategory in subCategories)
+            {
+                selectedCategories.Add(new SelectListItem() { Text = subCategory.NameBg, Value = subCategory.Id.ToString() });
+            }
+
+            return selectedCategories;
         }
     }
 }

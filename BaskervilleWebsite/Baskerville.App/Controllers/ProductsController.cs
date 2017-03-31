@@ -46,7 +46,7 @@ namespace Baskerville.App.Controllers
         {
             if (!ModelState.IsValid)
             {
-                model.Categories = this.service.GetAllCategories();
+                model.PrimaryCategories = this.service.GetPrimaryCategories();
                 return View("Details", model);
             }
 
@@ -66,12 +66,19 @@ namespace Baskerville.App.Controllers
         {
             if (!ModelState.IsValid)
             {
-                model.Categories = this.service.GetAllCategories();
+                model.PrimaryCategories = this.service.GetPrimaryCategories();
                 return View("Details", model);
             }
 
             this.service.UpdateProduct(model);
             return this.RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult GetSubCategories(int id)
+        {
+            var subCategories = this.service.GetSubCategories(id);
+            return Json(subCategories, JsonRequestBehavior.AllowGet);
         }
     }
 }

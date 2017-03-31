@@ -9,7 +9,7 @@
 @using (Html.BeginForm("Save", "Products", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>ProductViewModel</h4>
         <hr />
@@ -65,15 +65,23 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CategoryId, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.PrimaryCategoryId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                    @Html.DropDownListFor(model => model.CategoryId, new SelectList(Model.Categories, "Id", "NameBg"), "Изберете категория", new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(model => model.PrimaryCategoryId, new SelectList(Model.PrimaryCategories, "Id", "NameBg"), "Изберете категория", new { @class = "form-control", @id = "primaryCategory" })
+                @Html.ValidationMessageFor(model => model.PrimaryCategoryId, "", new { @class = "text-danger" })
             </div>
-        </div>        
+        </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.IsPublic, htmlAttributes: new { @class = "control-label col-md-2"})
+            @Html.LabelFor(model => model.SubcategoryId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.SubcategoryId, new SelectList(Model.Subcategories, "Value", "Text"), "Изберете подкатегория", new { @class = "form-control", @id = "subCategory" })
+                @Html.ValidationMessageFor(model => model.SubcategoryId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IsPublic, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox padded-checkbox">
                     @Html.EditorFor(model => model.IsPublic)
@@ -93,3 +101,26 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+
+@section scripts
+{
+    <script type="text/javascript">
+        $(function () {
+            $("#primaryCategory").change(function () {
+                var val = $(this).val();
+                var subCategories = "";
+                $.getJSON("/products/GetSubCategories", { id: val }, function (data) {
+                    $.each(data, function (index, category) {
+                        subCategories += "<option value='" + category.Value + "'>" + category.Text + "</option>"
+                    });
+                    if (subCategories === "") {
+                        $("#subCategory").html("<option value=''>Изберете подкатегория</option>")
+                    }
+                    else {
+                        $("#subCategory").html(subCategories)
+                    }
+                });
+            });
+        });
+    </script>
+}

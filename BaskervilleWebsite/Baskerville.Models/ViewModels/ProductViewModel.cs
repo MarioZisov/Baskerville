@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace Baskerville.Models.ViewModels
 {
@@ -11,7 +12,8 @@ namespace Baskerville.Models.ViewModels
     {
         public ProductViewModel()
         {
-            this.Categories = new List<ProductCategory>();
+            this.PrimaryCategories = new List<ProductCategory>();
+            this.Subcategories = new List<SelectListItem>();
         }
 
         public int Id { get; set; }
@@ -28,10 +30,14 @@ namespace Baskerville.Models.ViewModels
 
         public double Price { get; set; }
 
-        public int CategoryId { get; set; }
+        public int PrimaryCategoryId { get; set; }
+
+        public int? SubcategoryId { get; set; }
 
         public bool IsPublic { get; set; }
 
-        public IEnumerable<ProductCategory> Categories { get; set; }
+        public IEnumerable<ProductCategory> PrimaryCategories { get; set; }
+
+        public IEnumerable<SelectListItem> Subcategories { get; set; }
     }
 }
