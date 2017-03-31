@@ -11,6 +11,7 @@ namespace Baskerville.Models.DataModels
         public ProductCategory()
         {
             this.Products = new HashSet<Product>();
+            this.SubCategories = new HashSet<ProductCategory>();
         }
 
         public int Id { get; set; }
@@ -21,6 +22,14 @@ namespace Baskerville.Models.DataModels
 
         public bool IsRemoved { get; set; }
 
+        public bool IsPrimary { get; set; }
+
         public ICollection<Product> Products { get; set; }
+
+        public ICollection<ProductCategory> SubCategories { get; set; }
+
+        public int? PrimaryCategoryId { get; set; }
+
+        public ProductCategory PrimaryCategory { get; set; }
     }
 }

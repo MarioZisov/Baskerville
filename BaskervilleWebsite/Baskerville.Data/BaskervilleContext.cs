@@ -33,6 +33,11 @@ namespace Baskerville.Data
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<ProductCategory>()
+                .HasOptional(p => p.PrimaryCategory)
+                .WithMany(p => p.SubCategories)
+                .HasForeignKey(p => p.PrimaryCategoryId);
+
             Database.SetInitializer<BaskervilleContext>(null);
 
             base.OnModelCreating(modelBuilder);
