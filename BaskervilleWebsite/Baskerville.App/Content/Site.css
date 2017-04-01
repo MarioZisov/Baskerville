@@ -26,3 +26,7 @@ textarea {
 .padded-checkbox{
     padding: 24px;
 }
+
+.btn-danger-text {
+    color: #e51c23;
+}
