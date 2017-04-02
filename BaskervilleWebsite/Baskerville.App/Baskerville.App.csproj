@@ -511,7 +511,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="FullSpoon\" />
+    <Folder Include="CustomContent\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
