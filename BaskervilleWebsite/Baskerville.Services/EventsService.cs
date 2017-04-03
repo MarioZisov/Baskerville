@@ -40,5 +40,12 @@ namespace Baskerville.Services
 
             return eventViewModel;
         }
+
+        public EventViewModel GetEmptyEvent()
+        {
+            var eventViewModel = new EventViewModel();
+
+            return eventViewModel;
+        }
     }
 }

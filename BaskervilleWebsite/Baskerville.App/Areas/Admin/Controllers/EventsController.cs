@@ -33,5 +33,12 @@ namespace Baskerville.App.Areas.Admin.Controllers
 
             return View("EventForm", model);
         }
+
+        public ActionResult Create()
+        {
+            var model = this.service.GetEmptyEvent();
+
+            return View("EventForm", model);
+        }
     }
 }
