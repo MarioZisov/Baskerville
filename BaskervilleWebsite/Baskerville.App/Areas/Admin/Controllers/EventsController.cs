@@ -1,4 +1,5 @@
 ﻿using Baskerville.Data;
+using Baskerville.Models.ViewModels;
 using Baskerville.Services;
 using System;
 using System.Collections.Generic;
@@ -39,6 +40,31 @@ namespace Baskerville.App.Areas.Admin.Controllers
             var model = this.service.GetEmptyEvent();
 
             return View("EventForm", model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Save(EventViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("EventForm", model);
+            }
+
+            //Model is newly created and shoot be added to the database.
+            if (model.Id == 0)
+                this.service.CreateEvent(model);
+            else
+                this.service.UpdateEvent(model);
+
+            return this.RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public ActionResult Delete(int id)
+        {
+            this.service.RemoveEvent(id);
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
     }
 }

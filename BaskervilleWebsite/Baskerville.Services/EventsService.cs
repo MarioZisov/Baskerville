@@ -47,5 +47,27 @@ namespace Baskerville.Services
 
             return eventViewModel;
         }
+
+        public void CreateEvent(EventViewModel model)
+        {
+            var entity = Mapper.Map<EventViewModel, Event>(model);
+
+            this.events.Insert(entity);
+        }
+
+        public void UpdateEvent(EventViewModel model)
+        {
+            var entity = this.events.GetById(model.Id);
+            Mapper.Map(model, entity);
+
+            this.events.Update(entity);
+        }
+
+        public void RemoveEvent(int id)
+        {
+            var entity = this.events.GetById(id);
+            entity.IsRemoved = true;
+            this.events.Update(entity);
+        }
     }
 }
