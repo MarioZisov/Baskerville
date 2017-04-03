@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Baskerville.App.App_Start;
-using Baskerville.Services;
+using Baskerville.Services.Mapping;
 using System;
 using System.Collections.Generic;
 using System.Linq;

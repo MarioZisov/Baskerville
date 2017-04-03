@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Baskerville.Services
+namespace Baskerville.Services.Mapping
 {
     public class ServiceMappingProfile : Profile
     {
@@ -16,6 +16,7 @@ namespace Baskerville.Services
             this.CreateMap<Subscriber, SubscriberViewModel>();
             this.CreateMap<Product, ProductViewModel>();
             this.CreateMap<ProductViewModel, Product>();
+            this.CreateMap<Event, EventViewModel>();
         }
     }
 }

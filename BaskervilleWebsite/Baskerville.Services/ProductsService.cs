@@ -31,10 +31,12 @@ namespace Baskerville.Services
                 .GetAll()
                 .Include("Category")
                 .FirstOrDefault(p => !p.IsRemoved && p.Id == id);
-                /* GetFirstOrNull(p => !p.IsRemoved && p.Id == id);*/
+
+            if (product == null)
+                return null;
+
             var model = Mapper.Map<Product, ProductViewModel>(product);
 
-            //product.
             if (product.Category.IsPrimary)
                 model.PrimaryCategoryId = (int)product.CategoryId;
             else
