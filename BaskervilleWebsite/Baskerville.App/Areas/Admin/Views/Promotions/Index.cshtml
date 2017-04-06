@@ -1,0 +1,75 @@
+﻿@using Baskerville.Models.ViewModels
+@model IEnumerable<PromotionViewModel>
+
+@{
+    ViewBag.Title = "Промоции";
+}
+
+<h2>@ViewBag.Title</h2>
+<hr />
+@Html.ActionLink("Добави", "create", null, new { @class = "btn btn-success" })
+<br />
+<br />
+<table id="promotions" class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Име</th>
+            <th>Публично</th>
+            <th>Изтрий</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var promotion in Model)
+        {
+            <tr>
+                <td>@Html.ActionLink(promotion.NameBg, "Details", new { id = promotion.Id })</td>
+                <td class="publicWidth">@(promotion.IsPublic ? "Да" : "Не")</td>
+                <td class="removeWidth">
+                    <button promotion-id="@promotion.Id" promotion-name="@promotion.NameBg" class="btn-link js-delete btn-danger-text">Премахни</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#promotions").DataTable({
+                "oLanguage": {
+                    "sSearch": "Търси",
+                    "sZeroRecords": "Няма намерени резултати",
+                    "sInfoFiltered": "- филтрирано от общо _MAX_ записа",
+                    "sInfo": "Страница _PAGE_ от _PAGES_ (_TOTAL_ резултата)",
+                    "sInfoEmpty": "Няма записи",
+                    "sLengthMenu": "Показвай _MENU_ резултата на страница",
+                    "oPaginate": {
+                        "sNext": "Следваща",
+                        "sPrevious": "Предишна"
+                    }
+                }
+            });
+
+            $("#promotions").on("click", ".js-delete", function () {
+                var button = $(this);
+
+                bootbox.confirm("Сигурни ли сте, че искате да изтриете " + button.attr("promotion-name") + "?", function (result) {
+                    if (result) {
+                        $.ajax({
+                            method: "POST",
+                            url: "/admin/promotions/delete",
+                            ajaxasync: true,
+                            data: { id: button.attr("promotion-id") },
+                            success: function () {
+                                button.parents("tr").remove();
+                            }
+                        })
+                    }
+                })
+            })
+        })
+    </script>
+}
+
+

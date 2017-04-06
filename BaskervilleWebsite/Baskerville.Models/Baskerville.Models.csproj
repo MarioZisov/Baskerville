@@ -127,6 +127,7 @@
     <Compile Include="ViewModels\Manage\SetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
+    <Compile Include="ViewModels\PromotionViewModel.cs" />
     <Compile Include="ViewModels\SubscriberViewModel.cs" />
   </ItemGroup>
   <ItemGroup />

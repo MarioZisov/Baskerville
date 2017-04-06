@@ -20,6 +20,9 @@ namespace Baskerville.Services.Mapping
 
             this.CreateMap<Event, EventViewModel>();
             this.CreateMap<EventViewModel, Event>();
+
+            this.CreateMap<Promotion, PromotionViewModel>();
+            this.CreateMap<PromotionViewModel, Promotion>();
         }
     }
 }
