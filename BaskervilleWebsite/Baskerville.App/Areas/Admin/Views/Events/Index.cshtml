@@ -2,10 +2,10 @@
 @model IEnumerable<EventViewModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Събития";
 }
 
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
 <hr />
 @Html.ActionLink("Добави", "create", null, new { @class = "btn btn-success" })
 <br />
@@ -14,6 +14,7 @@
     <thead>
         <tr>
             <th>Име</th>
+            <th>Начало</th>
             <th>Публично</th>
             <th>Изтрий</th>
         </tr>
@@ -23,8 +24,9 @@
         {
             <tr>
                 <td>@Html.ActionLink(evnt.NameBg, "Details", new { id = evnt.Id })</td>
-                <td>@(evnt.IsPublic ? "Да" : "Не")</td>
-                <td>
+                <td>@evnt.StartDate.Value.ToString("dd.MM.yyyy HH:mm")</td>
+                <td class="publicWidth">@(evnt.IsPublic ? "Да" : "Не")</td>
+                <td class="removeWidth">
                     <button event-id="@evnt.Id" event-name="@evnt.NameBg" class="btn-link js-delete btn-danger-text">Премахни</button>
                 </td>
             </tr>

@@ -7,7 +7,7 @@
 
 <h2>@ViewBag.Title</h2>
 
-@using (Html.BeginForm("Save", "Events", FormMethod.Post))
+@using (Html.BeginForm("Save", "Events", FormMethod.Post, new { @id = "form" }))
 {
     @Html.AntiForgeryToken()
 
@@ -68,7 +68,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(model => model.StartDate, "{0:dd.MM.yyyy HH:mm}",  new { @class = "form-control", @id = "datetimepicker" })
+                        @Html.TextBoxFor(model => model.StartDate, "{0:dd.MM.yyyy HH:mm}", new { @class = "form-control ignore", @id = "datetimepicker" })
                         @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -111,4 +111,9 @@
 @section scripts
 {
     @Scripts.Render("~/bundles/jqueryval");
+    
+    @*Ignore MM/dd/yyyy date validation*@
+    <script>
+        $.validator.setDefaults({ ignore: ".ignore" });
+    </script>
 }
