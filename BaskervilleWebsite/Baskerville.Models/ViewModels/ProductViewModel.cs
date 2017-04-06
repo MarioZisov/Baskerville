@@ -10,7 +10,7 @@ using System.Web.Mvc;
 namespace Baskerville.Models.ViewModels
 {
     public class ProductViewModel
-    {
+    {       
         public ProductViewModel()
         {
             this.PrimaryCategories = new List<ProductCategory>();
@@ -19,13 +19,19 @@ namespace Baskerville.Models.ViewModels
 
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Полето е задължително")]
-        [StringLength(255, MinimumLength = 2, ErrorMessage = "Дължината трябва да е между 2 и 255 символа")]
+        [Required(ErrorMessage = Constants.RequiredFildMessage)]
+        [StringLength(
+            maximumLength: Constants.MaxProductNameLegnth
+            , MinimumLength = Constants.MinProductNameLegnth
+            , ErrorMessage = Constants.NameLenghtMessage)]
         [Display(Name = "Име (БГ)")]
         public string NameBg { get; set; }
 
-        [Required(ErrorMessage = "Полето е задължително")]
-        [StringLength(255, MinimumLength = 2, ErrorMessage = "Дължината трябва да е между 2 и 255 символа")]
+        [Required(ErrorMessage = Constants.RequiredFildMessage)]
+        [StringLength(
+            maximumLength: Constants.MaxProductNameLegnth
+            , MinimumLength = Constants.MinProductNameLegnth
+            , ErrorMessage = Constants.NameLenghtMessage)]
         [Display(Name = "Име (АНГ)")]
         public string NameEn { get; set; }
 
@@ -35,15 +41,15 @@ namespace Baskerville.Models.ViewModels
         [Display(Name = "Описание (АНГ)")]
         public string DescriptionEn { get; set; }
 
-        [Required(ErrorMessage = "Полето е задължително")]
+        [Required(ErrorMessage = Constants.RequiredFildMessage)]
         [Display(Name = "Количество")]
         public double Quantity { get; set; }
 
-        [Required(ErrorMessage = "Полето е задължително")]
+        [Required(ErrorMessage = Constants.RequiredFildMessage)]
         [Display(Name = "Цена")]
         public double Price { get; set; }
 
-        [Required(ErrorMessage = "Полето е задължително")]
+        [Required(ErrorMessage = Constants.RequiredFildMessage)]
         [Display(Name = "Категория")]
         public int PrimaryCategoryId { get; set; }
 

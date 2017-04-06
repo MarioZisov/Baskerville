@@ -9,31 +9,43 @@ namespace Baskerville.Models.ViewModels
 
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Полето е задължително")]
+        [Required(ErrorMessage = Constants.RequiredFildMessage)]
         [Display(Name = "Име (БГ)")]
-        [StringLength(50, MinimumLength = 5, ErrorMessage = "Името трябва да е между 5 и 50 символа")]
+        [StringLength(
+            maximumLength: Constants.MaxEventNameLegnth
+            , MinimumLength = Constants.MinEventNameLegnth
+            , ErrorMessage = Constants.NameLenghtMessage)]
         public string NameBg { get; set; }
 
-        [Required(ErrorMessage = "Полето е задължително")]
+        [Required(ErrorMessage = Constants.RequiredFildMessage)]
         [Display(Name = "Име (АНГ)")]
-        [StringLength(50, MinimumLength = 5, ErrorMessage = "Името трябва да е между 5 и 50 символа")]
+        [StringLength(
+            maximumLength: Constants.MaxEventNameLegnth
+            , MinimumLength = Constants.MinEventNameLegnth
+            , ErrorMessage = Constants.NameLenghtMessage)]
         public string NameEn { get; set; }
 
-        [Required(ErrorMessage = "Полето е задължително")]
+        [Required(ErrorMessage = Constants.RequiredFildMessage)]
         [Display(Name = "Описание (БГ)")]
-        [StringLength(500, MinimumLength = 5, ErrorMessage = "Описанието трябва да е между 5 и 500 символа")]
+        [StringLength(
+            maximumLength: Constants.MaxEventDescriptionLegnth
+            , MinimumLength = Constants.MinEventDescriptionLegnth
+            , ErrorMessage = Constants.DescriptionLenghtMessage)]
         public string DescriptionBg { get; set; }
 
-        [Required(ErrorMessage = "Полето е задължително")]
+        [Required(ErrorMessage = Constants.RequiredFildMessage)]
         [Display(Name = "Описание (АНГ)")]
-        [StringLength(500, MinimumLength = 5, ErrorMessage = "Описанието трябва да е между 5 и 500 символа")]
+        [StringLength(
+            maximumLength: Constants.MaxEventNameLegnth
+            , MinimumLength = Constants.MinEventNameLegnth
+            , ErrorMessage = Constants.DescriptionLenghtMessage)]
         public string DescriptionEn { get; set; }
 
-        [Required(ErrorMessage = "Полето е задължително")]
+        [Required(ErrorMessage = Constants.RequiredFildMessage)]
         [Display(Name = "Снимка (URL)")]
         public string ImageUrl { get; set; }
 
-        [Required(ErrorMessage = "Полето е задължително")]
+        [Required(ErrorMessage = Constants.RequiredFildMessage)]
         [Display(Name = "Начало")]
         public DateTime? StartDate
         {
