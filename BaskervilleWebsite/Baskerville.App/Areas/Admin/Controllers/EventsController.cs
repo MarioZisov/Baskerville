@@ -19,13 +19,14 @@ namespace Baskerville.App.Areas.Admin.Controllers
             this.service = new EventsService(new BaskervilleContext());
         }
 
-        // GET: Admin/Events
+        [HttpGet]
         public ActionResult Index()
         {
             var model = this.service.GetAllEvents();
             return View(model);
         }
 
+        [HttpGet]
         public ActionResult Details(int id)
         {
             var model = this.service.GetEvent(id);
@@ -35,6 +36,7 @@ namespace Baskerville.App.Areas.Admin.Controllers
             return View("EventForm", model);
         }
 
+        [HttpGet]
         public ActionResult Create()
         {
             var model = this.service.GetEmptyEvent();
@@ -51,7 +53,7 @@ namespace Baskerville.App.Areas.Admin.Controllers
                 return View("EventForm", model);
             }
 
-            //Model is newly created and shoot be added to the database.
+            //Model is newly created and should be added to the database.
             if (model.Id == 0)
                 this.service.CreateEvent(model);
             else
