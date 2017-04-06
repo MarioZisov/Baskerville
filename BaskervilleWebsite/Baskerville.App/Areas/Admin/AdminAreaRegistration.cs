@@ -16,8 +16,8 @@ namespace Baskerville.App.Areas.Admin
         {
             context.MapRoute(
                 "Admin_default",
-                "Admin/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                "admin/{controller}/{action}/{id}",
+                new { area = "admin", action = "index", id = UrlParameter.Optional }
             );
         }
     }

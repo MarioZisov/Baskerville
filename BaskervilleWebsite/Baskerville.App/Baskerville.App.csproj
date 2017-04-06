@@ -194,6 +194,7 @@
     <Compile Include="Areas\Admin\Controllers\ProductsController.cs" />
     <Compile Include="Areas\Admin\Controllers\PromotionsController.cs" />
     <Compile Include="Areas\Admin\Controllers\SubscribersController.cs" />
+    <Compile Include="Attributes\CustomAuthorizeAttribute.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\WebApi\SubscribersController.cs" />
     <Compile Include="Global.asax.cs">

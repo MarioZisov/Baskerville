@@ -399,7 +399,7 @@ namespace Baskerville.App.Areas.Admin.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Main");
         }
 
         //
@@ -456,7 +456,7 @@ namespace Baskerville.App.Areas.Admin.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Main");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult

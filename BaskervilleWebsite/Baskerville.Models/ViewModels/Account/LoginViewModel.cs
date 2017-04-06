@@ -5,16 +5,15 @@ namespace Baskerville.Models.ViewModels.Account
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Email")]
-        [EmailAddress]
+        [Display(Name = "Потребител")]
         public string Email { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Парола")]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [Display(Name = "Запомни ме?")]
         public bool RememberMe { get; set; }
     }
 }

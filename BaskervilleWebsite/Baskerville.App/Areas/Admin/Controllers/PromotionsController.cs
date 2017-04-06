@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace Baskerville.App.Areas.Admin.Controllers
 {
-    public class PromotionsController : Controller
+    public class PromotionsController : AuthorizedController
     {
         private PromotionsService service;
 

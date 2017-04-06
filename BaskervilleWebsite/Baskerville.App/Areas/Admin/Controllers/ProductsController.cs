@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace Baskerville.App.Areas.Admin.Controllers
 {
-    public class ProductsController : Controller
+    public class ProductsController : AuthorizedController
     {
         private ProductsService service;
 

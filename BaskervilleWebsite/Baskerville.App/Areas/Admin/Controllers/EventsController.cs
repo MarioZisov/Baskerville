@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace Baskerville.App.Areas.Admin.Controllers
 {
-    public class EventsController : Controller
+    public class EventsController : AuthorizedController
     {
         private EventsService service;
 

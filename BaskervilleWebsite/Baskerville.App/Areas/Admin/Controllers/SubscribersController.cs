@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace Baskerville.App.Areas.Admin.Controllers
 {
-    public class SubscribersController : Controller
+    public class SubscribersController : AuthorizedController
     {
         private SubscribersService service;
 
