@@ -407,6 +407,7 @@
     <Content Include="Areas\Admin\Views\Promotions\PromotionForm.cshtml" />
     <Content Include="Areas\Admin\Views\Subscribers\SubscribersReadOnlyList.cshtml" />
     <Content Include="Areas\Admin\Views\Products\ProductsReadOnlyList.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_LoginPartial - Copy.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootbox.js" />
     <Content Include="Scripts\bootbox.min.js" />
