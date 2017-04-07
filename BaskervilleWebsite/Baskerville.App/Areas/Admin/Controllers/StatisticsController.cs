@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace Baskerville.App.Areas.Admin.Controllers
 {
-    public class MainController : AuthorizedController
+    public class StatisticsController : AuthorizedController
     {
         // GET: Main
         public ActionResult Index()

@@ -22,7 +22,7 @@ namespace Baskerville.App.Areas.Admin.Controllers
         public ActionResult Index()
         {
             var model = this.service.GetActiveSubscribers();
-            return View(model);
+            return View("SubscribersList", model);
         }
 
         [HttpPost]

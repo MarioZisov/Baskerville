@@ -190,7 +190,7 @@
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\AuthorizedController.cs" />
     <Compile Include="Areas\Admin\Controllers\EventsController.cs" />
-    <Compile Include="Areas\Admin\Controllers\MainController.cs" />
+    <Compile Include="Areas\Admin\Controllers\StatisticsController.cs" />
     <Compile Include="Areas\Admin\Controllers\ManageController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductsController.cs" />
     <Compile Include="Areas\Admin\Controllers\PromotionsController.cs" />
@@ -379,8 +379,8 @@
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\Error.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\Lockout.cshtml" />
-    <Content Include="Areas\Admin\Views\Subscribers\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Products\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Subscribers\SubscribersList.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\ProductsList.cshtml" />
     <Content Include="Areas\Admin\Views\Products\ProductForm.cshtml" />
     <Content Include="Areas\Admin\Views\Manage\AddPhoneNumber.cshtml" />
     <Content Include="Areas\Admin\Views\Manage\ChangePassword.cshtml" />
@@ -388,7 +388,7 @@
     <Content Include="Areas\Admin\Views\Manage\ManageLogins.cshtml" />
     <Content Include="Areas\Admin\Views\Manage\SetPassword.cshtml" />
     <Content Include="Areas\Admin\Views\Manage\VerifyPhoneNumber.cshtml" />
-    <Content Include="Areas\Admin\Views\Main\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Statistics\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Areas\Admin\Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Areas\Admin\Views\Account\ExternalLoginConfirmation.cshtml" />
@@ -401,9 +401,9 @@
     <Content Include="Areas\Admin\Views\Account\ResetPasswordConfirmation.cshtml" />
     <Content Include="Areas\Admin\Views\Account\SendCode.cshtml" />
     <Content Include="Areas\Admin\Views\Account\VerifyCode.cshtml" />
-    <Content Include="Areas\Admin\Views\Events\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Events\EventsList.cshtml" />
     <Content Include="Areas\Admin\Views\Events\EventForm.cshtml" />
-    <Content Include="Areas\Admin\Views\Promotions\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Promotions\PromotionsList.cshtml" />
     <Content Include="Areas\Admin\Views\Promotions\PromotionForm.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootbox.js" />

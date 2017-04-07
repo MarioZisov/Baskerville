@@ -23,7 +23,7 @@ namespace Baskerville.App.Areas.Admin.Controllers
         public ActionResult Index()
         {
             var model = this.service.GetAllEvents();
-            return View(model);
+            return View("EventsList", model);
         }
 
         [HttpGet]

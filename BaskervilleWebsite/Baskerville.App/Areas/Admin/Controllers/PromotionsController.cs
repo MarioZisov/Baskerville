@@ -19,7 +19,7 @@ namespace Baskerville.App.Areas.Admin.Controllers
         public ActionResult Index()
         {
             var model = this.service.GetAllPromotions();
-            return View(model);
+            return View("PromotionsList", model);
         }
 
         [HttpGet]
