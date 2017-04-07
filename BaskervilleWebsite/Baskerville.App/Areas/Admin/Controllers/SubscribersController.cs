@@ -22,10 +22,14 @@ namespace Baskerville.App.Areas.Admin.Controllers
         public ActionResult Index()
         {
             var model = this.service.GetActiveSubscribers();
+            if (this.User.IsInRole("Employee"))
+                return View("SubscribersReadOnlyList", model);
+
             return View("SubscribersList", model);
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin,Owner")]
         public ActionResult Delete(int id)
         {
             this.service.RemoveSubscriber(id);

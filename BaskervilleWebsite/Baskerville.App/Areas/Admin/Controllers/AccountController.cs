@@ -169,7 +169,7 @@ namespace Baskerville.App.Areas.Admin.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Main");
+                    return RedirectToAction("Index", "Statistics");
                 }
                 AddErrors(result);
             }
@@ -399,7 +399,7 @@ namespace Baskerville.App.Areas.Admin.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Main");
+            return RedirectToAction("Index", "Statistics");
         }
 
         //
@@ -456,7 +456,7 @@ namespace Baskerville.App.Areas.Admin.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Main");
+            return RedirectToAction("Index", "Statistics");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult

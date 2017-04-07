@@ -1,0 +1,49 @@
+﻿@using Baskerville.Models.ViewModels
+@model IEnumerable<SubscriberViewModel>
+
+@{
+    ViewBag.Title = "Абонати";
+}
+
+<h2>Абонати</h2>
+<hr /> 
+<br />
+<table id="subscribers" class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Имейл адрес</th>
+            <th>Дата на присъединяване</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var subscriber in Model)
+        {
+            <tr>
+                <td>@subscriber.Email</td>
+                <td>@subscriber.SubscriptionDate.ToShortDateString()</td>                
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#subscribers").DataTable({
+                "oLanguage": {
+                    "sSearch": "Търси",                    
+                    "sZeroRecords": "Няма намерени резултати",
+                    "sInfoFiltered": "- филтрирано от общо _MAX_ записа",
+                    "sInfo": "Страница _PAGE_ от _PAGES_ (_TOTAL_ резултата)",
+                    "sInfoEmpty": "Няма записи",
+                    "sLengthMenu": "Показвай _MENU_ резултата на страница",
+                    "oPaginate": {
+                        "sNext": "Следваща",
+                        "sPrevious": "Предишна"
+                    }
+                }
+            });
+        })
+    </script>
+}
