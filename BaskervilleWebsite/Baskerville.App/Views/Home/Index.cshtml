@@ -1,4 +1,33 @@
-﻿<!-- Header -->
+﻿ <!-- Navigation -->
+<nav class="navbar navbar-default nav-justified navbar-fixed-top">
+    <div class="container">
+        <!-- Brand and toggle are grouped for better mobile display -->
+
+        <div class="navbar-header page-scroll">
+            <button class="navbar-toggle" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button"><span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button>
+        </div>
+        <!-- Navigation Links -->
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav nav-justified">
+                <li class="hidden">
+                    <a href="#page-top"></a>
+                </li>
+                <li> <a class="page-scroll" href="#page-top">Home</a> </li>
+                <li> <a class="page-scroll" href="#about">About</a> </li>
+                <li> @Html.ActionLink("Menu", "Menu", "Home", null, new { @class = "page-scroll" }) </li>
+                <li> <a class="page-scroll" href="#menu">Promotions</a> </li>
+                <li> <a class="page-scroll" href="#events">Events</a> </li>
+                <li> <a class="page-scroll" href="#contact">Contact us</a> </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+<!-- /.Navigation -->
+
+<!-- Header -->
 <header id="home">
     <div class="container">
         <!-- Intro Section: Logo, Heading & Address -->
@@ -65,7 +94,7 @@
     <!-- /.container -->
 </section>
 <!-- /.About Section -->
-<!-- Food Menu Section -->
+<!-- Promotions Section -->
 <section class="bg-darkest-gray" id="menu">
     <div class="container">
         <!-- Heading and Subheading -->
@@ -107,161 +136,7 @@
     </div>
     <!-- /.container -->
 </section>
-<!-- /.Food Menu Section -->
-<!-- Services Section -->
-<section id="services">
-    <div class="container">
-        <!-- Heading and Subheading -->
-
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <div class="fadeInDown wow">
-                    <h2 class="section-heading">Our <span class="orange-accent">Services</span></h2>
-                    <h3 class="section-subheading">We can make your party really delicious.</h3>
-                </div>
-            </div>
-        </div>
-        <!-- /.Heading and Subheading -->
-        <!-- Border -->
-        <div class="bounceIn wow">
-            <div class="border">
-                <div class="row">
-                    <div class="col-lg-12 text-center">
-                        <p><img alt="border" class="img-responsive center-block" height="26" src="~/CustomContent/img/border.svg" width="177"></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- /.Border -->
-        <!-- Description -->
-        <div class="fadeInUp wow">
-            <div class="row">
-                <div class="col-lg-12 mrgn20-btm">
-                    <p>
-                        We can prepare custom cake and muffin menu for every ocassion. For birthday parties, we can create custom looking cupcakes to reflect the personality of the person celebrating. Sweet or sour - we can take care for all your guests.
-                    </p>
-                    <p class="mrgn20-top">We have a special drinks menu for occassions that require alcoholic drinks. We can prepare a summer sangria coctails or mohitos. Strawberry lemonade or cherry vodka shots.</p>
-                    <p class="mrgn20-top">
-                        If you want to try a sample menu, give us a shout and we will arrange a sample tasting meeting.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <!-- /.Description -->
-        <!-- Menu Cards Connected to Popups -->
-        <div class="row">
-            <!-- Menu Card 01 -->
-            <div class="col-sm-4 menu-item text-center">
-                <div class=" bounceIn wow">
-                    <div class="bg-darkest-gray">
-                        <a class="menu-link" data-toggle="modal" href="#menuModal1">
-                            <div class="menu-hover">
-                                <div class="menu-hover-content"> <i class="fa fa-plus fa-3x"></i> </div>
-                            </div>
-                            <img alt="Coctails and Shots" class="mrgn20-top" src="~/CustomContent/img/bits/lemon.svg">
-                            <div class="menu-caption">
-                                <h4>Coctails and Shots</h4>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <!-- /.Menu Card 01 -->
-            <!-- Menu Card 02 -->
-            <div class="col-sm-4 menu-item text-center">
-                <div class=" bounceIn wow">
-                    <div class="bg-darkest-gray">
-                        <a class="menu-link" data-toggle="modal" href="#menuModal2">
-                            <div class="menu-hover">
-                                <div class="menu-hover-content"> <i class="fa fa-plus fa-3x"></i> </div>
-                            </div>
-                            <img alt="Coffee & Tea" class="mrgn20-top" src="~/CustomContent/img/bits/cappuccino.svg">
-                            <div class="menu-caption">
-                                <h4>Coffee & Tea</h4>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <!-- /.Menu Card 02 -->
-            <!-- Menu Card 03 -->
-            <div class="col-sm-4 menu-item text-center">
-                <div class=" bounceIn wow">
-                    <div class="bg-darkest-gray">
-                        <a class="menu-link" data-toggle="modal" href="#menuModal3">
-                            <div class="menu-hover">
-                                <div class="menu-hover-content"> <i class="fa fa-plus fa-3x"></i> </div>
-                            </div>
-                            <img alt="Special cupcakes" class="mrgn20-top" src="~/CustomContent/img/bits/cupcake.svg">
-                            <div class="menu-caption">
-                                <h4>Special cupcakes</h4>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <!-- /.Menu Card 03 -->
-        </div>
-
-        <!-- Menu Card 04 -->
-
-        <div class="row">
-            <div class="col-sm-4 menu-item text-center">
-                <div class=" bounceIn wow">
-                    <div class="bg-darkest-gray">
-                        <a class="menu-link" data-toggle="modal" href="#menuModal4">
-                            <div class="menu-hover">
-                                <div class="menu-hover-content"> <i class="fa fa-plus fa-3x"></i> </div>
-                            </div>
-                            <img alt="Fruit salads & Drinks" class="mrgn20-top" src="~/CustomContent/img/bits/forest-fruit.svg">
-                            <div class="menu-caption">
-                                <h4>Fruit salads & Drinks</h4>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <!-- /.Menu Card 04 -->
-            <!-- Menu Card 05 -->
-            <div class="col-sm-4 menu-item text-center">
-                <div class=" bounceIn wow">
-                    <div class="bg-darkest-gray">
-                        <a class="menu-link" data-toggle="modal" href="#menuModal5">
-                            <div class="menu-hover">
-                                <div class="menu-hover-content"> <i class="fa fa-plus fa-3x"></i> </div>
-                            </div>
-                            <img alt="Salty Nibbles" class="mrgn20-top" src="~/CustomContent/img/bits/pretzel.svg">
-                            <div class="menu-caption">
-                                <h4>Salty Nibbles</h4>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <!-- /.Menu Card 05 -->
-            <!-- Menu Card 06 -->
-            <div class="col-sm-4 menu-item text-center">
-                <div class=" bounceIn wow">
-                    <div class="bg-darkest-gray">
-                        <a class="menu-link" data-toggle="modal" href="#menuModal6">
-                            <div class="menu-hover">
-                                <div class="menu-hover-content"> <i class="fa fa-plus fa-3x"></i> </div>
-                            </div>
-                            <img alt="Custom menus" class="mrgn20-top" src="~/CustomContent/img/bits/pot.svg">
-                            <div class="menu-caption">
-                                <h4>Custom menus</h4>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- /.Menu Card 06 -->
-                </div>
-            </div>
-        </div>
-        <!-- /.Menu Cards Connected to Popups -->
-    </div>
-    <!-- /.container -->
-</section>
-<!-- /.Services Section -->
+<!-- /.Promotions Section -->
 <!-- Events Section -->
 <section id="events">
     <div class="container">
@@ -328,73 +203,6 @@
     <!-- /.container -->
 </section>
 <!-- /.Events Section -->
-<!-- Team Section -->
-<section class="bg-darkest-gray" id="team">
-    <div class="container">
-
-        <!-- Heading and Subheading -->
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <div class="fadeInDown wow">
-                    <h2 class="section-heading">Our <span class="orange-accent">Team</span></h2>
-                    <h3 class="section-subheading">We are a small team of people who love good food, music, art and parties.</h3>
-                </div>
-            </div>
-        </div>
-        <!-- /.Heading and Subheading -->
-        <!-- The Team -->
-        <div class="row">
-            <!-- Team Member 01 -->
-
-            <div class="col-sm-3">
-                <div class=" bounceIn wow">
-                    <div class="team-member">
-                        <img alt="Julie" class="img-responsive img-circle" src="~/CustomContent/img/team/julie.jpg">
-                        <h3>Julie</h3>
-                        <p>Founder & Master Baker</p>
-                    </div>
-                </div>
-            </div>
-            <!-- /.Team Member 01 -->
-            <!-- Team Member 02 -->
-            <div class="col-sm-3">
-                <div class=" bounceIn wow">
-                    <div class="team-member">
-                        <img alt="Matt" class="img-responsive img-circle" src="~/CustomContent/img/team/matt.jpg">
-                        <h3>Matt</h3>
-                        <p>Founder & Drinks Master</p>
-                    </div>
-                </div>
-            </div>
-            <!-- /.Team Member 02 -->
-            <!-- Team Member 03 -->
-            <div class="col-sm-3">
-                <div class=" bounceIn wow">
-                    <div class="team-member">
-                        <img alt="Paul" class="img-responsive img-circle" src="~/CustomContent/img/team/paul.jpg">
-                        <h3>Paul</h3>
-                        <p>Chef, Baker & Artist</p>
-                    </div>
-                </div>
-            </div>
-            <!-- /.Team Member 03 -->
-            <!-- Team Member 04 -->
-            <div class="col-sm-3">
-                <div class=" bounceIn wow">
-                    <div class="team-member">
-                        <img alt="Andy" class="img-responsive img-circle" src="~/CustomContent/img/team/andy.jpg">
-                        <h3>Andy</h3>
-                        <p>Event and Party Planner</p>
-                    </div>
-                </div>
-            </div>
-            <!-- /.Team Member 04 -->
-        </div>
-        <!--/. The Team -->
-    </div>
-    <!-- /.container -->
-</section>
-<!-- /.Team Section -->
 
 <!-- Testimonials Section -->
 
