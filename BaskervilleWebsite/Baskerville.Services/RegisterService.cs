@@ -22,6 +22,8 @@ namespace Baskerville.Services
         public IEnumerable<string> GetRolesNames()
         {
             return this.roles.GetAll().Select(r => r.Name).ToList();
+            //Exclude creating administrators from register form.
+            //return this.roles.Find(r => r.Name != "Admin").Select(r => r.Name).ToList();
         }
     }
 }

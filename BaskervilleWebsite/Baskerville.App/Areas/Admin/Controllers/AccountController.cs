@@ -138,7 +138,7 @@ namespace Baskerville.App.Areas.Admin.Controllers
 
         //
         // GET: /Account/Register
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin,Owner")]
         public ActionResult Register()
         {
             var registerModel = new RegisterViewModel();
@@ -149,7 +149,7 @@ namespace Baskerville.App.Areas.Admin.Controllers
         //
         // POST: /Account/Register
         [HttpPost]
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin,Owner")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
