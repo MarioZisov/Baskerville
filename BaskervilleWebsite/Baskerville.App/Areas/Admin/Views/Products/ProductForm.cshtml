@@ -118,7 +118,7 @@ else
             $("#primaryCategory").change(function () {
                 var val = $(this).val();
                 var subCategories = "";
-                $.getJSON("/admin/products/GetSubCategories", { id: val }, function (data) {
+                $.post("/admin/products/GetSubCategories", { id: val }, function (data) {
                     $.each(data, function (index, category) {
                         subCategories += "<option value='" + category.Value + "'>" + category.Text + "</option>"
                     });

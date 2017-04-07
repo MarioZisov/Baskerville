@@ -23,10 +23,14 @@ namespace Baskerville.App.Areas.Admin.Controllers
         public ActionResult Index()
         {
             var model = this.service.GetAllProducts();
+            if (this.User.IsInRole("Employee"))
+                return this.View("ProductsReadOnlyList", model);
+
             return View("ProductsList", model);
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin,Owner,Manager")]
         public ActionResult Details(int id)
         {
             var model = this.service.GetProduct(id);
@@ -37,6 +41,7 @@ namespace Baskerville.App.Areas.Admin.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin,Owner,Manager")]
         public ActionResult Create()
         {
             var model = this.service.GetEmptyProduct();
@@ -44,6 +49,7 @@ namespace Baskerville.App.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin,Owner,Manager")]
         public ActionResult Delete(int id)
         {
             this.service.RemoveProduct(id);
@@ -69,7 +75,8 @@ namespace Baskerville.App.Areas.Admin.Controllers
             return this.RedirectToAction("Index");
         }
 
-        [HttpGet]
+        [HttpPost]
+        [Authorize(Roles = "Admin,Owner,Manager")]
         public ActionResult GetSubCategories(int id)
         {
             var subCategories = this.service.GetSubCategories(id);
