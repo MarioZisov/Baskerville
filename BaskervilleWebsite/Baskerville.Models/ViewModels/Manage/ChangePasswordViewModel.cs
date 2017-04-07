@@ -4,20 +4,20 @@ namespace Baskerville.Models.ViewModels.Manage
 {
     public class ChangePasswordViewModel
     {
-        [Required]
+        [Required(ErrorMessage = Constants.RequiredFildMessage)]
         [DataType(DataType.Password)]
-        [Display(Name = "Current password")]
+        [Display(Name = "Текуща парола")]
         public string OldPassword { get; set; }
 
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [Required(ErrorMessage = Constants.RequiredFildMessage)]
+        [StringLength(100, ErrorMessage = "Паролата трябва да бъде поне {2} символа", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "New password")]
+        [Display(Name = "Нова парола")]
         public string NewPassword { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm new password")]
-        [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
+        [Display(Name = "Потвърдете новата парола")]
+        [Compare("NewPassword", ErrorMessage = "Паролите не съвпадат")]
         public string ConfirmPassword { get; set; }
     }
 }
