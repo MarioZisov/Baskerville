@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Baskerville.App.Utilities.HtmlBuilders;
+using Baskerville.Data;
+using Baskerville.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +11,13 @@ namespace Baskerville.App.Controllers
 {
     public class HomeController : Controller
     {
+        private HomeService service;
+
+        public HomeController()
+        {
+            this.service = new HomeService(new BaskervilleContext());
+        }
+
         [HttpGet]
         public ActionResult Index()
         {
@@ -17,7 +27,11 @@ namespace Baskerville.App.Controllers
         [HttpGet]
         public ActionResult Menu()
         {
-            return View();
+            var primaryCategories = this.service.GetPrimaryCategories();
+            var htmlBuilder = new MenuBuilder(primaryCategories, "", true);
+            var html = htmlBuilder.Render();
+            HtmlString str = new HtmlString(html);
+            return View(str);
         }
     }
 }

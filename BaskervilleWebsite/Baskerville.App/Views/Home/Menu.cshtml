@@ -1,4 +1,7 @@
-﻿<nav class="navbar navbar-default nav-justified navbar-fixed-top">
+﻿@model HtmlString
+
+
+<nav class="navbar navbar-default nav-justified navbar-fixed-top">
     <div class="container">
         <!-- Brand and toggle are grouped for better mobile display -->
         <div class="navbar-header page-scroll">
@@ -75,7 +78,7 @@
             <!-- Menu Cards 01 -->
             <div class="col-sm-4 menu-item text-center">
                 <div class="bg-darkest-gray">
-                    <a class="menu-link" data-toggle="modal" href="#menuModal1">
+                    <a class="menu-link" data-toggle="modal" href="#hotDrinks">
                         <div class="menu-hover">
                             <div class="menu-hover-content"> <i class="fa fa-plus fa-3x"></i> </div>
                         </div>
@@ -90,7 +93,7 @@
             <!-- Menu Cards 02 -->
             <div class="col-sm-4 menu-item text-center">
                 <div class="bg-darkest-gray">
-                    <a class="menu-link" data-toggle="modal" href="#menuModal2">
+                    <a class="menu-link" data-toggle="modal" href="#spiritDrinks">
                         <div class="menu-hover">
                             <div class="menu-hover-content"> <i class="fa fa-plus fa-3x"></i> </div>
                         </div>
@@ -105,7 +108,7 @@
             <!-- Menu Cards 03 -->
             <div class="col-sm-4 menu-item text-center">
                 <div class="bg-darkest-gray">
-                    <a class="menu-link" data-toggle="modal" href="#menuModal3">
+                    <a class="menu-link" data-toggle="modal" href="#cocktails">
                         <div class="menu-hover">
                             <div class="menu-hover-content"> <i class="fa fa-plus fa-3x"></i> </div>
                         </div>
@@ -117,53 +120,6 @@
                 </div>
             </div>
             <!-- /.Menu Cards 03 -->
-        </div>
-        <!-- Menu Cards 04 -->
-        <div class="row">
-            <div class="col-sm-4 menu-item text-center">
-                <div class="bg-darkest-gray">
-                    <a class="menu-link" data-toggle="modal" href="#menuModal4">
-                        <div class="menu-hover">
-                            <div class="menu-hover-content"> <i class="fa fa-plus fa-3x"></i> </div>
-                        </div>
-                        <img alt="Fruit salads & Drinks" class="mrgn20-top" src="~/CustomContent/img/bits/forest-fruit.svg">
-                        <div class="menu-caption">
-                            <h4>Fruit salads & Drinks</h4>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <!-- /.Menu Cards 04 -->
-            <!-- Menu Cards 05 -->
-            <div class="col-sm-4 menu-item text-center">
-                <div class="bg-darkest-gray">
-                    <a class="menu-link" data-toggle="modal" href="#menuModal5">
-                        <div class="menu-hover">
-                            <div class="menu-hover-content"> <i class="fa fa-plus fa-3x"></i> </div>
-                        </div>
-                        <img alt="Salty Nibbles" class="mrgn20-top" src="~/CustomContent/img/bits/pretzel.svg">
-                        <div class="menu-caption">
-                            <h4>Salty Nibbles</h4>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <!-- /.Menu Cards 05 -->
-            <!-- Menu Cards 06 -->
-            <div class="col-sm-4 menu-item text-center">
-                <div class="bg-darkest-gray">
-                    <a class="menu-link" data-toggle="modal" href="#menuModal6">
-                        <div class="menu-hover">
-                            <div class="menu-hover-content"> <i class="fa fa-plus fa-3x"></i> </div>
-                        </div>
-                        <img alt="Custom menus" class="mrgn20-top" src="~/CustomContent/img/bits/pot.svg">
-                        <div class="menu-caption">
-                            <h4>Custom menus</h4>
-                        </div>
-                    </a>
-                </div>
-                <!-- /.Menu Cards 06 -->
-            </div>
         </div>
         <!-- /.Menu Cards Connected to Popups -->
     </div>
@@ -232,3 +188,4 @@
     <!-- /.container -->
 </footer>
 <!-- /.Footer -->
+@Model

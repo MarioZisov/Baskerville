@@ -5,6 +5,7 @@ namespace Baskerville.Data.Migrations
     using Models.DataModels;
     using Models.Enums;
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
@@ -18,6 +19,29 @@ namespace Baskerville.Data.Migrations
 
         protected override void Seed(BaskervilleContext context)
         {
+            //var category = context.ProductsCategories.Find(1);
+            //for (int i = 0; i < 200; i++)
+            //{
+            //    category.Products.Add(new Product
+            //    {
+            //        IsAvalible = true,
+            //        NameBg = "Тест",
+            //        NameEn = "Test",
+            //        DescriptionBg = "асд",
+            //        DescriptionEn = "asd",
+            //        IsPublic = true,
+            //        IsRemoved = false,
+            //        Price = 11.90,
+            //        Quantity = 100,
+            //    });
+            //}
+
+            //context.SaveChanges();
+
+
+
+
+
             //#region Add Roles
             //if (!context.Roles.Any(r => r.Name == "Admin"))
             //{
