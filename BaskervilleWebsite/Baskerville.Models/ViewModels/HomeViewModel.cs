@@ -10,5 +10,7 @@ namespace Baskerville.Models.ViewModels
     public class HomeViewModel
     {
         public HtmlString Promotions { get; set; }
+
+        public HtmlString Events { get; set; }
     }
 }

@@ -48,7 +48,6 @@
         private ICollection<ProductCategory> categories;
 
         public MenuBuilder(ICollection<ProductCategory> categories, bool isLangBg)
-            : base()
         {
             this.categories = categories;
             this.isLangBg = isLangBg;
