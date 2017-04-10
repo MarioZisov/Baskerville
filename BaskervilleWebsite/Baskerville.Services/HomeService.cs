@@ -5,8 +5,11 @@ using Baskerville.Models.ViewModels;
 using Baskerville.Services.Utilities.HtmlBuilders;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.Entity;
 using System.Linq;
+using System.Net;
+using System.Net.Configuration;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
@@ -81,10 +84,18 @@ namespace Baskerville.Services
 
         public bool SendEmail(ContactViewModel contactModel)
         {
+            SmtpSection section = (SmtpSection)ConfigurationManager.GetSection("myMailSettings/smtp");            
+
             using (SmtpClient smtpClient = new SmtpClient())
             {
+                smtpClient.Port = section.Network.Port;
+                smtpClient.Host = section.Network.Host;
+                smtpClient.Credentials = new NetworkCredential(section.Network.UserName, section.Network.Password);
+                smtpClient.EnableSsl = section.Network.EnableSsl;
+
                 using (MailMessage message = new MailMessage())
                 {
+                    message.From = new MailAddress(section.From);
                     message.Subject = contactModel.Subject;
                     message.Body = $"Name: {contactModel.Name}{Environment.NewLine}Phone: {contactModel.PhoneNumber}{Environment.NewLine}Email: {contactModel.Email}{Environment.NewLine}{contactModel.Message}";
                     message.IsBodyHtml = false;
