@@ -84,7 +84,7 @@ namespace Baskerville.Services
 
         public bool SendEmail(ContactViewModel contactModel)
         {
-            SmtpSection section = (SmtpSection)ConfigurationManager.GetSection("myMailSettings/smtp");            
+            SmtpSection section = (SmtpSection)ConfigurationManager.GetSection("MyMailSettings/smtp");            
 
             using (SmtpClient smtpClient = new SmtpClient())
             {
@@ -99,7 +99,7 @@ namespace Baskerville.Services
                     message.Subject = contactModel.Subject;
                     message.Body = $"Name: {contactModel.Name}{Environment.NewLine}Phone: {contactModel.PhoneNumber}{Environment.NewLine}Email: {contactModel.Email}{Environment.NewLine}{contactModel.Message}";
                     message.IsBodyHtml = false;
-                    message.To.Add(new MailAddress("sensato.report@gmail.com"));
+                    message.To.Add(new MailAddress("zisov4eto@gmail.com"));
                     try
                     {
                         smtpClient.Send(message);
