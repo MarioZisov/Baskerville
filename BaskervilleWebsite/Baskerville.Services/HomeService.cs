@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
@@ -26,7 +27,7 @@ namespace Baskerville.Services
             this.categories = new Repository<ProductCategory>(context);
             this.promotions = new Repository<Promotion>(context);
             this.events = new Repository<Event>(context);
-        }
+        } 
 
         public HtmlString GetMenuHtml(bool isLangBg)
         {
@@ -41,7 +42,7 @@ namespace Baskerville.Services
             var html = this.htmlBuilder.Render();
 
             return html;
-        }
+        }        
 
         public HomeViewModel GetHomeModel(bool isLangBg)
         {
@@ -49,6 +50,7 @@ namespace Baskerville.Services
 
             model.Promotions = this.GetPromotionsHtml(isLangBg);
             model.Events = this.GetEventsHtml(isLangBg);
+            model.ContactModel = new ContactViewModel();
 
             return model;
         }
@@ -75,6 +77,29 @@ namespace Baskerville.Services
             var html = this.htmlBuilder.Render();
 
             return html;
+        }
+
+        public bool SendEmail(ContactViewModel contactModel)
+        {
+            using (SmtpClient smtpClient = new SmtpClient())
+            {
+                using (MailMessage message = new MailMessage())
+                {
+                    message.Subject = contactModel.Subject;
+                    message.Body = $"Name: {contactModel.Name}{Environment.NewLine}Phone: {contactModel.PhoneNumber}{Environment.NewLine}Email: {contactModel.Email}{Environment.NewLine}{contactModel.Message}";
+                    message.IsBodyHtml = false;
+                    message.To.Add(new MailAddress("sensato.report@gmail.com"));
+                    try
+                    {
+                        smtpClient.Send(message);
+                        return true;
+                    }
+                    catch (Exception)
+                    {
+                        return false;
+                    }
+                }
+            }
         }
     }
 }

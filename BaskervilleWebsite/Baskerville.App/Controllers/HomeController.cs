@@ -1,9 +1,6 @@
 ﻿using Baskerville.Data;
+using Baskerville.Models.ViewModels;
 using Baskerville.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Baskerville.App.Controllers
@@ -29,6 +26,25 @@ namespace Baskerville.App.Controllers
         {
             var html = this.service.GetMenuHtml(false);      
             return View(html);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Send(ContactViewModel contactModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                var model = this.service.GetHomeModel(false);
+                model.ContactModel = contactModel;
+                return View("Index", model);
+            }
+
+            bool success = this.service.SendEmail(contactModel);
+            if (success)
+                return View("MessageSent");
+            else
+                return View("404");
+
         }
     }
 }
