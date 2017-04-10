@@ -1,13 +1,11 @@
-﻿using Baskerville.App.Utilities.HtmlBuilders.Contracts;
-using Baskerville.Models.DataModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Text;
-
-namespace Baskerville.App.Utilities.HtmlBuilders
+﻿namespace Baskerville.App.Utilities.HtmlBuilders
 {
+    using Models.DataModels;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web;
+    using System.Text;
+
     public class MenuBuilder : HtmlBuilder
     {
         private const string CloseButtonBg = "Затвори";
@@ -24,7 +22,8 @@ namespace Baskerville.App.Utilities.HtmlBuilders
         //{3}: Alternative image text.
         //{4}: Image source.
         //{5}: menuItemsArrangement + menuItems
-        private string menuTemplate = "<div class=\"menu-modal modal fade\" id=\"{0}\" tabindex=\"-1\"><div class=\"modal-content\"><div class=\"close-modal\" data-dismiss=\"modal\"><div class=\"lr\"><div class=\"rl\"> </div></div></div><div class=\"container\"><div class=\"row\"><div class=\"col-lg-10 col-lg-offset-1\"><div class=\"modal-body\"><h2>{1}</h2><p class=\"item-intro text-muted\">{2}</p><img alt=\"{3}\" src=\"{4}\">{5}<button class=\"btn btn-primary\" data-dismiss=\"modal\" type=\"button\"><i class=\"fa fa-times\"></i> Close</button></div></div></div></div></div></div>";
+        //{6}: Close button language.
+        private string menuTemplate = "<div class=\"menu-modal modal fade\" id=\"{0}\" tabindex=\"-1\"><div class=\"modal-content\"><div class=\"close-modal\" data-dismiss=\"modal\"><div class=\"lr\"><div class=\"rl\"> </div></div></div><div class=\"container\"><div class=\"row\"><div class=\"col-lg-10 col-lg-offset-1\"><div class=\"modal-body\"><h2>{1}</h2><p class=\"item-intro text-muted\">{2}</p><img alt=\"{3}\" src=\"{4}\">{5}<button class=\"btn btn-primary\" data-dismiss=\"modal\" type=\"button\"><i class=\"fa fa-times\"></i> {6}</button></div></div></div></div></div></div>";
         private StringBuilder templatesBuilder;
 
         //Representatation of a menu category
@@ -46,14 +45,12 @@ namespace Baskerville.App.Utilities.HtmlBuilders
         private StringBuilder rightItemsBuilder;
 
         private bool isLangBg;
-        private string imageSource;
         private ICollection<ProductCategory> categories;
 
-        public MenuBuilder(ICollection<ProductCategory> categories, string imageSource, bool isLangBg)
+        public MenuBuilder(ICollection<ProductCategory> categories, bool isLangBg)
             : base()
         {
             this.categories = categories;
-            this.imageSource = imageSource;
             this.isLangBg = isLangBg;
             this.leftItemsBuilder = new StringBuilder();
             this.rightItemsBuilder = new StringBuilder();
@@ -61,11 +58,12 @@ namespace Baskerville.App.Utilities.HtmlBuilders
             this.categoriesBuilder = new StringBuilder();
         }
 
-        public override string Render()
+        public override HtmlString Render()
         {
             this.CreateHtml();
 
-            return this.Builder.ToString();
+            HtmlString html = new HtmlString(this.Builder.ToString());
+            return html;
         }
 
         private void CreateHtml()
@@ -75,7 +73,7 @@ namespace Baskerville.App.Utilities.HtmlBuilders
                 if (category.Products.Any())
                 {
                     this.GenerateProducts(category);
-                    this.GenerateSingleCategory(category);
+                    this.GenerateCategory(category);
                     this.GenerateMenuTemplate(category);
                     this.Builder.Append(this.templatesBuilder.ToString());
                 }
@@ -84,7 +82,7 @@ namespace Baskerville.App.Utilities.HtmlBuilders
                     foreach (var subCategory in category.Subcategories)
                     {
                         this.GenerateProducts(subCategory);
-                        this.GenerateSingleCategory(subCategory);
+                        this.GenerateCategory(subCategory);
 
                         this.leftItemsBuilder.Clear();
                         this.rightItemsBuilder.Clear();
@@ -104,26 +102,27 @@ namespace Baskerville.App.Utilities.HtmlBuilders
         private void GenerateMenuTemplate(ProductCategory category)
         {
             string templateId = this.GenerateTemplateId(category.NameEn);
-                        
+
+            string categoryName = this.isLangBg ? category.NameBg : category.NameEn;
+            string closeButton = this.isLangBg ? CloseButtonBg : CloseButtonEn;
+
             this.templatesBuilder.AppendFormat(
                 this.menuTemplate, 
-                templateId, 
-                category.NameBg, 
+                templateId,
+                categoryName, 
                 "Short description goes here.", 
                 templateId, 
-                this.imageSource, 
-                this.categoriesBuilder.ToString());            
+                "", 
+                this.categoriesBuilder.ToString(),
+                closeButton);            
         }
 
-        private void GenerateSingleCategory(ProductCategory category)
+        private void GenerateCategory(ProductCategory category)
         {
-            string subCategoryName = category.IsPrimary ? "" : category.NameBg;
+            string categoryName = this.isLangBg ? category.NameBg : category.NameEn;
+
+            string subCategoryName = category.IsPrimary ? "" : categoryName;
             this.categoriesBuilder.AppendFormat(this.menuCategory, subCategoryName, this.leftItemsBuilder, this.rightItemsBuilder);
-        }
-
-        private void GenerateMultiCategories(ProductCategory category)
-        {
-            throw new NotImplementedException();
         }
 
         private void GenerateProducts(ProductCategory category)
@@ -134,10 +133,15 @@ namespace Baskerville.App.Utilities.HtmlBuilders
             foreach (var product in category.Products)
             {
                 index++;
+
+                string productName = this.isLangBg ? product.NameBg : product.NameEn;
+                string description = this.isLangBg ? product.DescriptionBg : product.DescriptionEn;
+                string currency = this.isLangBg ? CurrenyBg : CurrenyEn;
+
                 if (index <= halfProductsCount)
-                    this.leftItemsBuilder.AppendFormat(this.menuItem, product.NameBg, product.Price, CurrenyBg, product.DescriptionBg);
+                    this.leftItemsBuilder.AppendFormat(this.menuItem, productName, product.Price, currency, description);
                 else
-                    this.rightItemsBuilder.AppendFormat(this.menuItem, product.NameBg, product.Price, CurrenyBg, product.DescriptionBg);
+                    this.rightItemsBuilder.AppendFormat(this.menuItem, productName, product.Price, currency, description);
             }
         }
 

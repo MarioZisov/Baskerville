@@ -28,10 +28,9 @@ namespace Baskerville.App.Controllers
         public ActionResult Menu()
         {
             var primaryCategories = this.service.GetPrimaryCategories();
-            var htmlBuilder = new MenuBuilder(primaryCategories, "", true);
-            var html = htmlBuilder.Render();
-            HtmlString str = new HtmlString(html);
-            return View(str);
+            var htmlBuilder = new MenuBuilder(primaryCategories, false);
+            var html = htmlBuilder.Render();            
+            return View(html);
         }
     }
 }

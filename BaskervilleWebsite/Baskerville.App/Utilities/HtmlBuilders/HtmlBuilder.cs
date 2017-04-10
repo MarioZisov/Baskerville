@@ -16,6 +16,6 @@ namespace Baskerville.App.Utilities.HtmlBuilders
 
         protected StringBuilder Builder { get; set; }
 
-        public abstract string Render();       
+        public abstract HtmlString Render();       
     }
 }
