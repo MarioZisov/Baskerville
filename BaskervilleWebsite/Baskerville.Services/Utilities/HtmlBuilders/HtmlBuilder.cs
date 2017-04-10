@@ -1,11 +1,10 @@
-﻿using Baskerville.App.Utilities.HtmlBuilders.Contracts;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web;
 
-namespace Baskerville.App.Utilities.HtmlBuilders
+namespace Baskerville.Services.Utilities.HtmlBuilders
 {
     public abstract class HtmlBuilder
     {
@@ -15,6 +14,8 @@ namespace Baskerville.App.Utilities.HtmlBuilders
         }
 
         protected StringBuilder Builder { get; set; }
+
+        protected HtmlString Html { get; set; }
 
         public abstract HtmlString Render();       
     }

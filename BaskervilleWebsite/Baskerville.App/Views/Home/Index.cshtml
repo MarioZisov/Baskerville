@@ -1,4 +1,6 @@
-﻿ <!-- Navigation -->
+﻿@model Baskerville.Models.ViewModels.HomeViewModel
+
+ <!-- Navigation -->
 <nav class="navbar navbar-default nav-justified navbar-fixed-top">
     <div class="container">
         <!-- Brand and toggle are grouped for better mobile display -->
@@ -101,7 +103,7 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <div class="fadeInDown wow">
-                    <h2 class="section-heading">Our <span class="orange-accent">Menu</span></h2>
+                    <h2 class="section-heading">Our <span class="orange-accent">Promotions</span></h2>
                     <h3 class="section-subheading">
                         Come & try our daily specials.
                     </h3>
@@ -115,18 +117,7 @@
                 <div class="col-md-10 col-md-offset-1 text-center">
                     <div class="menu-bg">
                         <p>
-                            <strong class="title orange-accent">Muffin Monday</strong><br> Grab a chocolate or a walnut honey muffin to start your day.<br>
-                            <br>
-                            <strong class="title orange-accent">Carrot & Cheese Tuesday</strong><br> A slice of freshly baked carrot cake will give a great boost. Yellow cheese muffins all day long.<br>
-                            <br>
-                            <strong class="title orange-accent">Forest Fruit Wednesday</strong><br> A blueberry muffin with cinnamon flavoured late sounds great after a long day.<br>
-                            <br>
-                            <strong class="title orange-accent">Minty Thursday</strong><br> Ginger and mint cupcakes with mint flavoured lemonade will freshen you up.<br>
-                            <br>
-                            <strong class="title orange-accent">Irish Friday</strong><br> Celebrate the end of the working week with a rum flavoured muffins and irish cream cake.<br>
-                            <br>
-                            <strong class="title orange-accent">Chocolate Saturday & Sunday</strong><br> For the weekend you came buy for a chocolate break. We have milk chocolate muffins, dark chocolate strawberry cupcakes and chocolate late and
-                            cappuccino.
+                            @Model.Promotions
                         </p>
                     </div>
                 </div>

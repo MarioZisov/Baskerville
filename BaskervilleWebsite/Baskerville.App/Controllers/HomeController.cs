@@ -1,5 +1,4 @@
-﻿using Baskerville.App.Utilities.HtmlBuilders;
-using Baskerville.Data;
+﻿using Baskerville.Data;
 using Baskerville.Services;
 using System;
 using System.Collections.Generic;
@@ -21,15 +20,14 @@ namespace Baskerville.App.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            return View();
+            var model = this.service.GetHomeModel(false);
+            return View(model);
         }
 
         [HttpGet]
         public ActionResult Menu()
         {
-            var primaryCategories = this.service.GetPrimaryCategories();
-            var htmlBuilder = new MenuBuilder(primaryCategories, false);
-            var html = htmlBuilder.Render();            
+            var html = this.service.GetMenuHtml(false);      
             return View(html);
         }
     }

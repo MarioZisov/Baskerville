@@ -1,4 +1,4 @@
-﻿namespace Baskerville.App.Utilities.HtmlBuilders
+﻿namespace Baskerville.Services.Utilities.HtmlBuilders
 {
     using Models.DataModels;
     using System.Collections.Generic;
@@ -62,8 +62,8 @@
         {
             this.CreateHtml();
 
-            HtmlString html = new HtmlString(this.Builder.ToString());
-            return html;
+            this.Html = new HtmlString(this.Builder.ToString());
+            return this.Html;
         }
 
         private void CreateHtml()
