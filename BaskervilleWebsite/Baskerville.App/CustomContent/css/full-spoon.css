@@ -54,9 +54,9 @@ h3,
 h4,
 h5,
 h6 {
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
     font-family: 'Alice', serif;
-    font-weight: 700;
+    /*font-weight: 700;*/
 }
 
 .img-centered {
@@ -634,7 +634,7 @@ section {
 section h2.section-heading {
     margin-top: 0;
     margin-bottom: 15px;
-    font-size: 40px;
+    font-size: 60px;
     /*font-family: 'Alice', serif;*/
     font-family: 'Alice', serif;
 }
@@ -660,7 +660,7 @@ section#menu h3.section-subheading {
 
 section#menu {
     background-attachment: scroll;
-    background-image: url(../img/menu-bg.jpg);
+    background-image: url(../img/test-menu-bg.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     -webkit-background-size: cover;
@@ -684,7 +684,8 @@ section#menu .orange-bg {
 }
 
 section#menu .menu-bg {
-    background-color: rgba(150, 150, 150, 0.3);
+    /*background-color: rgba(150, 150, 150, 0.3);*/
+    background-color: rgba(24, 24, 25, 0.7);
     padding: 40px 20px;
     border-radius: 5px;
     color: #FFF;
@@ -1117,7 +1118,8 @@ section#contact {
     background-repeat: no-repeat;
 }
 
-section#contact .section-heading {
+section#contact .section-heading {  
+    font-size: 60px;  
     color: #434343;
 }
 
@@ -1132,7 +1134,8 @@ section#contact .form-group {
 
 section#contact .form-group input,
 section#contact .form-group textarea {
-    padding: 25px 20px 15px 20px;
+    /*padding: 25px 20px 15px 20px;*/
+    padding: 20px 20px 20px 20px;
 }
 
 section#contact select.form-control {
@@ -1148,7 +1151,7 @@ section#contact .form-group input.form-control {
 }
 
 section#contact .form-group textarea.form-control {
-    height: 322px;
+    height: 307px;
 }
 
 section#contact .form-control {
@@ -1217,6 +1220,107 @@ section#contact .text-danger {
     #iframe .embed-responsive-16by9 {
         padding: 25%
     }
+}
+
+
+/* Section Subscribe 
+================================ */
+
+section#subscribe {
+    background: #1c1e21 url(../img/bits/book-a-table-bg.jpg);
+    color: #FFF;
+    background-position: center center;
+    /*background-color: #434343;
+    background-position: center;
+    background-repeat: no-repeat;*/
+}
+
+section#subscribe .section-heading {
+    color: #f9f9f9;
+    font-size: 60px;
+    /*font-weight: 400;*/
+}
+
+section#subscribe .section-subheading {
+    color: #f9f9f9;
+}
+
+section#subscribe h4 {
+    font-family: 'Alice', serif;
+    font-size: 48px;
+}
+
+section#subscribe .form-group {
+    margin-bottom: 20px;
+}
+
+section#subscribe .form-group input,
+section#subscribe .form-group textarea {
+    /*padding: 25px 20px 15px 20px;*/
+     margin-bottom: 20px;
+}
+
+section#subscribe select.form-control {
+    padding: 20px;
+}
+
+section#subscribe .form-group select.form-control {
+    height: auto;
+}
+
+section#subscribe .form-group input.form-control {
+    height: 55px;
+}
+
+section#subscribe .form-group textarea.form-control {
+    height: 322px;
+}
+
+section#subscribe .form-control {
+    border: 2px solid #eee;
+    -webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 0px 0px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    border-radius: 0
+}
+
+section#subscribe .form-control:focus {
+    border-color: green;
+    box-shadow: none;
+}
+
+section#subscribe::-webkit-input-placeholder {
+    text-transform: uppercase;
+    font-family: 'Catamaran', sans-serif, Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    color: #bbb;
+}
+
+section#subscribe:-moz-placeholder {
+    text-transform: uppercase;
+    font-family: 'Catamaran', sans-serif, Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    color: #bbb;
+}
+
+section#subscribe::-moz-placeholder {
+    text-transform: uppercase;
+    font-family: 'Catamaran', sans-serif, Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    color: #bbb;
+}
+
+section#subscribe:-ms-input-placeholder {
+    text-transform: uppercase;
+    font-family: 'Catamaran', sans-serif, Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    color: #bbb;
+}
+
+section#subscribe .text-danger {
+    color: #e74c3c;
 }
 
 
