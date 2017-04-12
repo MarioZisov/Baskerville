@@ -1261,11 +1261,11 @@ section#subscribe .form-group textarea {
 }
 
 section#subscribe select.form-control {
-    padding: 20px;
+    /*padding: 20px;*/
 }
 
 section#subscribe .form-group select.form-control {
-    height: auto;
+    height: 55px;
 }
 
 section#subscribe .form-group input.form-control {

@@ -132,6 +132,7 @@
     <Compile Include="ViewModels\ProductViewModel.cs" />
     <Compile Include="ViewModels\PromotionViewModel.cs" />
     <Compile Include="ViewModels\SubscriberViewModel.cs" />
+    <Compile Include="ViewModels\SubscribeViewModel.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

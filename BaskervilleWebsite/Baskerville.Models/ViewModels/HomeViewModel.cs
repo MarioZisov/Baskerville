@@ -9,6 +9,8 @@ namespace Baskerville.Models.ViewModels
 {
     public class HomeViewModel
     {
+        public SubscribeViewModel SubscribeModel { get; set; }
+
         public ContactViewModel ContactModel { get; set; }
 
         public HtmlString Promotions { get; set; }

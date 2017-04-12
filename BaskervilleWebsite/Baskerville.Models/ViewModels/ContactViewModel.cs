@@ -9,7 +9,14 @@ namespace Baskerville.Models.ViewModels
 {
     public class ContactViewModel
     {
-        public readonly IEnumerable<SelectListItem> ListItems = new List<SelectListItem>
+        public readonly IEnumerable<SelectListItem> SubjectsEn = new List<SelectListItem>
+        {
+            new SelectListItem {Text = "Question asdasdadsad", Value = "Question asdasdadsad" },
+            new SelectListItem {Text = "Another asdasdadsad", Value = "Another asdasdadsad" },
+            new SelectListItem {Text = "AAAA fakQuestion asdasdadsad", Value = "AAAA fakQuestion asdasdadsad" }
+        };
+
+        public readonly IEnumerable<SelectListItem> SubjectsBg = new List<SelectListItem>
         {
             new SelectListItem {Text = "Question asdasdadsad", Value = "Question asdasdadsad" },
             new SelectListItem {Text = "Another asdasdadsad", Value = "Another asdasdadsad" },

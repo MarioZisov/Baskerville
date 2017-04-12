@@ -264,10 +264,13 @@
                 <div class="row">
                     <div class="col-md-offset-3 col-md-6 text-center">
                         <div class="form-group">
-                            @Html.EditorFor(model => model.ContactModel.Name, new { htmlAttributes = new { @class = "form-control", placeholder = "Your Email *" } })
-                            @Html.ValidationMessageFor(model => model.ContactModel.Name, "", new { @class = "text-danger" })
+                            @Html.EditorFor(model => model.SubscribeModel.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Your Email *" } })
+                            @Html.ValidationMessageFor(model => model.SubscribeModel.Email, "", new { @class = "text-danger" })
                         </div>
-
+                        <div class="form-group">
+                            @Html.DropDownListFor(model => model.ContactModel.Subject, Model.SubscribeModel.LanguagesEn, "Prefered language", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.SubscribeModel.PreferedLanguage, "", new { @class = "text-danger" })
+                        </div>
                         <button class="btn btn-contact" type="submit">Subscribe</button>
                     </div>
                 </div>
@@ -369,7 +372,7 @@
                             @Html.ValidationMessageFor(model => model.ContactModel.PhoneNumber, "", new { @class = "text-danger" })
                         </div>
                         <div class="form-group">
-                            @Html.DropDownListFor(model => model.ContactModel.Subject, Model.ContactModel.ListItems, "How cen we help you?", new { @class = "form-control" })
+                            @Html.DropDownListFor(model => model.ContactModel.Subject, Model.ContactModel.SubjectsEn, "How cen we help you?", new { @class = "form-control" })
                             @Html.ValidationMessageFor(model => model.ContactModel.Subject, "", new { @class = "text-danger" })
                         </div>
                     </div>

@@ -54,6 +54,7 @@ namespace Baskerville.Services
             model.Promotions = this.GetPromotionsHtml(isLangBg);
             model.Events = this.GetEventsHtml(isLangBg);
             model.ContactModel = new ContactViewModel();
+            model.SubscribeModel = new SubscribeViewModel();
 
             return model;
         }
@@ -99,7 +100,7 @@ namespace Baskerville.Services
                     message.Subject = contactModel.Subject;
                     message.Body = $"Name: {contactModel.Name}{Environment.NewLine}Phone: {contactModel.PhoneNumber}{Environment.NewLine}Email: {contactModel.Email}{Environment.NewLine}{contactModel.Message}";
                     message.IsBodyHtml = false;
-                    message.To.Add(new MailAddress("zisov4eto@gmail.com"));
+                    message.To.Add(new MailAddress("sensato.report@gmail.com"));
                     try
                     {
                         smtpClient.Send(message);
