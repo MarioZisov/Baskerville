@@ -1,7 +1,9 @@
 ﻿using Baskerville.Data.Contracts.Repository;
 using Baskerville.Data.Repository;
 using Baskerville.Models.DataModels;
+using Baskerville.Models.Enums;
 using Baskerville.Models.ViewModels;
+using Baskerville.Models.ViewModels.Public;
 using Baskerville.Services.Utilities.HtmlBuilders;
 using System;
 using System.Collections.Generic;
@@ -34,7 +36,6 @@ namespace Baskerville.Services
 
         public HtmlString GetMenuHtml(bool isLangBg)
         {
-
             var filteredCategories = this.categories
                 .Find(c => c.IsPrimary && !c.IsRemoved)
                 .Include("Products")
@@ -53,7 +54,9 @@ namespace Baskerville.Services
 
             model.Promotions = this.GetPromotionsHtml(isLangBg);
             model.Events = this.GetEventsHtml(isLangBg);
-            model.ContactModel = new ContactViewModel();
+
+            model.ContactModelBg = new ContactViewModelBg();
+            model.ContactModelEn = new ContactViewModelEn();
             model.SubscribeModel = new SubscribeViewModel();
 
             return model;
@@ -83,7 +86,7 @@ namespace Baskerville.Services
             return html;
         }
 
-        public bool SendEmail(ContactViewModel contactModel)
+        public bool SendEmail(ContactBindingModel contactModel)
         {
             SmtpSection section = (SmtpSection)ConfigurationManager.GetSection("MyMailSettings/smtp");            
 

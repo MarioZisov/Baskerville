@@ -1,4 +1,5 @@
-﻿using Baskerville.Models.DataModels;
+﻿using Baskerville.Models.Constants;
+using Baskerville.Models.DataModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -19,19 +20,19 @@ namespace Baskerville.Models.ViewModels
 
         public int Id { get; set; }
 
-        [Required(ErrorMessage = Constants.RequiredFildMessage)]
+        [Required(ErrorMessage = AdminMessages.RequiredFieldMessage)]
         [StringLength(
-            maximumLength: Constants.MaxProductNameLegnth
-            , MinimumLength = Constants.MinProductNameLegnth
-            , ErrorMessage = Constants.NameLenghtMessage)]
+            maximumLength: AdminMessages.MaxProductNameLegnth
+            , MinimumLength = AdminMessages.MinProductNameLegnth
+            , ErrorMessage = AdminMessages.NameLenghtMessage)]
         [Display(Name = "Име (БГ)")]
         public string NameBg { get; set; }
 
-        [Required(ErrorMessage = Constants.RequiredFildMessage)]
+        [Required(ErrorMessage = AdminMessages.RequiredFieldMessage)]
         [StringLength(
-            maximumLength: Constants.MaxProductNameLegnth
-            , MinimumLength = Constants.MinProductNameLegnth
-            , ErrorMessage = Constants.NameLenghtMessage)]
+            maximumLength: AdminMessages.MaxProductNameLegnth
+            , MinimumLength = AdminMessages.MinProductNameLegnth
+            , ErrorMessage = AdminMessages.NameLenghtMessage)]
         [Display(Name = "Име (АНГ)")]
         public string NameEn { get; set; }
 
@@ -41,15 +42,15 @@ namespace Baskerville.Models.ViewModels
         [Display(Name = "Описание (АНГ)")]
         public string DescriptionEn { get; set; }
 
-        [Required(ErrorMessage = Constants.RequiredFildMessage)]
+        [Required(ErrorMessage = AdminMessages.RequiredFieldMessage)]
         [Display(Name = "Количество")]
         public double Quantity { get; set; }
 
-        [Required(ErrorMessage = Constants.RequiredFildMessage)]
+        [Required(ErrorMessage = AdminMessages.RequiredFieldMessage)]
         [Display(Name = "Цена")]
         public double Price { get; set; }
 
-        [Required(ErrorMessage = Constants.RequiredFildMessage)]
+        [Required(ErrorMessage = AdminMessages.RequiredFieldMessage)]
         [Display(Name = "Категория")]
         public int PrimaryCategoryId { get; set; }
 

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Baskerville.Models.Constants;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -11,12 +12,12 @@ namespace Baskerville.Models.ViewModels.Account
             this.RolesNames = new List<string>();
         }
 
-        [Required(ErrorMessage = Constants.RequiredFildMessage)]
+        [Required(ErrorMessage = AdminMessages.RequiredFieldMessage)]
         [MinLength(2), MaxLength(255)]
         [Display(Name = "Потребител")]
         public string Username { get; set; }
 
-        [Required(ErrorMessage = Constants.RequiredFildMessage)]
+        [Required(ErrorMessage = AdminMessages.RequiredFieldMessage)]
         [StringLength(100, ErrorMessage = "Паралота трябва да бъде поне {2} символа", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Парола")]
@@ -27,7 +28,7 @@ namespace Baskerville.Models.ViewModels.Account
         [Compare("Password", ErrorMessage = "Паролите не съвпадат")]
         public string ConfirmPassword { get; set; }
 
-        [Required(ErrorMessage = Constants.RequiredFildMessage)]
+        [Required(ErrorMessage = AdminMessages.RequiredFieldMessage)]
         [Display(Name = "Роля")]
         public string RoleName { get; set; }
 

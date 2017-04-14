@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Baskerville.Models.Constants;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Baskerville.Models.ViewModels
@@ -9,43 +10,43 @@ namespace Baskerville.Models.ViewModels
 
         public int Id { get; set; }
 
-        [Required(ErrorMessage = Constants.RequiredFildMessage)]
+        [Required(ErrorMessage = AdminMessages.RequiredFieldMessage)]
         [Display(Name = "Име (БГ)")]
         [StringLength(
-            maximumLength: Constants.MaxEventNameLegnth
-            , MinimumLength = Constants.MinEventNameLegnth
-            , ErrorMessage = Constants.NameLenghtMessage)]
+            maximumLength: AdminMessages.MaxEventNameLegnth
+            , MinimumLength = AdminMessages.MinEventNameLegnth
+            , ErrorMessage = AdminMessages.NameLenghtMessage)]
         public string NameBg { get; set; }
 
-        [Required(ErrorMessage = Constants.RequiredFildMessage)]
+        [Required(ErrorMessage = AdminMessages.RequiredFieldMessage)]
         [Display(Name = "Име (АНГ)")]
         [StringLength(
-            maximumLength: Constants.MaxEventNameLegnth
-            , MinimumLength = Constants.MinEventNameLegnth
-            , ErrorMessage = Constants.NameLenghtMessage)]
+            maximumLength: AdminMessages.MaxEventNameLegnth
+            , MinimumLength = AdminMessages.MinEventNameLegnth
+            , ErrorMessage = AdminMessages.NameLenghtMessage)]
         public string NameEn { get; set; }
 
-        [Required(ErrorMessage = Constants.RequiredFildMessage)]
+        [Required(ErrorMessage = AdminMessages.RequiredFieldMessage)]
         [Display(Name = "Описание (БГ)")]
         [StringLength(
-            maximumLength: Constants.MaxEventDescriptionLegnth
-            , MinimumLength = Constants.MinEventDescriptionLegnth
-            , ErrorMessage = Constants.DescriptionLenghtMessage)]
+            maximumLength: AdminMessages.MaxEventDescriptionLegnth
+            , MinimumLength = AdminMessages.MinEventDescriptionLegnth
+            , ErrorMessage = AdminMessages.DescriptionLenghtMessage)]
         public string DescriptionBg { get; set; }
 
-        [Required(ErrorMessage = Constants.RequiredFildMessage)]
+        [Required(ErrorMessage = AdminMessages.RequiredFieldMessage)]
         [Display(Name = "Описание (АНГ)")]
         [StringLength(
-            maximumLength: Constants.MaxEventNameLegnth
-            , MinimumLength = Constants.MinEventNameLegnth
-            , ErrorMessage = Constants.DescriptionLenghtMessage)]
+            maximumLength: AdminMessages.MaxEventNameLegnth
+            , MinimumLength = AdminMessages.MinEventNameLegnth
+            , ErrorMessage = AdminMessages.DescriptionLenghtMessage)]
         public string DescriptionEn { get; set; }
 
-        [Required(ErrorMessage = Constants.RequiredFildMessage)]
+        [Required(ErrorMessage = AdminMessages.RequiredFieldMessage)]
         [Display(Name = "Снимка (URL)")]
         public string ImageUrl { get; set; }
 
-        [Required(ErrorMessage = Constants.RequiredFildMessage)]
+        [Required(ErrorMessage = AdminMessages.RequiredFieldMessage)]
         [Display(Name = "Начало")]
         public DateTime? StartDate
         {

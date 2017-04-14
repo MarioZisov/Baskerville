@@ -1,15 +1,16 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Baskerville.Models.Constants;
+using System.ComponentModel.DataAnnotations;
 
 namespace Baskerville.Models.ViewModels.Manage
 {
     public class ChangePasswordViewModel
     {
-        [Required(ErrorMessage = Constants.RequiredFildMessage)]
+        [Required(ErrorMessage = AdminMessages.RequiredFieldMessage)]
         [DataType(DataType.Password)]
         [Display(Name = "Текуща парола")]
         public string OldPassword { get; set; }
 
-        [Required(ErrorMessage = Constants.RequiredFildMessage)]
+        [Required(ErrorMessage = AdminMessages.RequiredFieldMessage)]
         [StringLength(100, ErrorMessage = "Паролата трябва да бъде поне {2} символа", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Нова парола")]

@@ -1,14 +1,15 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Baskerville.Models.Constants;
+using System.ComponentModel.DataAnnotations;
 
 namespace Baskerville.Models.ViewModels.Account
 {
     public class LoginViewModel
     {
-        [Required(ErrorMessage = Constants.RequiredFildMessage)]
+        [Required(ErrorMessage = AdminMessages.RequiredFieldMessage)]
         [Display(Name = "Потребител")]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = Constants.RequiredFildMessage)]
+        [Required(ErrorMessage = AdminMessages.RequiredFieldMessage)]
         [DataType(DataType.Password)]
         [Display(Name = "Парола")]
         public string Password { get; set; }

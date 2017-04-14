@@ -11,7 +11,7 @@
     <link rel="apple-touch-icon" href="~/CustomContent/img/apple-touch-icon.png">
     <link rel="apple-touch-icon" sizes="72x72" href="~/CustomContent/img/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="114x114" href="~/CustomContent/img/apple-touch-icon-114x114.png">
-    <title>Full Spoon - Restaurant Template </title>
+    <title>Full Spoon - Restaurant Template </title> 
     <!-- Bootstrap Core CSS -->
     <link href="~/CustomContent/css/bootstrap.min.css" rel="stylesheet">
     <!-- Full Spoon Custom CSS -->
@@ -19,6 +19,7 @@
     <link href="~/CustomContent/animate-css/animate.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="~/CustomContent/owl-carousel/owl.carousel.css">
     <link rel="stylesheet" type="text/css" href="~/CustomContent/owl-carousel/owl.theme.css">
+
     <!-- Full Spoon Custom Fonts -->
     <link href="~/CustomContent/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Catamaran:400,600,300,700' rel='stylesheet' type='text/css'>
@@ -37,11 +38,14 @@
     <div class="se-pre-con"></div>
     <!-- /.Loader -->
     @RenderBody()
+
     <!-- jQuery -->
     <script src="~/CustomContent/js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="~/CustomContent/js/bootstrap.min.js"></script>
+
+    @RenderSection("scripts", required: false)
 
     <!-- Plugin JavaScript -->
     <script src="~/CustomContent/js/isotope.pkgd.min.js"></script>
@@ -56,8 +60,9 @@
     <script src="~/CustomContent/js/fullspoon.js"></script>
 
     <!-- Contact Form JavaScript -->
-    <script src="~/CustomContent/js/jqBootstrapValidation.js"></script>
-    <script src="~/CustomContent/js/contact_me.js"></script>
+    @*<script src="~/CustomContent/js/jqBootstrapValidation.js"></script>*@
+    @*<script src="~/CustomContent/js/contact_me.js"></script>*@
+
 </body>
 
 </html>

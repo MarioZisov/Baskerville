@@ -1,5 +1,7 @@
-﻿using Baskerville.Data;
+﻿using AutoMapper;
+using Baskerville.Data;
 using Baskerville.Models.ViewModels;
+using Baskerville.Models.ViewModels.Public;
 using Baskerville.Services;
 using System.Web.Mvc;
 
@@ -30,12 +32,17 @@ namespace Baskerville.App.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Send(ContactViewModel contactModel)
+        public ActionResult Send(ContactBindingModel contactModel)
         {
             if (!ModelState.IsValid)
             {
                 var model = this.service.GetHomeModel(false);
-                model.ContactModel = contactModel;
+                //check language
+                if (true)
+                    Mapper.Map(contactModel, model.ContactModelEn);
+                else
+                    Mapper.Map(contactModel, model.ContactModelBg);
+
                 return View("Index", model);
             }
 
@@ -44,7 +51,6 @@ namespace Baskerville.App.Controllers
                 return View("MessageSent");
             else
                 return View("404");
-
         }
     }
 }

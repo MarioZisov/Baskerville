@@ -98,7 +98,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Constants.cs" />
+    <Compile Include="Constants\AdminMessages.cs" />
+    <Compile Include="Constants\PublicMessages.cs" />
     <Compile Include="DataModels\ApplicationUser.cs" />
     <Compile Include="DataModels\Event.cs" />
     <Compile Include="DataModels\Product.cs" />
@@ -131,6 +132,10 @@
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
     <Compile Include="ViewModels\PromotionViewModel.cs" />
+    <Compile Include="ViewModels\Public\ContactViewModelBg.cs" />
+    <Compile Include="ViewModels\Public\ContactBindingModel.cs" />
+    <Compile Include="ViewModels\Public\ContactViewModelEn.cs" />
+    <Compile Include="ViewModels\Public\Contracts\IContactViewModel.cs" />
     <Compile Include="ViewModels\SubscriberViewModel.cs" />
     <Compile Include="ViewModels\SubscribeViewModel.cs" />
   </ItemGroup>

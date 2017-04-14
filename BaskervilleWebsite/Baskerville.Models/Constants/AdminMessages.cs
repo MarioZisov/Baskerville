@@ -4,12 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Baskerville.Models
+namespace Baskerville.Models.Constants
 {
-    internal class Constants
+    internal static class AdminMessages
     {
-        #region Validation attrbiutes constants
-        internal const string RequiredFildMessage = "Полето е задължително";
+        internal const string RequiredFieldMessage = "Полето е задължително";
 
         internal const string NameLenghtMessage = "Името трябва да е между {2} и {1} символа";
 
@@ -26,6 +25,5 @@ namespace Baskerville.Models
         internal const int MinEventDescriptionLegnth = 20;
 
         internal const int MaxEventDescriptionLegnth = 500;
-        #endregion
     }
 }

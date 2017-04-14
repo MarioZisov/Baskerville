@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Baskerville.Models.DataModels;
 using Baskerville.Models.DataTransferObjects;
+using Baskerville.Models.ViewModels.Public;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,9 @@ namespace Baskerville.App.App_Start
         public MappingProfile()
         {           
             this.CreateMap<Subscriber, SubscriberDto>();
+
+            this.CreateMap<ContactBindingModel, ContactViewModelEn>();
+            this.CreateMap<ContactBindingModel, ContactViewModelBg>();
         }
     }
 }

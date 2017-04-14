@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Baskerville.Models.ViewModels.Public;
+using Baskerville.Models.ViewModels.Public.Contracts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +13,9 @@ namespace Baskerville.Models.ViewModels
     {
         public SubscribeViewModel SubscribeModel { get; set; }
 
-        public ContactViewModel ContactModel { get; set; }
+        public ContactViewModelEn ContactModelEn { get; set; }
+
+        public ContactViewModelBg ContactModelBg { get; set; }
 
         public HtmlString Promotions { get; set; }
 
