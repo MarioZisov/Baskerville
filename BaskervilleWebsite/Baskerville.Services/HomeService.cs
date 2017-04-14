@@ -4,6 +4,8 @@ using Baskerville.Models.DataModels;
 using Baskerville.Models.Enums;
 using Baskerville.Models.ViewModels;
 using Baskerville.Models.ViewModels.Public;
+using Baskerville.Services.Constants;
+using Baskerville.Services.Utilities;
 using Baskerville.Services.Utilities.HtmlBuilders;
 using System;
 using System.Collections.Generic;
@@ -88,33 +90,12 @@ namespace Baskerville.Services
 
         public bool SendEmail(ContactBindingModel contactModel)
         {
-            SmtpSection section = (SmtpSection)ConfigurationManager.GetSection("MyMailSettings/smtp");            
+            var emailer = new Emailer(MailSettings.NoReplySettings);
 
-            using (SmtpClient smtpClient = new SmtpClient())
-            {
-                smtpClient.Port = section.Network.Port;
-                smtpClient.Host = section.Network.Host;
-                smtpClient.Credentials = new NetworkCredential(section.Network.UserName, section.Network.Password);
-                smtpClient.EnableSsl = section.Network.EnableSsl;
+            string body = $"Name: {contactModel.Name}{Environment.NewLine}Phone: {contactModel.PhoneNumber}{Environment.NewLine}Email: {contactModel.Email}{Environment.NewLine}{contactModel.Message}";
+            string subject = contactModel.Subject;
 
-                using (MailMessage message = new MailMessage())
-                {
-                    message.From = new MailAddress(section.From);
-                    message.Subject = contactModel.Subject;
-                    message.Body = $"Name: {contactModel.Name}{Environment.NewLine}Phone: {contactModel.PhoneNumber}{Environment.NewLine}Email: {contactModel.Email}{Environment.NewLine}{contactModel.Message}";
-                    message.IsBodyHtml = false;
-                    message.To.Add(new MailAddress("sensato.report@gmail.com"));
-                    try
-                    {
-                        smtpClient.Send(message);
-                        return true;
-                    }
-                    catch (Exception)
-                    {
-                        return false;
-                    }
-                }
-            }
+            return emailer.SendEmail(body, subject, false, MailSettings.NoReplyEmailAdress);
         }
     }
 }
