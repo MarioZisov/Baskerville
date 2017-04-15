@@ -10,7 +10,9 @@ namespace Baskerville.Models.ViewModels
 {
     public class HomeViewModel
     {
-        public SubscribeViewModel SubscribeModel { get; set; }
+        public SubscribeViewModelEn SubscribeModelEn { get; set; }
+
+        public SubscribeViewModelBg SubscribeModelBg { get; set; }
 
         public ContactViewModelEn ContactModelEn { get; set; }
 

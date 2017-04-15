@@ -23,6 +23,7 @@ namespace Baskerville.Services
 {
     public class HomeService : Service
     {
+        private IRepository<Subscriber> subscribers;
         private IRepository<ProductCategory> categories;
         private IRepository<Promotion> promotions;
         private IRepository<Event> events;
@@ -34,6 +35,7 @@ namespace Baskerville.Services
             this.categories = new Repository<ProductCategory>(context);
             this.promotions = new Repository<Promotion>(context);
             this.events = new Repository<Event>(context);
+            this.subscribers = new Repository<Subscriber>(context);
         } 
 
         public HtmlString GetMenuHtml(bool isLangBg)
@@ -59,7 +61,9 @@ namespace Baskerville.Services
 
             model.ContactModelBg = new ContactViewModelBg();
             model.ContactModelEn = new ContactViewModelEn();
-            model.SubscribeModel = new SubscribeViewModel();
+
+            model.SubscribeModelEn = new SubscribeViewModelEn();
+            model.SubscribeModelBg = new SubscribeViewModelBg();
 
             return model;
         }
@@ -96,6 +100,11 @@ namespace Baskerville.Services
             string subject = contactModel.Subject;
 
             return emailer.SendEmail(body, subject, false, MailSettings.NoReplyEmailAdress);
+        }
+
+        public void AddSubscriber(SubscribeBindingModel subscribeModel)
+        {
+
         }
     }
 }

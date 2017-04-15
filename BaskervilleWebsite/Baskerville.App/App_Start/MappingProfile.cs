@@ -17,6 +17,9 @@ namespace Baskerville.App.App_Start
 
             this.CreateMap<ContactBindingModel, ContactViewModelEn>();
             this.CreateMap<ContactBindingModel, ContactViewModelBg>();
+
+            this.CreateMap<SubscribeBindingModel, SubscribeViewModelEn>();
+            this.CreateMap<SubscribeBindingModel, SubscribeViewModelBg>();
         }
     }
 }

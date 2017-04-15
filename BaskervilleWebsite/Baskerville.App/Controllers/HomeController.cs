@@ -27,19 +27,19 @@ namespace Baskerville.App.Controllers
         [HttpGet]
         public ActionResult Menu()
         {
-            var html = this.service.GetMenuHtml(false);      
+            var html = this.service.GetMenuHtml(false);
             return View(html);
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]        
+        [ValidateAntiForgeryToken]
         public ActionResult Send(ContactBindingModel bindingModel)
         {
             if (!ModelState.IsValid)
             {
                 var homeModel = this.service.GetHomeModel(false);
                 //check language
-                if (false)
+                if (true)
                     Mapper.Map(bindingModel, homeModel.ContactModelEn);
                 else
                     Mapper.Map(bindingModel, homeModel.ContactModelBg);
@@ -53,5 +53,26 @@ namespace Baskerville.App.Controllers
             else
                 return View("404");
         }
-    }   
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Subscribe(SubscribeBindingModel bindingModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                var homeModel = this.service.GetHomeModel(false);
+                //check language
+                if (true)
+                    Mapper.Map(bindingModel, homeModel.SubscribeModelEn);
+                else
+                    Mapper.Map(bindingModel, homeModel.SubscribeModelBg);
+
+                return View("Index", homeModel);
+            }
+
+            this.service.AddSubscriber(bindingModel);
+
+            return View("MessageSent");
+        }
+    }
 }

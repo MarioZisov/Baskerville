@@ -19,6 +19,7 @@ namespace Baskerville.Models.ViewModels.Public
         };
 
         [Required]
+        [EmailAddress]
         public string Email { get; set; }
 
         [Required]
@@ -31,6 +32,7 @@ namespace Baskerville.Models.ViewModels.Public
 
         [Required]
         [Display(Name = "Phone Number")]
+        [Phone]
         public string PhoneNumber { get; set; }
 
         [Required]
