@@ -68,6 +68,35 @@ namespace Baskerville.Services
             return model;
         }
 
+        public bool ValidateEmailUniqueness(string email)
+        {
+            if (email == null)
+                return true;
+
+            var exists = this.subscribers.Exists(s => s.Email == email && s.IsActive);
+            if (exists)
+                return false;
+            else
+                return true;
+        }
+
+        public bool SendEmail(ContactBindingModel contactModel)
+        {
+            var emailer = new Emailer(MailSettings.NoReplySettings);
+
+            string body = $"Name: {contactModel.Name}{Environment.NewLine}Phone: {contactModel.PhoneNumber}{Environment.NewLine}Email: {contactModel.Email}{Environment.NewLine}{contactModel.Message}";
+            string subject = contactModel.Subject;
+
+            return emailer.SendEmail(body, subject, false, MailSettings.NoReplyEmailAdress);
+        }
+
+        public void AddSubscriber(SubscribeBindingModel subscribeModel)
+        {
+            string email = subscribeModel.Email;
+            Language lang = subscribeModel.PreferedLanguage == "en" ? Language.EN : Language.BG;
+            //string verificationCode
+        }
+
         private HtmlString GetPromotionsHtml(bool isLangBg)
         {
             var fitleredPromotions = this.promotions
@@ -90,21 +119,6 @@ namespace Baskerville.Services
             var html = this.htmlBuilder.Render();
 
             return html;
-        }
-
-        public bool SendEmail(ContactBindingModel contactModel)
-        {
-            var emailer = new Emailer(MailSettings.NoReplySettings);
-
-            string body = $"Name: {contactModel.Name}{Environment.NewLine}Phone: {contactModel.PhoneNumber}{Environment.NewLine}Email: {contactModel.Email}{Environment.NewLine}{contactModel.Message}";
-            string subject = contactModel.Subject;
-
-            return emailer.SendEmail(body, subject, false, MailSettings.NoReplyEmailAdress);
-        }
-
-        public void AddSubscriber(SubscribeBindingModel subscribeModel)
-        {
-
-        }
+        }       
     }
 }

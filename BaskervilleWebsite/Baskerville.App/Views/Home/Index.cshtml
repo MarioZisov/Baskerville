@@ -1,5 +1,13 @@
 ﻿@model Baskerville.Models.ViewModels.HomeViewModel
 
+
+@if (ViewBag.Fragment != null)
+{
+    @*<script>
+            window.location.href = "#subscribe";
+        </script>*@
+}
+
 <!-- Navigation -->
 <nav class="navbar navbar-default nav-justified navbar-fixed-top">
     <div class="container">
@@ -258,7 +266,7 @@
         <!-- /.Border -->
         <!-- Contact Form -->
         <div class="fadeInUp wow">
-            @using (Html.BeginForm("Subscribe", "Home", FormMethod.Post, new { @id = "subscribeForm", name = "sentMessage" }))
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { @action = "/home/subscribe#subscribe", @id = "subscribeForm", name = "sentMessage" }))
             {
                 @Html.AntiForgeryToken()
                 <div class="row">
@@ -268,7 +276,7 @@
                             @Html.ValidationMessage("Email", "", new { @class = "text-danger" })
                         </div>
                         <div class="form-group">
-                            @Html.DropDownListFor(model => model.SubscribeModelEn.PreferedLanguage, Model.SubscribeModelEn.Languages , "Prefered language", new { @class = "form-control", @Name = "PreferedLanguage" })
+                            @Html.DropDownListFor(model => model.SubscribeModelEn.PreferedLanguage, Model.SubscribeModelEn.Languages, "Prefered language", new { @class = "form-control", @Name = "PreferedLanguage" })
                             @Html.ValidationMessage("PreferedLanguage", "", new { @class = "text-danger" })
                         </div>
                         <button class="btn btn-contact" type="submit">Subscribe</button>
@@ -354,7 +362,7 @@
         <!-- /.Border -->
         <!-- Contact Form -->
         <div class="fadeInUp wow">
-            @using (Html.BeginForm("Send", "Home", FormMethod.Post, new { @id = "contactForm", name = "sentMessage" }))
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { @action = "/home/send#contactForm", @id = "contactForm", name = "sentMessage" }))
             {
                 @Html.AntiForgeryToken()
                 <div class="row">

@@ -58,6 +58,16 @@ namespace Baskerville.App.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Subscribe(SubscribeBindingModel bindingModel)
         {
+            if (bindingModel != null)
+            {
+                bool isUnique = this.service.ValidateEmailUniqueness(bindingModel.Email);
+                if (!isUnique)
+                {
+                    string message = true ? "Already exist" : "Съществува";
+                    this.ModelState.AddModelError("Email", message);
+                }
+            }
+
             if (!ModelState.IsValid)
             {
                 var homeModel = this.service.GetHomeModel(false);
@@ -70,9 +80,10 @@ namespace Baskerville.App.Controllers
                 return View("Index", homeModel);
             }
 
+
             this.service.AddSubscriber(bindingModel);
 
             return View("MessageSent");
-        }
+        }                    
     }
 }
