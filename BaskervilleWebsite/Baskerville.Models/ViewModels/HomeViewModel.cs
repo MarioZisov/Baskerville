@@ -1,5 +1,4 @@
 ﻿using Baskerville.Models.ViewModels.Public;
-using Baskerville.Models.ViewModels.Public.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;

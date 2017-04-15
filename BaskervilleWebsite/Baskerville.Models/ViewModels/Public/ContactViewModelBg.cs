@@ -1,4 +1,4 @@
-﻿using Baskerville.Models.ViewModels.Public.Contracts;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace Baskerville.Models.ViewModels.Public
 {
-    public class ContactViewModelBg : IContactViewModel
+    public class ContactViewModelBg
     {
         private readonly IEnumerable<SelectListItem> subjects = new List<SelectListItem>
         {

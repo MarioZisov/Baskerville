@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Baskerville.Services.Constants;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -12,8 +13,6 @@ namespace Baskerville.Services.Utilities
 {
     public class Emailer
     {
-        private const string SettingsName = "MyMailSettings/";
-
         private SmtpSection section;
         private SmtpClient client;
 
@@ -24,7 +23,7 @@ namespace Baskerville.Services.Utilities
 
         private void ConfigureClient(string smtpName)
         {
-            this.section = (SmtpSection)ConfigurationManager.GetSection(SettingsName + smtpName);
+            this.section = (SmtpSection)ConfigurationManager.GetSection(MailSettings.SmtpSettings + smtpName);
 
             this.client = new SmtpClient();
             this.client.Port = section.Network.Port;

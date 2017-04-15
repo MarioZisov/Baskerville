@@ -360,26 +360,26 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            @Html.EditorFor(model => model.ContactModelEn.Name, new { htmlAttributes = new { @class = "form-control", placeholder = "Your Name *" } })
-                            @Html.ValidationMessageFor(model => model.ContactModelEn.Name, "", new { @class = "text-danger" })
+                            @Html.EditorFor(model => model.ContactModelEn.Name, new { htmlAttributes = new { @class = "form-control", placeholder = "Your Name *", @Name = "Name" } })
+                            @Html.ValidationMessage("Name", "", new { @class = "text-danger" })
                         </div>
                         <div class="form-group">
-                            @Html.EditorFor(model => model.ContactModelEn.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Your Email *" } })
-                            @Html.ValidationMessageFor(model => model.ContactModelEn.Email, "", new { @class = "text-danger" })
+                            @Html.EditorFor(model => model.ContactModelEn.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Your Email *", @Name = "Email" } })
+                            @Html.ValidationMessage("Email", "", new { @class = "text-danger" })
                         </div>
                         <div class="form-group">
-                            @Html.EditorFor(model => model.ContactModelEn.PhoneNumber, new { htmlAttributes = new { @class = "form-control", placeholder = "Your Phone *" } })
-                            @Html.ValidationMessageFor(model => model.ContactModelEn.PhoneNumber, "", new { @class = "text-danger" })
+                            @Html.EditorFor(model => model.ContactModelEn.PhoneNumber, new { htmlAttributes = new { @class = "form-control", placeholder = "Your Phone *", @Name = "PhoneNumber" } })
+                            @Html.ValidationMessage("PhoneNumber", "", new { @class = "text-danger" })
                         </div>
                         <div class="form-group">
-                            @Html.DropDownListFor(model => model.ContactModelEn.Subject, Model.ContactModelEn.Subjects, "How cen we help you?", new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.ContactModelEn.Subject, "", new { @class = "text-danger" })
+                            @Html.DropDownListFor(model => model.ContactModelEn.Subject, Model.ContactModelEn.Subjects, "How cen we help you?", new { @class = "form-control", @Name = "Subject" })
+                            @Html.ValidationMessage("Subject", "", new { @class = "text-danger" })
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            @Html.TextAreaFor(model => model.ContactModelEn.Message, new { @class = "form-control", placeholder = "Tell us a little bit of your event or evening with us *" })
-                            @Html.ValidationMessageFor(model => model.ContactModelEn.Message, "", new { @class = "text-danger" })
+                            @Html.TextAreaFor(model => model.ContactModelEn.Message, new { @class = "form-control", placeholder = "Tell us a little bit of your event or evening with us *", @Name = "Message" })
+                            @Html.ValidationMessage("Message", "", new { @class = "text-danger" })
                         </div>
                     </div>
                     <div class="clearfix"> </div>

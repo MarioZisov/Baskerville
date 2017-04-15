@@ -135,7 +135,6 @@
     <Compile Include="ViewModels\Public\ContactViewModelBg.cs" />
     <Compile Include="ViewModels\Public\ContactBindingModel.cs" />
     <Compile Include="ViewModels\Public\ContactViewModelEn.cs" />
-    <Compile Include="ViewModels\Public\Contracts\IContactViewModel.cs" />
     <Compile Include="ViewModels\SubscriberViewModel.cs" />
     <Compile Include="ViewModels\SubscribeViewModel.cs" />
   </ItemGroup>

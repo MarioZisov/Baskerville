@@ -91,6 +91,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constants\MailSettings.cs" />
     <Compile Include="EventsService.cs" />
     <Compile Include="HomeService.cs" />
     <Compile Include="ProductsService.cs" />
@@ -100,6 +101,7 @@
     <Compile Include="Service.cs" />
     <Compile Include="Mapping\ServiceMappingProfile.cs" />
     <Compile Include="SubscribersService.cs" />
+    <Compile Include="Utilities\Emailer.cs" />
     <Compile Include="Utilities\HtmlBuilders\EventsBuilder.cs" />
     <Compile Include="Utilities\HtmlBuilders\HtmlBuilder.cs" />
     <Compile Include="Utilities\HtmlBuilders\MenuBuilder.cs" />
