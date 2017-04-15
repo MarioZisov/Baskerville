@@ -39,7 +39,7 @@ namespace Baskerville.App.Controllers
             {
                 var homeModel = this.service.GetHomeModel(false);
                 //check language
-                if (true)
+                if (false)
                     Mapper.Map(bindingModel, homeModel.ContactModelEn);
                 else
                     Mapper.Map(bindingModel, homeModel.ContactModelBg);
@@ -53,32 +53,5 @@ namespace Baskerville.App.Controllers
             else
                 return View("404");
         }
-    }
-
-    public class HomeBM
-    {
-        public ContactViewModelEn ContactModelEn { get;  set; }
-    }
-
-    public class ContactViewModelEn
-    {
-        [Required]
-        public string Email { get; set; }
-
-        [Required]
-        [StringLength(maximumLength: 500, MinimumLength = 10)]
-        public string Message { get; set; }
-
-        [Required]
-        [StringLength(maximumLength: 100, MinimumLength = 2)]
-        public string Name { get; set; }
-
-        [Required]
-        [Display(Name = "Phone Number")]
-        public string PhoneNumber { get; set; }
-
-        [Required]
-        public string Subject { get; set; }
-
-    }
+    }   
 }
