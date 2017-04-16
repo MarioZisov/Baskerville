@@ -40,20 +40,6 @@ namespace Baskerville.Services
             this.subscribers = new Repository<Subscriber>(context);
         }
 
-        public HtmlString GetMenuHtml(bool isLangBg)
-        {
-            var filteredCategories = this.categories
-                .Find(c => c.IsPrimary && !c.IsRemoved)
-                .Include("Products")
-                .Include("Subcategories.Products")
-                .ToList();
-
-            this.htmlBuilder = new MenuBuilder(filteredCategories, isLangBg);
-            var html = this.htmlBuilder.Render();
-
-            return html;
-        }
-
         public HomeViewModel GetHomeModel(bool isLangBg)
         {
             HomeViewModel model = new HomeViewModel();

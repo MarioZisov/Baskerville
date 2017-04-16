@@ -24,13 +24,6 @@ namespace Baskerville.App.Controllers
             return View(model);
         }
 
-        [HttpGet]
-        public ActionResult Menu()
-        {
-            var html = this.service.GetMenuHtml(false);
-            return View(html);
-        }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Send(ContactBindingModel bindingModel)

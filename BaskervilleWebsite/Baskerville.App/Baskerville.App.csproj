@@ -198,8 +198,8 @@
     <Compile Include="Attributes\CustomAuthorizeAttribute.cs" />
     <Compile Include="Constants\PublicMessages.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\VerificationController.cs" />
-    <Compile Include="Controllers\WebApi\SubscribersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -535,6 +535,7 @@
     <Content Include="Views\Home\MessageSent.cshtml" />
     <Content Include="Views\Shared\MessagePage.cshtml" />
     <Content Include="Views\Shared\404.cshtml" />
+    <Content Include="Views\Menu\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

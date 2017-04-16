@@ -95,6 +95,7 @@
     <Compile Include="Constants\PublicMessages.cs" />
     <Compile Include="EventsService.cs" />
     <Compile Include="HomeService.cs" />
+    <Compile Include="MenuService.cs" />
     <Compile Include="ProductsService.cs" />
     <Compile Include="PromotionsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
