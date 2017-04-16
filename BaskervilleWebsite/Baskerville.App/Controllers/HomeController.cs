@@ -9,7 +9,7 @@ using System.Web.Mvc;
 namespace Baskerville.App.Controllers
 {
     public class HomeController : Controller
-    {
+    {      
         private HomeService service;
 
         public HomeController()
@@ -47,7 +47,7 @@ namespace Baskerville.App.Controllers
                 return View("Index", homeModel);
             }
 
-            bool success = this.service.SendEmail(bindingModel);
+            bool success = this.service.SendContactEmail(bindingModel);
             if (success)
                 return View("MessageSent");
             else
@@ -58,15 +58,7 @@ namespace Baskerville.App.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Subscribe(SubscribeBindingModel bindingModel)
         {
-            if (bindingModel != null)
-            {
-                bool isUnique = this.service.ValidateEmailUniqueness(bindingModel.Email);
-                if (!isUnique)
-                {
-                    string message = true ? "Already exist" : "Съществува";
-                    this.ModelState.AddModelError("Email", message);
-                }
-            }
+            this.service.CheckEmailUnicness(bindingModel, this.ModelState, false);
 
             if (!ModelState.IsValid)
             {

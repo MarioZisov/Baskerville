@@ -588,7 +588,7 @@ header .intro-text-sm .intro-heading {
 }
 
 #home {
-    background-image: url(../img/header-bg.jpg);
+    background-image: url(../img/bg.jpg);
 }
 
 #homev2 {
@@ -660,7 +660,7 @@ section#menu h3.section-subheading {
 
 section#menu {
     background-attachment: scroll;
-    background-image: url(../img/test-menu-bg.jpg);
+    background-image: url(../img/bits/book-a-table-bg.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     -webkit-background-size: cover;
@@ -1227,7 +1227,9 @@ section#contact .text-danger {
 ================================ */
 
 section#subscribe {
-    background: #1c1e21 url(../img/bits/book-a-table-bg.jpg);
+    /*background: #1c1e21 url(../img/bits/book-a-table-bg.jpg);*/
+    background: #1c1e21 url(../img/subscribe.jpg);
+
     color: #FFF;
     background-position: center center;
     /*background-color: #434343;

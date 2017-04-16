@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Configuration;
@@ -18,6 +19,7 @@ using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Mvc;
 
 namespace Baskerville.Services
 {
@@ -36,7 +38,7 @@ namespace Baskerville.Services
             this.promotions = new Repository<Promotion>(context);
             this.events = new Repository<Event>(context);
             this.subscribers = new Repository<Subscriber>(context);
-        } 
+        }
 
         public HtmlString GetMenuHtml(bool isLangBg)
         {
@@ -50,7 +52,7 @@ namespace Baskerville.Services
             var html = this.htmlBuilder.Render();
 
             return html;
-        }        
+        }
 
         public HomeViewModel GetHomeModel(bool isLangBg)
         {
@@ -68,19 +70,21 @@ namespace Baskerville.Services
             return model;
         }
 
-        public bool ValidateEmailUniqueness(string email)
+        public void CheckEmailUnicness(SubscribeBindingModel model, ModelStateDictionary modelState, bool isLangBg)
         {
-            if (email == null)
-                return true;
+            if (model != null && model.Email != null)
+            {
+                bool exists = this.subscribers.Exists(s => s.Email == model.Email && s.IsActive);
 
-            var exists = this.subscribers.Exists(s => s.Email == email && s.IsActive);
-            if (exists)
-                return false;
-            else
-                return true;
+                if (exists)
+                {
+                    string message = isLangBg ? PublicMessages.EmailExistMessageBg : PublicMessages.EmailExistMessageEn;
+                    modelState.AddModelError("Email", message);
+                }
+            }
         }
 
-        public bool SendEmail(ContactBindingModel contactModel)
+        public bool SendContactEmail(ContactBindingModel contactModel)
         {
             var emailer = new Emailer(MailSettings.NoReplySettings);
 
@@ -94,7 +98,43 @@ namespace Baskerville.Services
         {
             string email = subscribeModel.Email;
             Language lang = subscribeModel.PreferedLanguage == "en" ? Language.EN : Language.BG;
-            //string verificationCode
+            string verificationCode = CodeGenerator.GenerateVerificationCode(email);
+
+            //if (this.subscribers.Exists(s => s.Email == email && !s.IsActive))
+            //{
+            //    var subscriberFromDb = this.subscribers.GetFirst(s => s.Email == email);
+
+            //    subscriberFromDb.Email = email;
+            //    subscriberFromDb.PreferedLanguage = lang;
+            //    subscriberFromDb.SubscriptionVerificationCode = verificationCode;
+            //    subscriberFromDb.IsActive = false;
+            //    subscriberFromDb.IsRemoved = false;
+            //    subscriberFromDb.SubscriptionPendingDate = DateTime.Now;
+            //    subscriberFromDb.SubscriptionDate = null;
+            //    subscriberFromDb.UnsubscribeDate = null;
+            //    subscriberFromDb.UnsubscribeVerificationCode = null;
+
+            //    this.subscribers.Update(subscriberFromDb);
+            //}
+            //else
+            //{
+            //    Subscriber subscriber = new Subscriber
+            //    {
+            //        Email = email,
+            //        PreferedLanguage = lang,
+            //        SubscriptionVerificationCode = verificationCode,
+            //        IsActive = false,
+            //        IsRemoved = false,
+            //        SubscriptionPendingDate = DateTime.Now,
+            //        SubscriptionDate = null,
+            //        UnsubscribeDate = null,
+            //        UnsubscribeVerificationCode = null
+            //    };
+
+            //    this.subscribers.Insert(subscriber);
+            //}
+
+            this.SendVerificationEmail(verificationCode);
         }
 
         private HtmlString GetPromotionsHtml(bool isLangBg)
@@ -119,6 +159,19 @@ namespace Baskerville.Services
             var html = this.htmlBuilder.Render();
 
             return html;
-        }       
+        }
+
+        private void SendVerificationEmail(string verificationCode)
+        {
+            var emailer = new Emailer(MailSettings.NoReplySettings);
+
+            string verificationUrl = "http://localhost:55555/verification/subscribe?code=" + verificationCode;
+
+            string body = verificationUrl;
+            string subject = "Subcribe";
+
+            emailer.SendEmail(body, subject, true, MailSettings.NoReplyEmailAdress);
+        }
     }
+
 }

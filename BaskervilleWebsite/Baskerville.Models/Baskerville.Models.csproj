@@ -110,7 +110,6 @@
     <Compile Include="DataTransferObjects\SubscriberDto.cs" />
     <Compile Include="Enums\Language.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UniqueAttribute.cs" />
     <Compile Include="ViewModels\Account\ExternalLoginConfirmationViewModel.cs" />
     <Compile Include="ViewModels\Account\ExternalLoginListViewModel.cs" />
     <Compile Include="ViewModels\Account\ForgotPasswordViewModel.cs" />
