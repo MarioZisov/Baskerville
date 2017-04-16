@@ -49,9 +49,25 @@ namespace Baskerville.App.Controllers
 
             bool success = this.service.SendContactEmail(bindingModel);
             if (success)
-                return View("MessageSent");
+            {
+                MessagePageViewModel model = new MessagePageViewModel
+                {
+                    Title = "Message sent",
+                    Content = "Thank you for the message."
+                };
+
+                return View("MessagePage", model);
+            }
             else
-                return View("404");
+            {
+                MessagePageViewModel model = new MessagePageViewModel
+                {
+                    Title = "Problem occurred",
+                    Content = "Please try to send your message again."
+                };
+
+                return View("MessagePage", model);
+            }
         }
 
         [HttpPost]
@@ -72,10 +88,15 @@ namespace Baskerville.App.Controllers
                 return View("Index", homeModel);
             }
 
-
             this.service.AddSubscriber(bindingModel);
 
-            return View("MessageSent");
+            MessagePageViewModel model = new MessagePageViewModel
+            {
+                Title = "Last step",
+                Content = "Confirm your email adress and you will become part of our club."
+            };
+
+            return View("MessagePage", model);
         }                    
     }
 }
