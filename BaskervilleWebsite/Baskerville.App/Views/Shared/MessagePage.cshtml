@@ -1,4 +1,4 @@
-﻿@model Baskerville.Models.ViewModels.Public.MessagePageViewModel
+﻿@*@model Baskerville.Models.ViewModels.Public.MessagePageViewModel*@
 
 @{
     ViewBag.Title = "Message";
@@ -29,8 +29,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-center">
-                    <h3>@Model.Title</h3>
-                    <p>@Model.Content</p>
+                    <h3>@ViewBag.Header</h3>
+                    <p>@ViewBag.Paragraph</p>
                     <p><img src="~/CustomContent/img/bits/fork-knife.svg" class="img-responsive center-block" alt="Full Spoon" />
                 </div>
             </div>

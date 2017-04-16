@@ -9,7 +9,7 @@ using System.Web.Mvc;
 namespace Baskerville.App.Controllers
 {
     public class HomeController : Controller
-    {      
+    {
         private HomeService service;
 
         public HomeController()
@@ -50,23 +50,17 @@ namespace Baskerville.App.Controllers
             bool success = this.service.SendContactEmail(bindingModel);
             if (success)
             {
-                MessagePageViewModel model = new MessagePageViewModel
-                {
-                    Title = "Message sent",
-                    Content = "Thank you for the message."
-                };
+                this.ViewBag.Header = "Message sent";
+                this.ViewBag.Paragraph = "Thank you for your message.";
 
-                return View("MessagePage", model);
+                return View("MessagePage");
             }
             else
             {
-                MessagePageViewModel model = new MessagePageViewModel
-                {
-                    Title = "Problem occurred",
-                    Content = "Please try to send your message again."
-                };
+                this.ViewBag.Header = "Problem occurred";
+                this.ViewBag.Paragraph = "Please try to send your message again.";
 
-                return View("MessagePage", model);
+                return View("MessagePage");
             }
         }
 
@@ -90,13 +84,10 @@ namespace Baskerville.App.Controllers
 
             this.service.AddSubscriber(bindingModel);
 
-            MessagePageViewModel model = new MessagePageViewModel
-            {
-                Title = "Last step",
-                Content = "Confirm your email adress and you will become part of our club."
-            };
+            this.ViewBag.Header = "One last step.";
+            this.ViewBag.Paragraph = "Confirm your email adress and will become part of our club";
 
-            return View("MessagePage", model);
-        }                    
+            return View("MessagePage");
+        }
     }
 }

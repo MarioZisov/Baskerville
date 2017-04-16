@@ -27,23 +27,17 @@ namespace Baskerville.App.Controllers
             {
                 this.service.SendWelcomeEmail(code);
 
-                MessagePageViewModel model = new MessagePageViewModel
-                {
-                    Title = PublicMessages.SubscribeVerifiedTitleEn,
-                    Content = PublicMessages.SubscribeVerifiedContentEn
-                };
+                this.ViewBag.Header = PublicMessages.SubscribeVerifiedTitleEn;
+                this.ViewBag.Paragraph = PublicMessages.SubscribeVerifiedContentEn;
 
-                return View("MessagePage", model);
+                return View("MessagePage");
             }
             else
             {
-                MessagePageViewModel model = new MessagePageViewModel
-                {
-                    Title = PublicMessages.WrongCodeTitleEn,
-                    Content = PublicMessages.WrongCodeContentEn
-                };
+                this.ViewBag.Header = PublicMessages.WrongCodeTitleEn;
+                this.ViewBag.Paragraph = PublicMessages.WrongCodeContentEn;
 
-                return View("MessagePage", model);
+                return View("MessagePage");
             }
         }
 
@@ -53,23 +47,17 @@ namespace Baskerville.App.Controllers
             var result = this.service.VerificateUnsubscribeCode(code);
             if (result)
             {
-                MessagePageViewModel model = new MessagePageViewModel
-                {
-                    Title = PublicMessages.UnsubscribeVerifiedTitleEn,
-                    Content = PublicMessages.UnsubscribeVerifiedContentEn
-                };
+                this.ViewBag.Header = PublicMessages.UnsubscribeVerifiedTitleEn;
+                this.ViewBag.Paragraph = PublicMessages.UnsubscribeVerifiedContentEn;
 
-                return View("MessagePage", model);
+                return View("MessagePage");
             }
             else
             {
-                MessagePageViewModel model = new MessagePageViewModel
-                {
-                    Title = PublicMessages.WrongCodeTitleEn,
-                    Content = PublicMessages.WrongCodeContentEn
-                };
+                this.ViewBag.Header = PublicMessages.WrongCodeTitleEn;
+                this.ViewBag.Paragraph = PublicMessages.WrongCodeContentEn;
 
-                return View("MessagePage", model);
+                return View("MessagePage");
             }
         }
     }
