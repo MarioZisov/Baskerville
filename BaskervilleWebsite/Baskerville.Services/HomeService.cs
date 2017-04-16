@@ -98,41 +98,42 @@ namespace Baskerville.Services
         {
             string email = subscribeModel.Email;
             Language lang = subscribeModel.PreferedLanguage == "en" ? Language.EN : Language.BG;
-            string verificationCode = CodeGenerator.GenerateVerificationCode(email);
 
-            //if (this.subscribers.Exists(s => s.Email == email && !s.IsActive))
-            //{
-            //    var subscriberFromDb = this.subscribers.GetFirst(s => s.Email == email);
+            string verificationCode = HttpUtility.UrlEncode(CodeGenerator.GenerateVerificationCode(email));
 
-            //    subscriberFromDb.Email = email;
-            //    subscriberFromDb.PreferedLanguage = lang;
-            //    subscriberFromDb.SubscriptionVerificationCode = verificationCode;
-            //    subscriberFromDb.IsActive = false;
-            //    subscriberFromDb.IsRemoved = false;
-            //    subscriberFromDb.SubscriptionPendingDate = DateTime.Now;
-            //    subscriberFromDb.SubscriptionDate = null;
-            //    subscriberFromDb.UnsubscribeDate = null;
-            //    subscriberFromDb.UnsubscribeVerificationCode = null;
+            if (this.subscribers.Exists(s => s.Email == email && !s.IsActive))
+            {
+                var subscriberFromDb = this.subscribers.GetFirst(s => s.Email == email);
 
-            //    this.subscribers.Update(subscriberFromDb);
-            //}
-            //else
-            //{
-            //    Subscriber subscriber = new Subscriber
-            //    {
-            //        Email = email,
-            //        PreferedLanguage = lang,
-            //        SubscriptionVerificationCode = verificationCode,
-            //        IsActive = false,
-            //        IsRemoved = false,
-            //        SubscriptionPendingDate = DateTime.Now,
-            //        SubscriptionDate = null,
-            //        UnsubscribeDate = null,
-            //        UnsubscribeVerificationCode = null
-            //    };
+                subscriberFromDb.Email = email;
+                subscriberFromDb.PreferedLanguage = lang;
+                subscriberFromDb.SubscriptionVerificationCode = verificationCode;
+                subscriberFromDb.IsActive = false;
+                subscriberFromDb.IsRemoved = false;
+                subscriberFromDb.SubscriptionPendingDate = DateTime.Now;
+                subscriberFromDb.SubscriptionDate = null;
+                subscriberFromDb.UnsubscribeDate = null;
+                subscriberFromDb.UnsubscribeVerificationCode = null;
 
-            //    this.subscribers.Insert(subscriber);
-            //}
+                this.subscribers.Update(subscriberFromDb);
+            }
+            else
+            {
+                Subscriber subscriber = new Subscriber
+                {
+                    Email = email,
+                    PreferedLanguage = lang,
+                    SubscriptionVerificationCode = verificationCode,
+                    IsActive = false,
+                    IsRemoved = false,
+                    SubscriptionPendingDate = DateTime.Now,
+                    SubscriptionDate = null,
+                    UnsubscribeDate = null,
+                    UnsubscribeVerificationCode = null
+                };
+
+                this.subscribers.Insert(subscriber);
+            }
 
             this.SendVerificationEmail(verificationCode);
         }

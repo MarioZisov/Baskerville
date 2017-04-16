@@ -19,17 +19,14 @@ namespace Baskerville.App.Controllers
             this.service = new VerificationService(new BaskervilleContext());
         }
 
-        // GET: Verification
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         public ActionResult Subscribe(string code)
         {
+            code = HttpUtility.UrlEncode(code);
             var result = this.service.VerificateSubscribtionCode(code);
             if (result)
             {
+                this.service.SendWelcomeEmail(code);
+
                 MessagePageViewModel model = new MessagePageViewModel
                 {
                     Title = PublicMessages.SubscribeVerifiedTitleEn,
@@ -52,6 +49,7 @@ namespace Baskerville.App.Controllers
 
         public ActionResult Unsubscribe(string code)
         {
+            code = HttpUtility.UrlEncode(code);
             var result = this.service.VerificateUnsubscribeCode(code);
             if (result)
             {

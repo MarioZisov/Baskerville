@@ -109,6 +109,7 @@
     <Compile Include="Utilities\HtmlBuilders\MenuBuilder.cs" />
     <Compile Include="Utilities\HtmlBuilders\PromotionsBuilder.cs" />
     <Compile Include="Utilities\LanguageTranslator.cs" />
+    <Compile Include="VerificationService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Baskerville.Data\Baskerville.Data.csproj">

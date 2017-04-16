@@ -196,6 +196,7 @@
     <Compile Include="Areas\Admin\Controllers\PromotionsController.cs" />
     <Compile Include="Areas\Admin\Controllers\SubscribersController.cs" />
     <Compile Include="Attributes\CustomAuthorizeAttribute.cs" />
+    <Compile Include="Constants\PublicMessages.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\VerificationController.cs" />
     <Compile Include="Controllers\WebApi\SubscribersController.cs" />
@@ -530,9 +531,10 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Menu.cshtml" />
     <Content Include="Views\Shared\_NavBar.cshtml" />
-    <Content Include="Views\Home\404.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Home\MessageSent.cshtml" />
+    <Content Include="Views\Shared\MessagePage.cshtml" />
+    <Content Include="Views\Shared\404.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
