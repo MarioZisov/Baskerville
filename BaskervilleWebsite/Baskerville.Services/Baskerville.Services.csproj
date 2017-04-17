@@ -103,6 +103,7 @@
     <Compile Include="Service.cs" />
     <Compile Include="Mapping\ServiceMappingProfile.cs" />
     <Compile Include="SubscribersService.cs" />
+    <Compile Include="UsersService.cs" />
     <Compile Include="Utilities\CodeGenerator.cs" />
     <Compile Include="Utilities\Emailer.cs" />
     <Compile Include="Utilities\HtmlBuilders\EventsBuilder.cs" />

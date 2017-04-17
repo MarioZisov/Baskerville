@@ -141,6 +141,7 @@
     <Compile Include="ViewModels\Public\SubscribeViewModelEn.cs" />
     <Compile Include="ViewModels\SubscriberViewModel.cs" />
     <Compile Include="ViewModels\SubscribeViewModel.cs" />
+    <Compile Include="ViewModels\UserListViewModel.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

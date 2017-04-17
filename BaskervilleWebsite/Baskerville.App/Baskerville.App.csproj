@@ -195,6 +195,7 @@
     <Compile Include="Areas\Admin\Controllers\ProductsController.cs" />
     <Compile Include="Areas\Admin\Controllers\PromotionsController.cs" />
     <Compile Include="Areas\Admin\Controllers\SubscribersController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
     <Compile Include="Attributes\CustomAuthorizeAttribute.cs" />
     <Compile Include="Constants\PublicMessages.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -410,6 +411,7 @@
     <Content Include="Areas\Admin\Views\Subscribers\SubscribersReadOnlyList.cshtml" />
     <Content Include="Areas\Admin\Views\Products\ProductsReadOnlyList.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_LoginPartial - Copy.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\UsersList.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootbox.js" />
     <Content Include="Scripts\bootbox.min.js" />

@@ -7,7 +7,7 @@ namespace Baskerville.Models.ViewModels.Account
     {
         [Required(ErrorMessage = AdminMessages.RequiredFieldMessage)]
         [Display(Name = "Потребител")]
-        public string Email { get; set; }
+        public string Username { get; set; }
 
         [Required(ErrorMessage = AdminMessages.RequiredFieldMessage)]
         [DataType(DataType.Password)]
