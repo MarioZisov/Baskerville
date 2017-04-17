@@ -29,7 +29,7 @@ namespace Baskerville.Data
 
         public DbSet<ProductCategory> ProductsCategories { get; set; }
 
-        //public DbSet<MeasurementUnit> MeasurenmentUnits { get; set; }
+        public DbSet<UserLog> UserLogs { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
