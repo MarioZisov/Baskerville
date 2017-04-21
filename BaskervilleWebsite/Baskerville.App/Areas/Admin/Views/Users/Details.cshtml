@@ -1,0 +1,57 @@
+﻿@model Baskerville.Models.ViewModels.Public.UserViewModel
+
+@{
+    ViewBag.Title = "Детайли";
+}
+
+<h2>Детайли</h2>
+
+@using (Html.BeginForm("Save", "Users", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>@Model.Username</h4>
+        <hr />
+     
+        <div class="row">
+            <label class="control-label col-md-2">Последни Влизания</label>
+            <div class="col-md-3">
+                <table class="table table-striped table-hover">
+                    
+                    <tbody>
+                        @foreach (var log in Model.LastLogs)
+                        {
+                            <tr>
+                                <td>@log.ToString("dd.MM.yyyy HH:mm")</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+        <div class="form-group">
+            @Html.LabelFor(model => model.RoleName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.RoleName, new SelectList(Model.Roles, "Name", "Name"), "Изберете роля", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.RoleName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Запази" class="btn btn-primary" />
+                @Html.ActionLink("Обратно", "Index", null, new { @class = "btn btn-default" })
+            </div>
+        </div>
+    </div>
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")   
+}

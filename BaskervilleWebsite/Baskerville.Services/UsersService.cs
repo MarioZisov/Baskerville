@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Baskerville.Data.Contracts.Repository;
 using Baskerville.Models.DataModels;
 using Baskerville.Data.Repository;
-using System.Web.Mvc;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Baskerville.Models.ViewModels;
 using System.Data.Entity;
+using Baskerville.Models.ViewModels.Public;
+using Microsoft.AspNet.Identity;
 
 namespace Baskerville.Services
 {
@@ -18,13 +17,49 @@ namespace Baskerville.Services
         private IRepository<ApplicationUser> users;
         private IRepository<IdentityRole> roles;
         private IRepository<IdentityUserRole> userRoles;
+        private UserManager<ApplicationUser> userManager;
 
-        public UsersService(IDbContext context) 
+        public UsersService(IDbContext context, UserManager<ApplicationUser> userManager)
             : base(context)
         {
             this.users = new Repository<ApplicationUser>(context);
             this.roles = new Repository<IdentityRole>(context);
             this.userRoles = new Repository<IdentityUserRole>(context);
+            this.userManager = userManager;
+
+        }
+
+        public UserViewModel GetUser(string id)
+        {
+            var user = this.users.GetById(id);
+            if (user != null)
+            {
+                UserViewModel model = new UserViewModel();
+                model.Id = user.Id;
+                model.Username = user.UserName;
+                model.RoleName = this.userManager.GetRoles(user.Id)[0];
+                model.LastLogs = this.GetUserLogsById(user.Id, 10);
+                model.Roles = this.roles.GetAll().ToList();
+
+                return model;
+            }
+            else
+                return null;
+        }
+
+        public void UpdateUserRole(UserViewModel model)
+        {
+            var oldRole = this.userManager.GetRoles(model.Id)[0];
+            this.userManager.RemoveFromRole(model.Id, oldRole);
+            this.userManager.AddToRole(model.Id, model.RoleName);
+        }
+
+        private IEnumerable<DateTime> GetUserLogsById(string userId, int logsCount)
+        {
+            var user = this.users.GetAll().Include("Logs").First(u => u.Id == userId);
+            var logs = user.Logs.Select(l => l.Date).OrderByDescending(l => l.Date).Take(logsCount);
+
+            return logs;
         }
 
         public IEnumerable<UserListViewModel> GetAllUsers()
@@ -42,20 +77,12 @@ namespace Baskerville.Services
                 {
                     Id = user.Id,
                     Username = user.UserName,
-                    RoleName = this.GetRoleNameByUserId(user.Id),
+                    RoleName = this.userManager.GetRoles(user.Id)[0],
                     LastLogDate = user.Logs.OrderByDescending(l => l.Date).First().Date
                 });
             }
 
-            return model;         
-        }
-
-        private string GetRoleNameByUserId(string userId)
-        {
-            string roleId = this.userRoles.GetFirst(ur => ur.UserId == userId).RoleId;
-            string roleName = this.roles.GetById(roleId).Name;
-
-            return roleName;
+            return model;
         }
     }
 }

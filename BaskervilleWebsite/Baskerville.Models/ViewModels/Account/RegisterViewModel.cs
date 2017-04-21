@@ -13,12 +13,12 @@ namespace Baskerville.Models.ViewModels.Account
         }
 
         [Required(ErrorMessage = AdminMessages.RequiredFieldMessage)]
-        [MinLength(2), MaxLength(255)]
+        [StringLength(50, MinimumLength = 2, ErrorMessage = AdminMessages.UsernameLengthMessage)]
         [Display(Name = "Потребител")]
         public string Username { get; set; }
 
         [Required(ErrorMessage = AdminMessages.RequiredFieldMessage)]
-        [StringLength(100, ErrorMessage = "Паралота трябва да бъде поне {2} символа", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = AdminMessages.PasswordLengthMessage, MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Парола")]
         public string Password { get; set; }

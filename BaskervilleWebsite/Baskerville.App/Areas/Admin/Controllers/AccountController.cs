@@ -176,6 +176,7 @@ namespace Baskerville.App.Areas.Admin.Controllers
 
                     return RedirectToAction("Index", "Statistics");
                 }
+                ModelState.AddModelError("Username", "Потребителското име е заето");
                 AddErrors(result);
             }
 

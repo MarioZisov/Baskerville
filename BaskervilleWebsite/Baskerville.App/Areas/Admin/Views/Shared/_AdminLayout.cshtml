@@ -28,7 +28,7 @@
                     <li>@Html.ActionLink("Промоции", "Index", "Promotions")</li>                    
                     @if (this.User.IsInRole("Admin") || this.User.IsInRole("Owner"))
                     {
-                        <li>@Html.ActionLink("Потребители", "Index", "Promotions")</li>
+                        <li>@Html.ActionLink("Потребители", "Index", "Users")</li>
                     }
                 </ul>
                     @Html.Partial("_LoginPartial")
