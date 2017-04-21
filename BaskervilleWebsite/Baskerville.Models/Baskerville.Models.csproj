@@ -131,6 +131,7 @@
     <Compile Include="ViewModels\Manage\ManageLoginsViewModel.cs" />
     <Compile Include="ViewModels\Manage\SetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
+    <Compile Include="ViewModels\MessageViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
     <Compile Include="ViewModels\PromotionViewModel.cs" />
     <Compile Include="ViewModels\Public\ContactViewModelBg.cs" />

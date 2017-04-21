@@ -42,7 +42,7 @@ namespace Baskerville.App.Areas.Admin.Controllers
             var model = this.service.GetEmptyEvent();
 
             return View("EventForm", model);
-        }
+        }      
 
         [HttpPost]
         [ValidateAntiForgeryToken]

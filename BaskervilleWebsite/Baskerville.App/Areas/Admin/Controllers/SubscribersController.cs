@@ -1,4 +1,5 @@
 ﻿using Baskerville.Data;
+using Baskerville.Models.ViewModels;
 using Baskerville.Services;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,16 @@ namespace Baskerville.App.Areas.Admin.Controllers
 
             return View("SubscribersList", model);
         }
+
+        [HttpGet]
+        public ActionResult Message()
+        {
+            MessageViewModel model = new MessageViewModel();
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
 
         [HttpPost]
         [Authorize(Roles = "Admin,Owner")]
