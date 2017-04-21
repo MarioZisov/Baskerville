@@ -52,5 +52,15 @@ namespace Baskerville.App.Areas.Admin.Controllers
             this.service.UpdateUserRole(model);
             return View("UsersList", model);
         }
+
+        [HttpPost]
+        public ActionResult Delete(string id)
+        {
+            var result = this.service.DeleteUser(id);
+            if (result)
+                return new HttpStatusCodeResult(HttpStatusCode.OK);
+            else
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+        }
     }
 }

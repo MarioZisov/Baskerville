@@ -54,6 +54,18 @@ namespace Baskerville.Services
             this.userManager.AddToRole(model.Id, model.RoleName);
         }
 
+        public bool DeleteUser(string id)
+        {
+            var user = this.users.GetById(id);
+            if (user != null)
+            {
+                this.users.Delete(user);
+                return true;
+            }
+
+            return false;
+        }
+
         private IEnumerable<DateTime> GetUserLogsById(string userId, int logsCount)
         {
             var user = this.users.GetAll().Include("Logs").First(u => u.Id == userId);
