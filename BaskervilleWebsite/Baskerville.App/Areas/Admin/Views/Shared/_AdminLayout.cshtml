@@ -33,7 +33,8 @@
 
                     <li>@Html.ActionLink("Продукти", "Index", "Products")</li>
                     <li>@Html.ActionLink("Събития", "Index", "Events")</li>
-                    <li>@Html.ActionLink("Промоции", "Index", "Promotions")</li>                    
+                    <li>@Html.ActionLink("Промоции", "Index", "Promotions")</li>
+                    <li>@Html.ActionLink("Новини", "Index", "News")</li>
                     @if (this.User.IsInRole("Admin") || this.User.IsInRole("Owner"))
                     {
                         <li>@Html.ActionLink("Потребители", "Index", "Users")</li>

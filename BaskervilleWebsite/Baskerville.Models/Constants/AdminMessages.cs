@@ -22,6 +22,12 @@ namespace Baskerville.Models.Constants
 
         internal const string SubjectLengthMessage = "Темата трябва да е между {2} и {1} символа";
 
+        internal const string TitleLengthMessage = "Заглавието трябва да е между {2} и {1} символа";
+
+        internal const string NewsLengthMessage = "Съобщението трябва да е между {2} и {1} символа";
+
+        internal const string FromLengthMessage = "Полето трябва да е между {2} и {1} символа";
+
         internal const int MinProductNameLegnth = 2;
 
         internal const int MaxProductNameLegnth = 255;
@@ -41,5 +47,17 @@ namespace Baskerville.Models.Constants
         internal const int MinSubjectLegnth = 5;
 
         internal const int MaxSubjectLegnth = 50;
+
+        internal const int MaxTitleLength = 50;
+
+        internal const int MinTitleLength = 5;
+
+        internal const int MaxNewsLength = 255;
+
+        internal const int MinNewsLength = 10;
+
+        internal const int MaxFromLength = 20;
+
+        internal const int MinFromLength = 2;
     }
 }

@@ -96,6 +96,7 @@
     <Compile Include="EventsService.cs" />
     <Compile Include="HomeService.cs" />
     <Compile Include="MenuService.cs" />
+    <Compile Include="NewsService.cs" />
     <Compile Include="ProductsService.cs" />
     <Compile Include="PromotionsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -109,6 +110,7 @@
     <Compile Include="Utilities\HtmlBuilders\EventsBuilder.cs" />
     <Compile Include="Utilities\HtmlBuilders\HtmlBuilder.cs" />
     <Compile Include="Utilities\HtmlBuilders\MenuBuilder.cs" />
+    <Compile Include="Utilities\HtmlBuilders\NewsBuilder.cs" />
     <Compile Include="Utilities\HtmlBuilders\PromotionsBuilder.cs" />
     <Compile Include="Utilities\LanguageTranslator.cs" />
     <Compile Include="VerificationService.cs" />

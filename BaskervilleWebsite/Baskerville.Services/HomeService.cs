@@ -29,6 +29,7 @@ namespace Baskerville.Services
         private IRepository<ProductCategory> categories;
         private IRepository<Promotion> promotions;
         private IRepository<Event> events;
+        private IRepository<News> news;
         private HtmlBuilder htmlBuilder;
 
         public HomeService(IDbContext context)
@@ -37,6 +38,7 @@ namespace Baskerville.Services
             this.categories = new Repository<ProductCategory>(context);
             this.promotions = new Repository<Promotion>(context);
             this.events = new Repository<Event>(context);
+            this.news = new Repository<News>(context);
             this.subscribers = new Repository<Subscriber>(context);
         }
 
@@ -46,6 +48,7 @@ namespace Baskerville.Services
 
             model.Promotions = this.GetPromotionsHtml(isLangBg);
             model.Events = this.GetEventsHtml(isLangBg);
+            model.News = this.GetNewsHtml(isLangBg);
 
             model.ContactModelBg = new ContactViewModelBg();
             model.ContactModelEn = new ContactViewModelEn();
@@ -54,7 +57,7 @@ namespace Baskerville.Services
             model.SubscribeModelBg = new SubscribeViewModelBg();
 
             return model;
-        }
+        }        
 
         public void CheckEmailUnicness(SubscribeBindingModel model, ModelStateDictionary modelState, bool isLangBg)
         {
@@ -143,6 +146,18 @@ namespace Baskerville.Services
                 .ToList();
 
             this.htmlBuilder = new EventsBuilder(filteredEvents, isLangBg);
+            var html = this.htmlBuilder.Render();
+
+            return html;
+        }
+
+        private HtmlString GetNewsHtml(bool isLangBg)
+        {
+            var filteredNews = this.news
+                .Find(n => n.IsPublic && !n.IsRemoved)
+                .ToList();
+
+            this.htmlBuilder = new NewsBuilder(filteredNews, isLangBg);
             var html = this.htmlBuilder.Render();
 
             return html;

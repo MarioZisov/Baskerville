@@ -102,6 +102,7 @@
     <Compile Include="Constants\PublicMessages.cs" />
     <Compile Include="DataModels\ApplicationUser.cs" />
     <Compile Include="DataModels\Event.cs" />
+    <Compile Include="DataModels\News.cs" />
     <Compile Include="DataModels\Product.cs" />
     <Compile Include="DataModels\ProductCategory.cs" />
     <Compile Include="DataModels\Promotion.cs" />
@@ -132,6 +133,7 @@
     <Compile Include="ViewModels\Manage\SetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\MessageViewModel.cs" />
+    <Compile Include="ViewModels\NewsViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
     <Compile Include="ViewModels\PromotionViewModel.cs" />
     <Compile Include="ViewModels\Public\ContactViewModelBg.cs" />

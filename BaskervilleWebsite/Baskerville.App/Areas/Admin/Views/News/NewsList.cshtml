@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Baskerville.Models.ViewModels.NewsViewModel>
+
+
+@{
+    ViewBag.Title = "Новини";
+}
+
+<h2>Новини</h2>
+<hr />
+@Html.ActionLink("Добави", "create", null, new { @class = "btn btn-success" })
+<br />
+<br />
+<table id="news" class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Заглавие</th>
+            <th>От</th>
+            <th>Публично</th>
+            <th>Изтрий</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var news in Model)
+        {
+            <tr>
+                <td>@Html.ActionLink(news.TitleBg, "Details", new { id = news.Id })</td>
+                <td>@news.FromBg</td>
+                <td>@(news.IsPublic ? "Да" : "Не")</td>
+                <td>
+                    <button news-id="@news.Id" news-name="@news.TitleBg" class="btn-link js-delete btn-danger-text">Премахни</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#news").DataTable({
+                "oLanguage": {
+                    "sSearch": "Търси",
+                    "sZeroRecords": "Няма намерени резултати",
+                    "sInfoFiltered": "- филтрирано от общо _MAX_ записа",
+                    "sInfo": "Страница _PAGE_ от _PAGES_ (_TOTAL_ резултата)",
+                    "sInfoEmpty": "Няма записи",
+                    "sLengthMenu": "Показвай _MENU_ резултата на страница",
+                    "oPaginate": {
+                        "sNext": "Следваща",
+                        "sPrevious": "Предишна"
+                    }
+                }
+            });
+
+            $("#news").on("click", ".js-delete", function () {
+                var button = $(this);
+
+                bootbox.confirm("Сигурни ли сте, че искате да изтриете " + button.attr("news-name") + "?", function (result) {
+                    if (result) {
+                        $.ajax({
+                            method: "POST",
+                            url: "/admin/news/delete",
+                            ajaxasync: true,
+                            data: { id: button.attr("news-id") },
+                            success: function () {
+                                button.parents("tr").remove();
+                            }
+                        })
+                    }
+                })
+            })
+        })
+    </script>
+}
+

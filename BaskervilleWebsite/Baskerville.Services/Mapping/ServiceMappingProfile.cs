@@ -23,6 +23,9 @@ namespace Baskerville.Services.Mapping
 
             this.CreateMap<Promotion, PromotionViewModel>();
             this.CreateMap<PromotionViewModel, Promotion>();
+
+            this.CreateMap<News, NewsViewModel>();
+            this.CreateMap<NewsViewModel, News>();
         }
     }
 }

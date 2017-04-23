@@ -21,5 +21,7 @@ namespace Baskerville.Models.ViewModels
         public HtmlString Promotions { get; set; }
 
         public HtmlString Events { get; set; }
+
+        public HtmlString News { get; set; }
     }
 }
