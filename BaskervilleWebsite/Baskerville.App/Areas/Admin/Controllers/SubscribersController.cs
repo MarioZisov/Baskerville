@@ -38,6 +38,15 @@ namespace Baskerville.App.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        public ActionResult Message(MessageViewModel model)
+        {
+            if (!ModelState.IsValid)
+                return View(model);
+
+            this.service.SendMessageToSubscribers(model);
+
+            return RedirectToAction("Index");
+        }
 
         [HttpPost]
         [Authorize(Roles = "Admin,Owner")]

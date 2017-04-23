@@ -7,6 +7,7 @@ using System.Net;
 using System.Net.Configuration;
 using System.Net.Mail;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Baskerville.Services.Utilities
@@ -41,18 +42,20 @@ namespace Baskerville.Services.Utilities
 
         public bool SendEmail(string body, string subject, bool isHtml, IEnumerable<string> receivers)
         {
-            MailMessage message = new MailMessage();
-            message.From = new MailAddress(this.section.From);
-            message.Subject = subject;
-            message.Body = body;
-            message.IsBodyHtml = isHtml;
-
-            foreach (var receiver in receivers)
-                message.To.Add(new MailAddress(receiver));
-            
             try
             {
-                this.client.Send(message);
+                foreach (var receiver in receivers)
+                {
+                    MailMessage message = new MailMessage();
+                    message.From = new MailAddress(this.section.From, "Club Baskerville");
+                    message.Subject = subject;
+                    message.Body = body;
+                    message.IsBodyHtml = isHtml;
+                    message.To.Add(new MailAddress(receiver));
+
+                    this.client.Send(message);
+                }
+
                 return true;
             }
             catch (Exception)

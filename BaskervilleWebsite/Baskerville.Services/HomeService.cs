@@ -121,7 +121,7 @@ namespace Baskerville.Services
                 this.subscribers.Insert(subscriber);
             }
 
-            this.SendVerificationEmail(verificationCode);
+            this.SendVerificationEmail(verificationCode, email);
         }
 
         private HtmlString GetPromotionsHtml(bool isLangBg)
@@ -148,7 +148,7 @@ namespace Baskerville.Services
             return html;
         }
 
-        private void SendVerificationEmail(string verificationCode)
+        private void SendVerificationEmail(string verificationCode, string email)
         {
             var emailer = new Emailer(MailSettings.NoReplySettings);
 
@@ -157,7 +157,7 @@ namespace Baskerville.Services
             string body = verificationUrl;
             string subject = "Subcribe";
 
-            emailer.SendEmail(body, subject, true, MailSettings.NoReplyEmailAdress);
+            emailer.SendEmail(body, subject, true, email);
         }
     }
 

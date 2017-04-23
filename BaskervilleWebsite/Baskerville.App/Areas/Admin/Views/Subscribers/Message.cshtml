@@ -5,7 +5,7 @@
 }
 
 <h2>Съобщение</h2>
-@using (Html.BeginForm("Message", "Events", FormMethod.Post))
+@using (Html.BeginForm("Message", "Subscribers", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 
@@ -65,4 +65,9 @@
         </div>
 
     </div>
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
 }
