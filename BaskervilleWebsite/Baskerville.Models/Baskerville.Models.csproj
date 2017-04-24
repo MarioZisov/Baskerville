@@ -135,6 +135,7 @@
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\MessageViewModel.cs" />
     <Compile Include="ViewModels\NewsViewModel.cs" />
+    <Compile Include="ViewModels\BarChartViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
     <Compile Include="ViewModels\PromotionViewModel.cs" />
     <Compile Include="ViewModels\Public\ContactViewModelBg.cs" />
@@ -144,6 +145,7 @@
     <Compile Include="ViewModels\Public\SubscribeViewModelBg.cs" />
     <Compile Include="ViewModels\Public\SubscribeViewModelEn.cs" />
     <Compile Include="ViewModels\Public\UserViewModel.cs" />
+    <Compile Include="ViewModels\StatisticsViewModel.cs" />
     <Compile Include="ViewModels\SubscriberViewModel.cs" />
     <Compile Include="ViewModels\SubscribeViewModel.cs" />
     <Compile Include="ViewModels\UserListViewModel.cs" />

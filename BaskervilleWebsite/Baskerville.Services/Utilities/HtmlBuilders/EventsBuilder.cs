@@ -53,7 +53,7 @@ namespace Baskerville.Services.Utilities.HtmlBuilders
         {
             string dayOfMonth = date.ToString("dd");
             string month = this.isLangBg 
-                ? LanguageTranslator.TranslateMonth(date.ToString("MMMM")) 
+                ? LanguageTranslator.TranslateEnBgMonth(date.ToString("MMMM")) 
                 : date.ToString("MMMM");
             string time = date.ToString("HH:mm");
 

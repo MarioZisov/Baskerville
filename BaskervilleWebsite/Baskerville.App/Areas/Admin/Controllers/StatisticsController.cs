@@ -1,4 +1,6 @@
 ﻿using Baskerville.App.Attributes;
+using Baskerville.Data;
+using Baskerville.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,12 +9,30 @@ using System.Web.Mvc;
 
 namespace Baskerville.App.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin,Owner,Manager")]
     public class StatisticsController : AuthorizedController
     {
-        // GET: Main
+        private StatisticsService service;
+
+        public StatisticsController()
+        {
+            this.service = new StatisticsService(new BaskervilleContext());
+        }
+
+        [HttpGet]
         public ActionResult Index()
         {
-            return View();
+            var model = this.service.GetStatistics();
+
+            return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult MontlyData(int year)
+        {
+            var model = this.service.GetBarChartData(year);
+
+            return Json(model, JsonRequestBehavior.AllowGet);
         }
     }
 }

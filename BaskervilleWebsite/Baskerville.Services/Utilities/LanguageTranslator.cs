@@ -8,7 +8,7 @@ namespace Baskerville.Services.Utilities
 {
     public static class LanguageTranslator
     {
-        private static readonly IDictionary<string, string> MonthsDictionry = new Dictionary<string, string>()
+        private static readonly IDictionary<string, string> EnBgMonthsDictionary = new Dictionary<string, string>()
         {
             { "January", "януари" },
             { "February", "февруари" },
@@ -24,9 +24,32 @@ namespace Baskerville.Services.Utilities
             { "December", "декември" }
         };
 
-        public static string TranslateMonth(string month)
+        private static readonly IDictionary<byte, string> NumBgMonthsDictionry = new Dictionary<byte, string>()
         {
-            string result = MonthsDictionry[month];
+            { 1, "януари" },
+            { 2, "февруари" },
+            { 3, "март" },
+            { 4, "април" },
+            { 5, "май" },
+            { 6, "юни" },
+            { 7, "юли" },
+            { 8, "август" },
+            { 9, "септември" },
+            { 10, "октомври" },
+            { 11, "ноември" },
+            { 12, "декември" }
+        };
+
+        public static string TranslateEnBgMonth(string month)
+        {
+            string result = EnBgMonthsDictionary[month];
+
+            return result;
+        }
+
+        public static string TranslateNumBgMonth(byte num)
+        {
+            string result = NumBgMonthsDictionry[num];
 
             return result;
         }
