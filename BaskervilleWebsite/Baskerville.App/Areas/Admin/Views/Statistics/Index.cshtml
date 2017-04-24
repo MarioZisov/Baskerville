@@ -2,30 +2,84 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+<div class="row">
+    <div class="col-md-6">
+        <div id="piechart" style="width: 600px; height: 450px;"></div>
+    </div>
 </div>
 
+
 <div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    <div class="col-md-12">
+        <div id="chart_div"></div>
     </div>
 </div>
+
+
+@section scripts
+{
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script type="text/javascript">
+        google.charts.load('current', { 'packages': ['corechart', 'bar'] });
+        google.charts.setOnLoadCallback(drawChart1);
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart1() {
+
+            var data1 = google.visualization.arrayToDataTable([
+              ['Task', 'Hours per Day'],
+              ['Work', 11],
+              ['Eat', 2],
+              //['Commute', 2],
+              //['Watch TV', 2],
+              //['Sleep', 7]
+            ]);
+
+            var options1 = {
+                //title: 'My Daily Activities'
+            };
+
+            var chart1 = new google.visualization.PieChart(document.getElementById('piechart'));
+
+            chart1.draw(data1, options1);
+        }       
+       
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+              ['Year', 'Sales', 'Expenses', 'Profit'],
+              ['Jan', 1000, 400, 200],
+              ['Feb', 1170, 460, 250],
+              ['Mart', 660, 1120, 300],
+              ['April', 660, 1120, 300],
+              ['May', 660, 1120, 300],
+              ['June', 660, 1120, 300],
+              ['July', 660, 1120, 300],
+              ['August', 660, 1120, 300],
+              ['Sep', 660, 1120, 300],
+              ['Octomber', 660, 1120, 300],
+              ['Nover', 660, 1120, 300],
+              ['Decr', 660, 1120, 300],
+            ]);
+
+            var options = {
+                chart: {
+                    //title: 'Company Performance',
+                    //subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+                },
+                bars: 'vertical',
+                vAxis: { format: 'decimal' },
+                height: 400,
+                width: 1300,
+                fill: '#1b9e77',
+                stroke: '#1b9e77',
+                colors: ['#1b9e77', '#d95f02', '#7570b3']
+            };
+
+            var chart = new google.charts.Bar(document.getElementById('chart_div'));
+            options.vAxis.format = 'short';
+            chart.draw(data, google.charts.Bar.convertOptions(options));
+        }
+    </script>
+}

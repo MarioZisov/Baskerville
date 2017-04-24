@@ -4,7 +4,9 @@ using Baskerville.Models.ViewModels;
 using Baskerville.Models.ViewModels.Public;
 using Baskerville.Services;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics;
 using System.Web.Mvc;
+using System.Web.Routing;
 
 namespace Baskerville.App.Controllers
 {
@@ -15,6 +17,23 @@ namespace Baskerville.App.Controllers
         public HomeController()
         {
             this.service = new HomeService(new BaskervilleContext());
+        }
+
+        protected override void Initialize(RequestContext requestContext)
+        {
+            
+
+            if (requestContext.HttpContext.Session["new"] == null)
+            {
+                requestContext.HttpContext.Session["new"] = true;
+                if (this.service == null)
+                {
+
+                }
+            }
+            
+
+            base.Initialize(requestContext);
         }
 
         [HttpGet]
