@@ -100,9 +100,11 @@
     <Compile Include="ProductsService.cs" />
     <Compile Include="PromotionsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VisitsService.cs" />
     <Compile Include="RegisterService.cs" />
     <Compile Include="Service.cs" />
     <Compile Include="Mapping\ServiceMappingProfile.cs" />
+    <Compile Include="StatisticsService.cs" />
     <Compile Include="SubscribersService.cs" />
     <Compile Include="UsersService.cs" />
     <Compile Include="Utilities\CodeGenerator.cs" />

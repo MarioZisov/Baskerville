@@ -9,27 +9,13 @@ using System.Web.Routing;
 
 namespace Baskerville.App.Controllers
 {
-    public class MenuController : Controller
+    public class MenuController : BaseController
     {
         MenuService service;
 
         public MenuController()
         {
             this.service = new MenuService(new BaskervilleContext());
-        }
-
-        protected override void Initialize(RequestContext requestContext)
-        {
-            if (requestContext.HttpContext.Session["test"] != null)
-            {
-
-            }
-            else
-            {
-                requestContext.HttpContext.Session["test"] = "pruc";
-            }
-
-            base.Initialize(requestContext);
         }
 
         [HttpGet]

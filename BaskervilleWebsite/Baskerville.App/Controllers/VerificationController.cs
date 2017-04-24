@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace Baskerville.App.Controllers
 {
-    public class VerificationController : Controller
+    public class VerificationController : BaseController
     {
         private VerificationService service;
 

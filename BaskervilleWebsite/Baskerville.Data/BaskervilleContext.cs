@@ -33,6 +33,8 @@ namespace Baskerville.Data
 
         public DbSet<News> News { get; set; }
 
+        public DbSet<Statistics> Statistics { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ProductCategory>()

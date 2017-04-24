@@ -10,7 +10,7 @@ using System.Web.Routing;
 
 namespace Baskerville.App.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         private HomeService service;
 
@@ -19,26 +19,9 @@ namespace Baskerville.App.Controllers
             this.service = new HomeService(new BaskervilleContext());
         }
 
-        protected override void Initialize(RequestContext requestContext)
-        {
-            
-
-            if (requestContext.HttpContext.Session["new"] == null)
-            {
-                requestContext.HttpContext.Session["new"] = true;
-                if (this.service == null)
-                {
-
-                }
-            }
-            
-
-            base.Initialize(requestContext);
-        }
-
         [HttpGet]
         public ActionResult Index()
-        {
+        {            
             var model = this.service.GetHomeModel(false);
             return View(model);
         }
