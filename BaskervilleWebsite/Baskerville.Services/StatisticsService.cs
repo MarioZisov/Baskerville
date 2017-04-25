@@ -16,12 +16,14 @@ namespace Baskerville.Services
     {
         private IRepository<Statistics> statistics;
         private IRepository<Subscriber> subscribers;
+        private IRepository<UserLog> userLogs;
 
         public StatisticsService(IDbContext context)
             : base(context)
         {
             this.statistics = new Repository<Statistics>(context);
             this.subscribers = new Repository<Subscriber>(context);
+            this.userLogs = new Repository<UserLog>(context);
         }
 
         public IEnumerable<BarChartViewModel> GetBarChartData(int year)
@@ -61,11 +63,23 @@ namespace Baskerville.Services
                 .OrderByDescending(s => s)
                 .ToList();
 
+            var logs = this.userLogs
+                .GetAll()
+                .OrderByDescending(l => l.Date)
+                .Take(10)
+                .Select(l => new LastLogsViewModel
+                    {
+                        Date = l.Date,
+                        Username = l.User.UserName
+                    })
+                .ToList();
+
             var model = new StatisticsViewModel
             {
                 BulgarianSpeakersCount = bgSpeakers,
                 EnglishSpeakersCount = enSpeakers,
-                YearsRange = yearsRange
+                YearsRange = yearsRange,
+                LastLogs = logs
             };
 
             return model;
