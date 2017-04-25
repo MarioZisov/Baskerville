@@ -7,7 +7,6 @@ using Baskerville.Data.Repository;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Baskerville.Models.ViewModels;
 using System.Data.Entity;
-using Baskerville.Models.ViewModels.Public;
 using Microsoft.AspNet.Identity;
 
 namespace Baskerville.Services

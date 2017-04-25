@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaskervilleContext.cs" />
+    <Compile Include="Baskerville\Models\ViewModels\Public\UserViewModel.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Contracts\IDbContext.cs" />

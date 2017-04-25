@@ -1,6 +1,6 @@
 ﻿using Baskerville.Data;
 using Baskerville.Models.DataModels;
-using Baskerville.Models.ViewModels.Public;
+using Baskerville.Models.ViewModels;
 using Baskerville.Services;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;

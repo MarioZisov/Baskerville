@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Baskerville.Models.ViewModels.Public
+namespace Baskerville.Models.ViewModels
 {
     public class UserViewModel
     {

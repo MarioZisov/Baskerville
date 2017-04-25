@@ -144,7 +144,7 @@
     <Compile Include="ViewModels\Public\SubscribeBindingModel.cs" />
     <Compile Include="ViewModels\Public\SubscribeViewModelBg.cs" />
     <Compile Include="ViewModels\Public\SubscribeViewModelEn.cs" />
-    <Compile Include="ViewModels\Public\UserViewModel.cs" />
+    <Compile Include="ViewModels\UserViewModel.cs" />
     <Compile Include="ViewModels\StatisticsViewModel.cs" />
     <Compile Include="ViewModels\SubscriberViewModel.cs" />
     <Compile Include="ViewModels\SubscribeViewModel.cs" />
