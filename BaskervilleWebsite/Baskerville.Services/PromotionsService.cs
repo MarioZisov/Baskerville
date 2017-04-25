@@ -5,6 +5,8 @@ using Baskerville.Models.DataModels;
 using Baskerville.Data.Repository;
 using Baskerville.Models.ViewModels;
 using AutoMapper;
+using System;
+using System.Net;
 
 namespace Baskerville.Services
 {
@@ -65,6 +67,18 @@ namespace Baskerville.Services
             var entity = this.promotions.GetById(id);
             entity.IsRemoved = true;
             this.promotions.Update(entity);
+        }
+
+        public HttpStatusCode UpdatePublicity(int id)
+        {
+            var promo = this.promotions.GetById(id);
+            if (promo == null)
+                return HttpStatusCode.NotFound;
+
+            promo.IsPublic = !promo.IsPublic;
+            this.promotions.Update(promo);
+
+            return HttpStatusCode.OK;
         }
     }
 }

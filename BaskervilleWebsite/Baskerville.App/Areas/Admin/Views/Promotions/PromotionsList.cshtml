@@ -21,10 +21,20 @@
     <tbody>
         @foreach (var promotion in Model)
         {
+            string publicColorClass = "btn-default-text";
+            string publicText = "Не";
+            if (promotion.IsPublic)
+            {
+                publicColorClass = "btn-success-text";
+                publicText = "Да";
+            }
+
             <tr>
                 <td>@Html.ActionLink(promotion.NameBg, "Details", new { id = promotion.Id })</td>
-                <td class="publicWidth">@(promotion.IsPublic ? "Да" : "Не")</td>
-                <td class="removeWidth">
+                <td>
+                    <button promotion-id="@promotion.Id" class="btn-link @publicColorClass js-update">@publicText</button>                    
+                </td>
+                <td>
                     <button promotion-id="@promotion.Id" promotion-name="@promotion.NameBg" class="btn-link js-delete btn-danger-text">Премахни</button>
                 </td>
             </tr>
@@ -65,6 +75,29 @@
                                 button.parents("tr").remove();
                             }
                         })
+                    }
+                })
+            })
+
+            $('#promotions').on('click', '.js-update', function () {
+                var button = $(this);
+
+                $.ajax({
+                    method: 'POST',
+                    url: '/admin/promotions/UpdatePublicity',
+                    ajaxasync: true,
+                    data: { id: button.attr('promotion-id') },
+                    success: function () {
+                        var v = button.text();
+                        if (v === 'Да') {
+                            button.text('Не')
+                            button.removeClass('btn-success-text')
+                            button.addClass('btn-default-text')
+                        } else {
+                            button.text('Да')
+                            button.removeClass('btn-default-text')
+                            button.addClass('btn-success-text')
+                        }
                     }
                 })
             })

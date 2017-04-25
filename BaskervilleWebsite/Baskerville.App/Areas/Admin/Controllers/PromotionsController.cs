@@ -64,5 +64,12 @@ namespace Baskerville.App.Areas.Admin.Controllers
             this.service.RemovePromotion(id);
             return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
+
+        public ActionResult UpdatePublicity(int id)
+        {
+            var status = this.service.UpdatePublicity(id);
+
+            return new HttpStatusCodeResult(status);
+        }
     }
 }

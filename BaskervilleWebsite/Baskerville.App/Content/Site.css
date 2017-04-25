@@ -31,6 +31,14 @@ textarea {
     color: #e51c23;
 }
 
+.btn-success-text {
+    color: #4caf50;
+}
+
+.btn-default-text {
+    color: black;
+}
+
 div.label-select{
     margin-top: 10px;
     margin-bottom: 10px;
