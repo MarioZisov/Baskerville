@@ -10,6 +10,7 @@ using Baskerville.Models.ViewModels;
 using AutoMapper;
 using System.Web.Mvc;
 using System.Data.Entity;
+using System.Net;
 
 namespace Baskerville.Services
 {
@@ -84,6 +85,18 @@ namespace Baskerville.Services
             var product = this.products.GetById(id);
             product.IsRemoved = true;
             this.products.Update(product);
+        }
+
+        public HttpStatusCode UpdatePublicity(int id)
+        {
+            var product = this.products.GetById(id);
+            if (product == null)
+                return HttpStatusCode.NotFound;
+
+            product.IsPublic = !product.IsPublic;
+            this.products.Update(product);
+
+            return HttpStatusCode.OK;
         }
 
         public void UpdateProduct(ProductViewModel model)

@@ -13,15 +13,27 @@
     <thead>
         <tr>
             <th>Име</th>
+            <th>Цена</th>
             <th>Публично</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var product in Model)
         {
+            string publicColorClass = "btn-default-text";
+            string publicText = "Не";
+            if (product.IsPublic)
+            {
+                publicColorClass = "btn-success-text";
+                publicText = "Да";
+            }
+
             <tr>
-                <td>@product.NameBg</td>
-                <td>@(product.IsPublic ? "Да" : "Не")</td>                
+                <td>@Html.ActionLink(product.NameBg, "Details", new { id = product.Id })</td>
+                <td>@product.Price</td>
+                <td>
+                    <button product-id="@product.Id" class="btn-link @publicColorClass js-update">@publicText</button>
+                </td>
             </tr>
         }
     </tbody>
@@ -44,7 +56,30 @@
                         "sPrevious": "Предишна"
                     }
                 }
-            });           
+            });
+
+            $('#products').on('click', '.js-update', function () {
+                var button = $(this);
+
+                $.ajax({
+                    method: 'POST',
+                    url: '/admin/products/UpdatePublicity',
+                    ajaxasync: true,
+                    data: { id: button.attr('product-id') },
+                    success: function () {
+                        var v = button.text();
+                        if (v === 'Да') {
+                            button.text('Не')
+                            button.removeClass('btn-success-text')
+                            button.addClass('btn-default-text')
+                        } else {
+                            button.text('Да')
+                            button.removeClass('btn-default-text')
+                            button.addClass('btn-success-text')
+                        }
+                    }
+                })
+            })
         })
     </script>
 }

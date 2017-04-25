@@ -82,5 +82,12 @@ namespace Baskerville.App.Areas.Admin.Controllers
             var subCategories = this.service.GetSubCategories(id);
             return Json(subCategories, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult UpdatePublicity(int id)
+        {
+            var status = this.service.UpdatePublicity(id);
+
+            return new HttpStatusCodeResult(status);
+        }
     }
 }
