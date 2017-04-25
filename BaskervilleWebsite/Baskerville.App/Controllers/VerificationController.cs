@@ -21,7 +21,6 @@ namespace Baskerville.App.Controllers
 
         public ActionResult Subscribe(string code)
         {
-            code = HttpUtility.UrlEncode(code);
             var result = this.service.VerificateSubscribtionCode(code);
             if (result)
             {
@@ -43,7 +42,6 @@ namespace Baskerville.App.Controllers
 
         public ActionResult Unsubscribe(string code)
         {
-            code = HttpUtility.UrlEncode(code);
             var result = this.service.VerificateUnsubscribeCode(code);
             if (result)
             {

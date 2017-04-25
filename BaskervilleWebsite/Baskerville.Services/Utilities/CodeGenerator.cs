@@ -19,6 +19,7 @@ namespace Baskerville.Services.Utilities
             var sha256 = SHA256.Create();
             byte[] hashBytes = sha256.ComputeHash(bytes);
             string verificationCode = Convert.ToBase64String(hashBytes);
+            verificationCode = HttpUtility.UrlEncode(verificationCode);
 
             return verificationCode;
         }

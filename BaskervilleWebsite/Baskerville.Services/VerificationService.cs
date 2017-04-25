@@ -33,7 +33,7 @@ namespace Baskerville.Services
             if (passedHours > 24)
                 return false;
 
-            string unsubsribeCode = HttpUtility.UrlEncode(CodeGenerator.GenerateVerificationCode(subscriber.Email));
+            string unsubsribeCode = CodeGenerator.GenerateVerificationCode(subscriber.Email);
 
             subscriber.IsActive = true;
             subscriber.SubscriptionDate = DateTime.Now;

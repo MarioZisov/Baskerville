@@ -9,7 +9,6 @@ using System.Web.Mvc;
 
 namespace Baskerville.App.Areas.Admin.Controllers
 {
-    [Authorize(Roles = "Admin,Owner,Manager")]
     public class StatisticsController : AuthorizedController
     {
         private StatisticsService service;

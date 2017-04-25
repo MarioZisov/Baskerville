@@ -88,7 +88,7 @@ namespace Baskerville.Services
             string email = subscribeModel.Email;
             Language lang = subscribeModel.PreferedLanguage == "en" ? Language.EN : Language.BG;
 
-            string verificationCode = HttpUtility.UrlEncode(CodeGenerator.GenerateVerificationCode(email));
+            string verificationCode = CodeGenerator.GenerateVerificationCode(email);
 
             if (this.subscribers.Exists(s => s.Email == email && !s.IsActive))
             {
