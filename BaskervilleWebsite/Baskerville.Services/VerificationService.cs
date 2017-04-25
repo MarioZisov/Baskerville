@@ -53,7 +53,7 @@ namespace Baskerville.Services
         {
             var subscriber = this.subscribers.GetFirst(s => s.SubscriptionVerificationCode == code && s.IsActive && !s.IsRemoved);
             Emailer emailer = new Emailer(MailSettings.NoReplySettings);
-            string verificationUrl = "http://localhost:55555/verification/unsubscribe?code=" + subscriber.UnsubscribeVerificationCode;
+            string verificationUrl = "http://localhost:55555/verification/unsubscribe?code=" + HttpUtility.UrlEncode(subscriber.UnsubscribeVerificationCode);
 
             string body = verificationUrl;
             string subject = "Unsubcribe";

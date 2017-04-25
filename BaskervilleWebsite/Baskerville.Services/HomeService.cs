@@ -167,7 +167,7 @@ namespace Baskerville.Services
         {
             var emailer = new Emailer(MailSettings.NoReplySettings);
 
-            string verificationUrl = "http://localhost:55555/verification/subscribe?code=" + verificationCode;
+            string verificationUrl = "http://localhost:55555/verification/subscribe?code=" + HttpUtility.UrlEncode(verificationCode);
 
             string body = verificationUrl;
             string subject = "Subcribe";
