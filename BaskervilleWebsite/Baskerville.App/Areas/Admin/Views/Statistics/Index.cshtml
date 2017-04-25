@@ -3,19 +3,36 @@
 @{
     ViewBag.Title = "Home Page";
 }
-
-<div class="row">
+<br />
+<div class="row">    
     <div class="col-md-6">
+        <h5 style="text-align: center">Последни влизания</h5>
+        <table style="margin-top: 70px" class="table table-hover">
+            <tbody>
+                @foreach (var log in Model.LastLogs)
+                {
+                    <tr>
+                        <td>@log.Username</td>
+                        <td>@log.Date.ToString("dd.MM.yyyy HH:mm")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-6">
+        <h5 style="text-align: center">Абонати - Предпочитан език</h5>
         <div id="piechart" style="width: 600px; height: 450px;"></div>
     </div>
 </div>
 
-<div class="label-select">
-    <label class="inline-label"> Покажи данни за @Html.DropDownList("Year", new SelectList(Model.YearsRange), new { @class = "form-control input-sm inline-select", @id = "test" }) годинa </label>
-</div>
+
 
 <div class="row">
     <div class="col-md-12">
+        <h5 style="text-align: center">Посещения и нови абонати</h5>
+        <div class="label-select">
+            <label class="inline-label"> Покажи данни за @Html.DropDownList("Year", new SelectList(Model.YearsRange), new { @class = "form-control input-sm inline-select", @id = "test" }) годинa </label>
+        </div>
         <div id="chart_div"></div>
     </div>
 </div>
@@ -56,7 +73,7 @@
             var rows = new Array();
             rows.push( [ "Месец", "Посещения", "Нови Абонати" ] );
 
-            $.getJSON("MontlyData", { year: y }, function (data) {
+            $.getJSON("/statistics/MontlyData", { year: y }, function (data) {
                 $.each(data, function (index, element) {
                     row = [element.Month, parseInt(element.HitsCount), parseInt(element.SubscribesCount)];
                     rows.push(row);
@@ -72,7 +89,7 @@
                     bars: 'vertical',
                     vAxis: { format: 'short' },
                     height: 400,
-                    width: 1250,
+                    width: 1200,
                     colors: ['#1b9e77', '#d95f02']
                 };
 
