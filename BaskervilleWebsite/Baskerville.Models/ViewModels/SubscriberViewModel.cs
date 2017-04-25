@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Baskerville.Models.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -13,6 +14,8 @@ namespace Baskerville.Models.ViewModels
 
         [Display(Name = "Имейл")]
         public string Email { get; set; }
+
+        public Language PreferedLanguage { get; set; }
 
         [Display(Name = "Дата на абониране")]
         public DateTime SubscriptionDate { get; set; }

@@ -1,4 +1,5 @@
 ﻿@using Baskerville.Models.ViewModels
+@using Baskerville.Models.Enums
 @model IEnumerable<SubscriberViewModel>
 
 @{
@@ -12,6 +13,7 @@
     <thead>
         <tr>
             <th>Имейл адрес</th>
+            <th>Предпочитан език</th>
             <th>Дата на присъединяване</th>
             <th>Изтрий</th>
         </tr>
@@ -21,7 +23,8 @@
         {
             <tr>
                 <td>@subscriber.Email</td>
-                <td>@subscriber.SubscriptionDate.ToShortDateString()</td>
+                <td>@(subscriber.PreferedLanguage == Language.BG ? "Български" : "Английски")</td>
+                <td>@subscriber.SubscriptionDate.ToString("dd.MM.yyyy HH:mm")</td>
                 <td>
                     <button subscriber-id="@subscriber.Id" subscriber-email="@subscriber.Email" class="btn-link js-delete btn-danger-text">Премахни</button>
                 </td>
