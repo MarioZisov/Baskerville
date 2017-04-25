@@ -15,11 +15,13 @@ namespace Baskerville.Services
     public class VerificationService : Service
     {
         private IRepository<Subscriber> subscribers;
+        private IRepository<Statistics> statistics;
 
         public VerificationService(IDbContext context)
             : base(context)
         {
             this.subscribers = new Repository<Subscriber>(context);
+            this.statistics = new Repository<Statistics>(context);
         }
 
         public bool VerificateSubscribtionCode(string code)
@@ -40,8 +42,12 @@ namespace Baskerville.Services
             subscriber.UnsubscribeVerificationCode = unsubsribeCode;
 
             this.subscribers.Update(subscriber);
+
+            var statIncr = new StatisticsIncrementer(this.statistics);
+            statIncr.IncrementSubscribers();
+
             return true;
-        }
+        }               
 
         public void SendWelcomeEmail(string code)
         {
