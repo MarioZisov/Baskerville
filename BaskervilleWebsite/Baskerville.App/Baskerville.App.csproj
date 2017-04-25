@@ -418,6 +418,7 @@
     <Content Include="Areas\Admin\Views\Subscribers\Message.cshtml" />
     <Content Include="Areas\Admin\Views\News\NewsList.cshtml" />
     <Content Include="Areas\Admin\Views\News\NewsForm.cshtml" />
+    <Content Include="Areas\Admin\Views\Events\EventsEditOnlyList.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootbox.js" />
     <Content Include="Scripts\bootbox.min.js" />

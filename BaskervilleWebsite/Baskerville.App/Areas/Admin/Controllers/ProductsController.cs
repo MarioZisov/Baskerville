@@ -83,6 +83,7 @@ namespace Baskerville.App.Areas.Admin.Controllers
             return Json(subCategories, JsonRequestBehavior.AllowGet);
         }
 
+        [HttpPost]
         public ActionResult UpdatePublicity(int id)
         {
             var status = this.service.UpdatePublicity(id);

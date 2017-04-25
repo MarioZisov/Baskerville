@@ -23,6 +23,10 @@ namespace Baskerville.App.Areas.Admin.Controllers
         public ActionResult Index()
         {
             var model = this.service.GetAllEvents();
+
+            if (this.User.IsInRole("Employee"))
+                return View("EventsEditOnlyList", model);
+
             return View("EventsList", model);
         }
 
@@ -67,6 +71,14 @@ namespace Baskerville.App.Areas.Admin.Controllers
         {
             this.service.RemoveEvent(id);
             return new HttpStatusCodeResult(HttpStatusCode.OK);
+        }
+
+        [HttpPost]
+        public ActionResult UpdatePublicity(int id)
+        {
+            var status = this.service.UpdatePublicity(id);
+
+            return new HttpStatusCodeResult(status);
         }
     }
 }

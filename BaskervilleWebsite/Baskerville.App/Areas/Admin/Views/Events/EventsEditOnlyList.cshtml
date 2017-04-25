@@ -16,7 +16,6 @@
             <th>Име</th>
             <th>Начало</th>
             <th>Публично</th>
-            <th>Изтрий</th>
         </tr>
     </thead>
     <tbody>
@@ -35,9 +34,6 @@
                 <td>@evnt.StartDate.Value.ToString("dd.MM.yyyy HH:mm")</td>
                 <td>
                     <button event-id="@evnt.Id" class="btn-link @publicColorClass js-update">@publicText</button>
-                </td>
-                <td class="removeWidth">
-                    <button event-id="@evnt.Id" event-name="@evnt.NameBg" class="btn-link js-delete btn-danger-text">Премахни</button>
                 </td>
             </tr>
         }
@@ -62,24 +58,6 @@
                     }
                 }
             });
-
-            $("#events").on("click", ".js-delete", function () {
-                var button = $(this);
-
-                bootbox.confirm("Сигурни ли сте, че искате да изтриете " + button.attr("event-name") + "?", function (result) {
-                    if (result) {
-                        $.ajax({
-                            method: "POST",
-                            url: "/admin/events/delete",
-                            ajaxasync: true,
-                            data: { id: button.attr("event-id") },
-                            success: function () {
-                                button.parents("tr").remove();
-                            }
-                        })
-                    }
-                })
-            })
 
             $('#events').on('click', '.js-update', function () {
                 var button = $(this);

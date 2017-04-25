@@ -65,6 +65,7 @@ namespace Baskerville.App.Areas.Admin.Controllers
             return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
 
+        [HttpPost]
         public ActionResult UpdatePublicity(int id)
         {
             var status = this.service.UpdatePublicity(id);
