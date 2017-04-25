@@ -21,7 +21,10 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Статистика", "Index", "Statistics")</li>
+                    @if (this.User.IsInRole("Admin") || this.User.IsInRole("Owner") || this.User.IsInRole("Manager"))
+                    {
+                        <li>@Html.ActionLink("Статистика", "Index", "Statistics")</li>
+                    }                  
 
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true">Абонати <span class="caret"></span></a>

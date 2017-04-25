@@ -74,12 +74,15 @@ namespace Baskerville.Services
                     })
                 .ToList();
 
+            int totalVisits = this.statistics.GetAll().Sum(s => s.HitsCount);
+
             var model = new StatisticsViewModel
             {
                 BulgarianSpeakersCount = bgSpeakers,
                 EnglishSpeakersCount = enSpeakers,
                 YearsRange = yearsRange,
-                LastLogs = logs
+                LastLogs = logs,
+                TotaVisits = totalVisits
             };
 
             return model;

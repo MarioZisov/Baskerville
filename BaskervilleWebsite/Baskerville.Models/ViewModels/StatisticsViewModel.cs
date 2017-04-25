@@ -12,6 +12,8 @@ namespace Baskerville.Models.ViewModels
 
         public int BulgarianSpeakersCount { get; set; }
 
+        public int TotaVisits { get; set; }
+
         public IEnumerable<short> YearsRange { get; set; }
 
         public IEnumerable<LastLogsViewModel> LastLogs { get; set; }
