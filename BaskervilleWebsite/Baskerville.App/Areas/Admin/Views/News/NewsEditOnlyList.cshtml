@@ -16,7 +16,6 @@
             <th>Заглавие</th>
             <th>От</th>
             <th>Публично</th>
-            <th>Изтрий</th>
         </tr>
     </thead>
     <tbody>
@@ -35,9 +34,6 @@
                 <td>@news.FromBg</td>
                 <td>
                     <button news-id="@news.Id" class="btn-link @publicColorClass js-update">@publicText</button>
-                </td>
-                <td>
-                    <button news-id="@news.Id" news-name="@news.TitleBg" class="btn-link js-delete btn-danger-text">Премахни</button>
                 </td>
             </tr>
         }
@@ -62,24 +58,6 @@
                     }
                 }
             });
-
-            $("#news").on("click", ".js-delete", function () {
-                var button = $(this);
-
-                bootbox.confirm("Сигурни ли сте, че искате да изтриете " + button.attr("news-name") + "?", function (result) {
-                    if (result) {
-                        $.ajax({
-                            method: "POST",
-                            url: "/admin/news/delete",
-                            ajaxasync: true,
-                            data: { id: button.attr("news-id") },
-                            success: function () {
-                                button.parents("tr").remove();
-                            }
-                        })
-                    }
-                })
-            })
 
             $('#news').on('click', '.js-update', function () {
                 var button = $(this);

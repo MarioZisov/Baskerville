@@ -68,5 +68,17 @@ namespace Baskerville.Services
             News _news = Mapper.Map<NewsViewModel, News>(model);
             this.news.Insert(_news);
         }
+
+        public HttpStatusCode UpdatePublicity(int id)
+        {
+            var _news = this.news.GetById(id);
+            if (_news == null)
+                return HttpStatusCode.NotFound;
+
+            _news.IsPublic = !_news.IsPublic;
+            this.news.Update(_news);
+
+            return HttpStatusCode.OK;
+        }
     }
 }

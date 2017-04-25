@@ -23,6 +23,8 @@ namespace Baskerville.App.Areas.Admin.Controllers
         public ActionResult Index()
         {
             var model = this.service.GetAllNews();
+            if (this.User.IsInRole("Employee"))
+                return View("NewsEditOnlyList", model);
 
             return View("NewsList", model);
         }
@@ -61,9 +63,18 @@ namespace Baskerville.App.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin,Owner,Manager")]
         public ActionResult Delete(int id)
         {
             HttpStatusCode status =  this.service.DeleteNewsById(id);
+
+            return new HttpStatusCodeResult(status);
+        }
+
+        [HttpPost]
+        public ActionResult UpdatePublicity(int id)
+        {
+            var status = this.service.UpdatePublicity(id);
 
             return new HttpStatusCodeResult(status);
         }
