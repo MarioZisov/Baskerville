@@ -37,8 +37,8 @@ namespace Baskerville.Models.ViewModels
         [Required(ErrorMessage = AdminMessages.RequiredFieldMessage)]
         [Display(Name = "Описание (АНГ)")]
         [StringLength(
-            maximumLength: AdminMessages.MaxEventNameLegnth
-            , MinimumLength = AdminMessages.MinEventNameLegnth
+            maximumLength: AdminMessages.MaxEventDescriptionLegnth
+            , MinimumLength = AdminMessages.MinEventDescriptionLegnth
             , ErrorMessage = AdminMessages.DescriptionLenghtMessage)]
         public string DescriptionEn { get; set; }
 

@@ -197,6 +197,10 @@
     <Compile Include="Areas\Admin\Controllers\PromotionsController.cs" />
     <Compile Include="Areas\Admin\Controllers\SubscribersController.cs" />
     <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
+    <Compile Include="Areas\English\Controllers\HomeController.cs" />
+    <Compile Include="Areas\English\Controllers\MenuController.cs" />
+    <Compile Include="Areas\English\Controllers\VerificationController.cs" />
+    <Compile Include="Areas\English\EnglishAreaRegistration.cs" />
     <Compile Include="Attributes\CustomAuthorizeAttribute.cs" />
     <Compile Include="Constants\PublicMessages.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -420,6 +424,17 @@
     <Content Include="Areas\Admin\Views\News\NewsForm.cshtml" />
     <Content Include="Areas\Admin\Views\Events\EventsEditOnlyList.cshtml" />
     <Content Include="Areas\Admin\Views\News\NewsEditOnlyList.cshtml" />
+    <Content Include="Areas\English\Views\web.config" />
+    <Content Include="Areas\English\Views\Shared\_Footer.cshtml" />
+    <Content Include="Areas\English\Views\Shared\_NavBar.cshtml" />
+    <Content Include="Areas\English\Views\Shared\_PublicLayout.cshtml" />
+    <Content Include="Areas\English\Views\Shared\404.cshtml" />
+    <Content Include="Areas\English\Views\Shared\MessagePage.cshtml" />
+    <Content Include="Areas\English\Views\Home\Index.cshtml" />
+    <Content Include="Areas\English\Views\Home\Menu.cshtml" />
+    <Content Include="Areas\English\Views\Home\MessageSent.cshtml" />
+    <Content Include="Areas\English\Views\Menu\Index.cshtml" />
+    <Content Include="Areas\English\Views\_ViewStart.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootbox.js" />
     <Content Include="Scripts\bootbox.min.js" />
@@ -538,7 +553,6 @@
     <Content Include="Views\Shared\_PublicLayout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Menu.cshtml" />
     <Content Include="Views\Shared\_NavBar.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
@@ -550,8 +564,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="CustomContent\" />
-    <Folder Include="Views\Base\" />
-    <Folder Include="Views\Verification\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

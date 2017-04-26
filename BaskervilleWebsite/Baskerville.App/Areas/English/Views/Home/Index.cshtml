@@ -1,0 +1,368 @@
+﻿@model Baskerville.Models.ViewModels.HomeViewModel
+
+<!-- Navigation -->
+<nav class="navbar navbar-default nav-justified navbar-fixed-top">
+    <div class="container">
+        <!-- Brand and toggle are grouped for better mobile display -->
+
+        <div class="navbar-header page-scroll">
+            <button class="navbar-toggle" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button"><span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button>
+        </div>
+        <!-- Navigation Links -->
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav nav-justified">
+                <li class="hidden">
+                    <a href="#page-top"></a>
+                </li>
+                <li> <a class="page-scroll" href="#page-top">Home</a> </li>
+                <li> <a class="page-scroll" href="#about">About</a> </li>
+                <li> @Html.ActionLink("Menu", "Index", "Menu", null, new { @class = "page-scroll" }) </li>
+                <li> <a class="page-scroll" href="#menu">Promotions</a> </li>
+                <li> <a class="page-scroll" href="#events">Events</a> </li>
+                <li> <a class="page-scroll" href="#contact">Contact us</a> </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+<!-- /.Navigation -->
+<!-- Header -->
+<header id="home">
+    <div class="container">
+        <!-- Intro Section: Logo, Heading & Address -->
+
+        <div class="intro-text">
+            <div class="fadeInDown wow">
+                <div class="intro-lead-in">
+                    <img alt="Full Spoon" class="img-responsive center-block" height="123" src="~/CustomContent/img/full-spoon-logo.svg" width="682">
+                    <p class="mrgn40-btm"><img alt="Full Spoon" src="~/CustomContent/img/bits/cake.svg"> </p>
+                </div>
+                <div class="intro-heading"> Muffins & Cakes Café </div>
+            </div>
+            <p class="address  fadeInUp wow">16 Ivan Denkoglu St<br> Sofia, Bulgaria<br> 9:00 - 23:00<br> 0886 796 888</p>
+        </div>
+        <!-- /.Intro Section: Logo, Heading & Address -->
+    </div>
+    <!-- /.container -->
+</header>
+<!-- /Header -->
+<!-- About Section -->
+<section id="about">
+    <div class="container">
+        <!-- Heading and Subheading -->
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="fadeInDown wow">
+                    <h2 class="section-heading">About <span class="orange-accent">us</span></h2>
+                    <h3 class="section-subheading">We are a small bakery and we craft delicious desserts.</h3>
+                </div>
+            </div>
+        </div>
+        <!-- /.Heading and Subheading -->
+        <!-- Border -->
+        <div class="bounceIn wow">
+            <div class="border">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <p><img alt="border" class="img-responsive center-block" height="26" src="~/CustomContent/img/border.svg" width="177"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.Border -->
+        <!-- Description -->
+        <div class="fadeInUp wow">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <p>It all started a few years ago when Julie gathered all her friends for her birthday party. Julie thought that it will be great to bake chocolate chip muffins and carrot cupcakes with summer tasting sangria.</p>
+                    <p class="mrgn20-top">
+                        The birthday party was a huge success and all her friends loved the delicious desserts she prepared. A few months later Julie met Matt who shared her love for desserts and they decided to open a small bakery shop in the heart of
+                        Edinburgh, the city they have chosen to live.
+                    </p>
+                    <p class="mrgn20-top">
+                        Now, <strong>Full Spoon</strong> is a favourite place for people with a sweet tooth and they gather every day for a tasty dessert and coffee. The products used are all natural and <strong>
+                            Full
+                            Spoon
+                        </strong> smells like Christmas every day. Come for a bite whenever you need something sweet.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- /.Description -->
+    </div>
+    <!-- /.container -->
+</section>
+<!-- /.About Section -->
+<!-- Promotions Section -->
+<section class="bg-darkest-gray" id="menu">
+    <div class="container">
+        <!-- Heading and Subheading -->
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="fadeInDown wow">
+                    <h2 class="section-heading">Our <span class="orange-accent">Promotions</span></h2>
+                    <h3 class="section-subheading">
+                        Come & try our daily specials.
+                    </h3>
+                </div>
+            </div>
+        </div>
+        <!-- /.Heading and Subheading -->
+        <!-- Sample Weekly Menu -->
+        <div class="fadeInUp wow">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1 text-center">
+                    <div class="menu-bg">
+                        <p>
+                            @Model.Promotions
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.Sample Weekly Menu -->
+    </div>
+    <!-- /.container -->
+</section>
+<!-- /.Promotions Section -->
+<!-- Events Section -->
+<section id="events">
+    <div class="container">
+
+        <!-- Heading and Subheading -->
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="fadeInDown wow">
+                    <h2 class="section-heading">Our <span class="dark-accent">Events</span></h2>
+                    <h3 class="section-subheading">Come and enjoy local musicians and artists.</h3>
+                </div>
+            </div>
+        </div>
+        <!-- /.Heading and Subheading -->
+        <!-- Border -->
+        <div class="bounceIn wow">
+            <div class="border">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <p><img alt="border" class="img-responsive center-block" height="26" src="~/CustomContent/img/border.svg" width="177"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.Border -->
+        <!-- Description -->
+        <div class="fadeInUp wow">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p class="mrgn20-btm">
+                        We organise live music evenings and weekend exhibitions every week. Every Friday you can enjoy some fresh music from the local talents. During the weekends we held small exhibitions to show the talent of local painters, photographers
+                        or everyone who is creative and wants to show their art. Stay in touch on Twitter and Facebook.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- /.Description -->
+        <!-- Events -->
+        <div class="row">
+            @Model.Events
+        </div>
+        <!-- /.Events -->
+    </div>
+    <!-- /.container -->
+</section>
+<!-- /.Events Section -->
+<!-- Testimonials Section -->
+<!-- Testimonials Section -->
+
+<section id="testimonials">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <!-- Owl Carousel -->
+                <div id="owl-testimonials" class="owl-carousel">
+
+                    @Model.News
+
+                </div>
+                <!-- /.Owl Carousel -->
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+
+</section>
+<!-- /.Testimonials Section -->
+<!-- Subscribe Section -->
+
+<section id="subscribe">
+    <div class="container">
+
+        <!-- Contact Heading -->
+        <div class="row">
+            <div class="col-lg-12 mrgn20-top text-center">
+                <div class="fadeInDown wow">
+                    <h2 class="section-heading">Subscribe us <span class="orange-accent">Today</span></h2>
+                    <h3 class="section-subheading">and get updates for special offers</h3>
+                </div>
+            </div>
+        </div>
+        <!-- /.Contact Heading -->
+        <!-- Border -->
+        <div class="bounceIn wow">
+            <div class="border">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <p><img alt="border" class="img-responsive center-block" height="26" src="~/CustomContent/img/border-white.svg" width="177"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.Border -->
+        <!-- Contact Form -->
+        <div class="fadeInUp wow">
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { @action = "/home/subscribe#subscribe", @id = "subscribeForm", name = "sentMessage" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="row">
+                    <div class="col-md-offset-3 col-md-6 text-center">
+                        <div class="form-group">
+                            @Html.EditorFor(model => model.SubscribeModelEn.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Your Email *", @Name = "Email" } })
+                            @Html.ValidationMessage("Email", "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            @Html.DropDownListFor(model => model.SubscribeModelEn.PreferedLanguage, Model.SubscribeModelEn.Languages, "Prefered language", new { @class = "form-control", @Name = "PreferedLanguage" })
+                            @Html.ValidationMessage("PreferedLanguage", "", new { @class = "text-danger" })
+                        </div>
+                        <button class="btn btn-contact" type="submit">Subscribe</button>
+                    </div>
+                </div>
+            }
+        </div>
+        <!-- /Contact Form -->
+    </div>
+    <!-- /.container -->
+</section>
+
+<!-- /.Subscribe Section -->
+<!-- Contact Section -->
+
+<section id="contact">
+    <div class="container">
+        <!-- Contact Heading, Location & Social Connections -->
+
+        <div class="row">
+            <div class="col-lg-12 text-center mrgn20-btm">
+                <div class="fadeInDown wow">
+                    <h2 class="section-heading">Contact <span class="orange-accent">Us</span></h2>
+                    <p><img alt="Contact Us" class="img-responsive center-block" src="~/CustomContent/img/bits/fork-knife.svg"> </p>
+                    <p class="text-uppercase mrgn20-btm">16 Ivan Denkoglu St<br> Sofia, Bulgaria<br> 9:00 - 23:00<br> 0886 796 888</p>
+                    <ul class="list-inline social-buttons">
+                        <li>
+                            <a class="fa fa-twitter" href="https://www.facebook.com/designify.me"></a>
+                        </li>
+                        <li>
+                            <a class="fa fa-facebook" href="https://www.facebook.com/designify.me"></a>
+                        </li>
+                        <li>
+                            <a class="fa fa-linkedin" href="https://www.facebook.com/designify.me"></a>
+                        </li>
+                        <li>
+                            <a class="fa fa-google-plus" href="https://www.facebook.com/designify.me"></a>
+                        </li>
+                        <li>
+                            <a class="fa fa-pinterest-p" href="https://www.facebook.com/designify.me"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- /.Contact Heading, Location & Social Connections -->
+    </div>
+    <!-- /.container -->
+    <!-- Location Map with an Iframe-->
+    <div id="iframe">
+        <div class="container-fluid">
+            <div class="row">
+                <iframe class="embed-responsive-item" height="300" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1626.098119222372!2d23.317461240401414!3d42.694095914672744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40aa856c866bab91%3A0x96f19df673e6ee48!2sBaskerville!5e0!3m2!1sen!2sbg!4v1491065516169"
+                        style="border:0" width="100%"></iframe>
+            </div>
+        </div>
+        <!-- /.container-fluid -->
+    </div>
+    <!-- /.Location Map with an Iframe -->
+
+    <div class="container">
+
+        <!-- Contact Heading -->
+        <div class="row">
+            <div class="col-lg-12 mrgn20-top text-center">
+                <div class="fadeInDown wow">
+                    <h2 class="section-heading">Send us a <span class="orange-accent">Message</span></h2>
+                    <h3 class="section-subheading">Do you have any questions or you just want to reserve a table? Send us a message and we will answer asap.</h3>
+                </div>
+            </div>
+        </div>
+        <!-- /.Contact Heading -->
+        <!-- Border -->
+        <div class="bounceIn wow">
+            <div class="border">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <p><img alt="border" class="img-responsive center-block" height="26" src="~/CustomContent/img/border.svg" width="177"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.Border -->
+        <!-- Contact Form -->
+        <div class="fadeInUp wow">
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { @action = "/home/send#contactForm", @id = "contactForm", name = "sentMessage" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.EditorFor(model => model.ContactModelEn.Name, new { htmlAttributes = new { @class = "form-control", placeholder = "Your Name *", @Name = "Name" } })
+                            @Html.ValidationMessage("Name", "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            @Html.EditorFor(model => model.ContactModelEn.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Your Email *", @Name = "Email" } })
+                            @Html.ValidationMessage("Email", "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            @Html.EditorFor(model => model.ContactModelEn.PhoneNumber, new { htmlAttributes = new { @class = "form-control", placeholder = "Your Phone *", @Name = "PhoneNumber" } })
+                            @Html.ValidationMessage("PhoneNumber", "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            @Html.DropDownListFor(model => model.ContactModelEn.Subject, Model.ContactModelEn.Subjects, "How cen we help you?", new { @class = "form-control", @Name = "Subject" })
+                            @Html.ValidationMessage("Subject", "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.TextAreaFor(model => model.ContactModelEn.Message, new { @class = "form-control", placeholder = "Tell us a little bit of your event or evening with us *", @Name = "Message" })
+                            @Html.ValidationMessage("Message", "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="clearfix"> </div>
+                    <div class="col-lg-12 text-left">
+                        <div id="success"> </div>
+                        <button class="btn btn-contact" type="submit">Send Message</button>
+                    </div>
+                </div>
+            }
+        </div>
+        <!-- /Contact Form -->
+    </div>
+    <!-- /.container -->
+</section>
+<!-- /.Contact Section -->
+
+@Html.Partial("_Footer")
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

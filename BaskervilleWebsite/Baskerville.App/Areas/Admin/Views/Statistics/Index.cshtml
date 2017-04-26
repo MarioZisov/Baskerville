@@ -39,7 +39,7 @@
         <h5 style="text-align: center">Посещения и нови абонати</h5>
         <p style="text-align: center">(Общо посещения: @Model.TotaVisits)</p>
         <div class="label-select">
-            <label class="inline-label"> Покажи данни за @Html.DropDownList("Year", new SelectList(Model.YearsRange), new { @class = "form-control input-sm inline-select", @id = "test" }) годинa </label>
+            <label class="inline-label"> Покажи данни за @Html.DropDownList("Year", new SelectList(Model.YearsRange), new { @class = "form-control input-sm inline-select", @id = "year" }) годинa </label>
         </div>
         <div id="chart_div"></div>
     </div>
@@ -55,7 +55,7 @@
         google.charts.setOnLoadCallback(drawPieChart);
         google.charts.setOnLoadCallback(drawBarChart);       
 
-        $('#test').change(drawBarChart)
+        $('#year').change(drawBarChart)
 
         function drawPieChart() {
 
