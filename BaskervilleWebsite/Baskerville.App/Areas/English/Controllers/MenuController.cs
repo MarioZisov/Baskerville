@@ -22,7 +22,7 @@ namespace Baskerville.App.Areas.English.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            var html = this.service.GetMenuHtml(false);
+            var html = this.service.GetMenuModel(false);
             return View(html);
         }
     }

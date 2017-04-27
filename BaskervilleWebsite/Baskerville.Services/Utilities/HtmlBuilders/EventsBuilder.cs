@@ -17,7 +17,7 @@ namespace Baskerville.Services.Utilities.HtmlBuilders
         //{2}: Event name.
         //{3}: Event description.
         //{4}: Event time.
-        private string eventTemplate = "<div class=\"col-sm-6 text-center\"><div class=\" bounceIn wow\"> <img alt=\"{0}\" class=\"img-responsive center-block\" height=\"600\" src=\"{1}\" width=\"800\"> </div><div class=\"fadeInUp wow\"><p class=\"mrgn20-top text-left\">{2}<br>{3}</p><p class=\"text-left\"><i class=\"fa fa-clock-o\" aria-hidden=\"true\"></i> {4}</p><p class=\"text-left mrgn30-top-btm\"><a class=\"btn btn-lg btn-outline\" href=\"https://www.facebook.com/designify.me\">RSVP Now</a> </p></div></div>";
+        private string eventTemplate = "<div class=\"col-sm-6 text-center\"><div class=\" bounceIn wow\"> <img alt=\"{0}\" class=\"img-responsive center-block\" height=\"600\" src=\"{1}\" width=\"800\"> </div><div class=\"fadeInUp wow\"><p class=\"mrgn20-top text-left\">{2}<br>{3}</p><p class=\"text-left\"><i class=\"fa fa-clock-o\" aria-hidden=\"true\"></i> {4}</p></div></div>";
 
         private IEnumerable<Event> events;
         private bool isLangBg;   
@@ -68,7 +68,6 @@ namespace Baskerville.Services.Utilities.HtmlBuilders
         //  <div class="fadeInUp wow">
         //      <p class="mrgn20-top text-left">{2}<br>{3}</p>
         //	    <p class="text-left"><i class="fa fa-clock-o" aria-hidden="true"></i> {4}</p>
-        //      <p class="text-left mrgn30-top-btm"><a class="btn btn-lg btn-outline" href="https://www.facebook.com/designify.me">RSVP Now</a> </p>
         //  </div>
         //</div>
         #endregion

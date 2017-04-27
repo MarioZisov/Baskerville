@@ -21,7 +21,7 @@ namespace Baskerville.Data.Migrations
         {
             this.AddRoles(context);
 
-            this.AddCategoriesWithSubcategories(context);l
+            this.AddCategoriesWithSubcategories(context);
         }
 
         private void AddRoles(BaskervilleContext context)

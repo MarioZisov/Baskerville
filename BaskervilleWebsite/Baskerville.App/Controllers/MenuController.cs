@@ -21,8 +21,8 @@ namespace Baskerville.App.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            var html = this.service.GetMenuHtml(false);
-            return View(html);
+            var model = this.service.GetMenuModel(false);
+            return View(model);
         }
     }
 }

@@ -604,7 +604,7 @@ header .intro-text-sm .intro-heading {
 }
 
 #servicesbg {
-    background-image: url(../img/headers/services-header.jpg);
+    background-image: url(../img/menu-header.jpeg);
 }
 
 #gallerybg {
@@ -1227,7 +1227,6 @@ section#contact .text-danger {
 ================================ */
 
 section#subscribe {
-    /*background: #1c1e21 url(../img/bits/book-a-table-bg.jpg);*/
     background: #1c1e21 url(../img/subscribe.jpg);
 
     color: #FFF;

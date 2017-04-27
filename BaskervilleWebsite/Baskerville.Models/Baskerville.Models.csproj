@@ -142,6 +142,7 @@
     <Compile Include="ViewModels\Public\ContactViewModelBg.cs" />
     <Compile Include="ViewModels\Public\ContactBindingModel.cs" />
     <Compile Include="ViewModels\Public\ContactViewModelEn.cs" />
+    <Compile Include="ViewModels\Public\MenuViewModel.cs" />
     <Compile Include="ViewModels\Public\SubscribeBindingModel.cs" />
     <Compile Include="ViewModels\Public\SubscribeViewModelBg.cs" />
     <Compile Include="ViewModels\Public\SubscribeViewModelEn.cs" />
