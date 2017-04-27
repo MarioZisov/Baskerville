@@ -5,25 +5,26 @@
     using System.Linq;
     using System.Web;
     using System.Text;
+    using System.Text.RegularExpressions;
 
     public class MenuBuilder : HtmlBuilder
     {
+        private const string ReplaceRegex = "[^a-zA-Z0-9]+";
+
         private const string CloseButtonBg = "Затвори";
         private const string CurrenyBg = "лв";
 
         private const string CloseButtonEn = "Close";
-        private const string CurrenyEn = "BGN";        
+        private const string CurrenyEn = "BGN";
 
         //Representatation of menu template
         //Place holders:
         //{0}: Id of the main <div> element.
-        //{1}: Category name.
-        //{2}: Short description for the category.
-        //{3}: Alternative image text.
-        //{4}: Image source.
-        //{5}: menuItemsArrangement + menuItems
-        //{6}: Close button language.
-        private string menuTemplate = "<div class=\"menu-modal modal fade\" id=\"{0}\" tabindex=\"-1\"><div class=\"modal-content\"><div class=\"close-modal\" data-dismiss=\"modal\"><div class=\"lr\"><div class=\"rl\"> </div></div></div><div class=\"container\"><div class=\"row\"><div class=\"col-lg-10 col-lg-offset-1\"><div class=\"modal-body\"><h2>{1}</h2><p class=\"item-intro text-muted\">{2}</p><img alt=\"{3}\" src=\"{4}\">{5}<button class=\"btn btn-primary\" data-dismiss=\"modal\" type=\"button\"><i class=\"fa fa-times\"></i> {6}</button></div></div></div></div></div></div>";
+        //{1}: Id of the category image.
+        //{2}: Category name.
+        //{3}: Menu Items.
+        //{4}: Close button language.       
+        private string menuTemplate = "<div class=\"menu-modal modal fade\" id=\"{0}\" tabindex=\"-1\"><div class=\"modal-content\"><div style=\"padding-bottom: 4%\"><div class=\"close-modal\" data-dismiss=\"modal\"><div class=\"lr\"><div class=\"rl\"> </div></div></div></div><div class=\"row\"><div class=\"col-md-12\"><header id=\"{1}\"><h2 style=\"padding: 100px;\">{2}</h2></header></div></div><div class=\"container\"><div class=\"row\"><div class=\"col-lg-10 col-lg-offset-1\"><div class=\"modal-body\">{3}<button class=\"btn btn-primary\" data-dismiss=\"modal\" type=\"button\"><i class=\"fa fa-times\"></i> {4}</button></div></div></div></div></div></div>";
         private StringBuilder templatesBuilder;
 
         //Representatation of a menu category
@@ -100,7 +101,8 @@
 
         private void GenerateMenuTemplate(ProductCategory category)
         {
-            string templateId = this.GenerateTemplateId(category.NameEn);
+            string templateId = this.GenerateHtmlId(category.NameEn);
+            string imageId = templateId;
 
             string categoryName = this.isLangBg ? category.NameBg : category.NameEn;
             string closeButton = this.isLangBg ? CloseButtonBg : CloseButtonEn;
@@ -108,10 +110,8 @@
             this.templatesBuilder.AppendFormat(
                 this.menuTemplate, 
                 templateId,
+                imageId,
                 categoryName, 
-                "Short description goes here.", 
-                templateId, 
-                "", 
                 this.categoriesBuilder.ToString(),
                 closeButton);            
         }
@@ -152,19 +152,12 @@
             return leftHalf;
         }
 
-        //Generates given string to camel case
-        private string GenerateTemplateId(string nameEn)
+        //Replace white spaces and special symbols with empty string.
+        private string GenerateHtmlId(string nameEn)
         {
-            StringBuilder templateId = new StringBuilder();
-            var words = nameEn.Split(' ');
-            templateId.Append(words[0].ToLower());
-            for (int i = 1; i < words.Length; i++)
-            {
-                templateId.Append(words[i][0].ToString().ToUpper());
-                templateId.Append(words[i].Remove(0, 1));
-            }
+            string templateId = Regex.Replace(nameEn, ReplaceRegex, "");
 
-            return templateId.ToString();
+            return templateId;
         }
 
         #region Menu Template - Wide View
@@ -172,11 +165,22 @@
         //    <div class="modal-content">
         //        <!-- Close Modal Arrow -->
         //
+        //    <div style="padding-bottom: 4%">
         //        <div class="close-modal" data-dismiss="modal">
         //            <div class="lr">
         //                <div class="rl"> </div>
         //            </div>
         //        </div>
+        //    </div>
+        //
+        //    <div class="row">
+        //        <div class="col-md-12">
+        //            <header id="{1}">
+        //                <h2 style="padding: 100px;">{2}</h2>
+        //            </header>
+        //        </div>
+        //    </div>
+        //	
         //        <!-- /.Close Modal Arrow -->
         //
         //        <div class="container">
@@ -186,12 +190,9 @@
         //
         //                    <div class="modal-body">
         //                        <!-- Menu Details Follow Here -->
-        //
-        //                        <h2>{1}</h2>
-        //                        <p class="item-intro text-muted">{2}</p>
-        //                        <img alt="{3}" src="{4}"> {5}
+        //						  {3}
         //                        <!-- /.Menu Details End Here -->
-        //                        <button class="btn btn-primary" data-dismiss="modal" type="button"><i class="fa fa-times"></i> Close</button>
+        //                        <button class="btn btn-primary" data-dismiss="modal" type="button"><i class="fa fa-times"></i> {4}</button>
         //                    </div>
         //                    <!-- /.Modal Body -->
         //                </div>

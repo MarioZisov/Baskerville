@@ -623,6 +623,39 @@ header .intro-text-sm .intro-heading {
     background-image: url(../img/headers/contact-header.jpg);
 }
 
+/*Menu Categories Images*/
+
+#HotDrinks {
+    background-image: url(../img/hot-drinks.jpg);
+}
+
+#SoftDrinks {
+    background-image: url(../img/soft-drinks.jpg);
+}
+
+#Beers {
+    background-image: url(../img/beers.jpg);
+}
+
+#Cocktails {
+    background-image: url(../img/cocktails.jpeg);
+}
+
+#LiqueursShots {
+    background-image: url(../img/shots.jpg);
+}
+
+#WinesChampagne {
+    background-image: url(../img/wine.jpg);
+}
+
+#Spirits {
+    background-image: url(../img/spirits.jpg);
+}
+
+#FoodsAppetizers {
+    background-image: url(../img/food.jpeg);
+}
 
 /* Sections Global Styles
 ================================ */
@@ -809,42 +842,56 @@ section#menuv2 .panel-group .panel+.panel {
 }
 
 section#menuv2 .panel-default>.panel-heading.menu01 {
-    background: url(../img/gallery/coffee-tea-01.jpg) no-repeat;
+    background: url(../img/hot-drinks.jpg) no-repeat;
     background-size: cover;
     background-position: center left;
     color: #FFF
 }
 
 section#menuv2 .panel-default>.panel-heading.menu02 {
-    background: url(../img/gallery/specialty-drinks-02.jpg) no-repeat;
+    background: url(../img/soft-drinks.jpg) no-repeat;
     background-size: cover;
     background-position: center left;
     color: #FFF
 }
 
 section#menuv2 .panel-default>.panel-heading.menu03 {
-    background: url(../img/gallery/party-food-03.jpg) no-repeat;
+    background: url(../img/beers.jpg) no-repeat;
     background-size: cover;
     background-position: center left;
     color: #FFF
 }
 
 section#menuv2 .panel-default>.panel-heading.menu04 {
-    background: url(../img/gallery/specialty-drinks-05.jpg) no-repeat;
+    background: url(../img/cocktails.jpeg) no-repeat;
     background-size: cover;
     background-position: center left;
     color: #FFF
 }
 
 section#menuv2 .panel-default>.panel-heading.menu05 {
-    background: url(../img/gallery/party-food-06.jpg) no-repeat;
+    background: url(../img/shots.jpg) no-repeat;
     background-size: cover;
     background-position: center left;
     color: #FFF
 }
 
 section#menuv2 .panel-default>.panel-heading.menu06 {
-    background: url(../img/gallery/party-food-04.jpg) no-repeat;
+    background: url(../img/wine.jpg) no-repeat;
+    background-size: cover;
+    background-position: center left;
+    color: #FFF
+}
+
+section#menuv2 .panel-default>.panel-heading.menu07 {
+    background: url(../img/spirits.jpg) no-repeat;
+    background-size: cover;
+    background-position: center left;
+    color: #FFF
+}
+
+section#menuv2 .panel-default>.panel-heading.menu08 {
+    background: url(../img/food.jpeg) no-repeat;
     background-size: cover;
     background-position: center left;
     color: #FFF
