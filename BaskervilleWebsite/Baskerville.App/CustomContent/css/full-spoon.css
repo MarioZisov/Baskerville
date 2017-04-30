@@ -16,7 +16,7 @@ body {
 }
 
 .text-primary {
-    color: green;
+    color: darkgreen;
 }
 
 p {
@@ -37,14 +37,14 @@ a.active {
 }
 
 a {
-    color: green;
+    color: darkgreen;
 }
 
 a:hover,
 a:focus,
 a:active,
 a.active {
-    color: green;
+    color: darkgreen;
     text-decoration: none;
 }
 
@@ -110,29 +110,29 @@ h6 {
 
 .btn-primary {
     color: #fff;
-    background-color: green;
-    border-color: green
+    background-color: darkgreen;
+    border-color: darkgreen
 }
 
 .btn-primary:focus,
 .btn-primary.focus {
     color: #fff;
-    background-color: green;
-    border-color: green
+    background-color: darkgreen;
+    border-color: darkgreen
 }
 
 .btn-primary:hover {
     color: #fff;
-    background-color: green;
-    border-color: green
+    background-color: darkgreen;
+    border-color: darkgreen
 }
 
 .btn-primary:active,
 .btn-primary.active,
 .open>.dropdown-toggle.btn-primary {
     color: #fff;
-    background-color: green;
-    border-color: green
+    background-color: darkgreen;
+    border-color: darkgreen
 }
 
 .btn-primary:active:hover,
@@ -145,8 +145,8 @@ h6 {
 .btn-primary.active.focus,
 .open>.dropdown-toggle.btn-primary.focus {
     color: #fff;
-    background-color: green;
-    border-color: green
+    background-color: darkgreen;
+    border-color: darkgreen
 }
 
 .btn-primary:active,
@@ -173,12 +173,12 @@ fieldset[disabled] .btn-primary:active,
 .btn-primary.disabled.active,
 .btn-primary[disabled].active,
 fieldset[disabled] .btn-primary.active {
-    background-color: green;
-    border-color: green
+    background-color: darkgreen;
+    border-color: darkgreen
 }
 
 .btn-primary .badge {
-    color: green;
+    color: darkgreen;
     background-color: #fff
 }
 
@@ -197,7 +197,7 @@ fieldset[disabled] .btn-primary.active {
 .btn-outline.active,
 .open .dropdown-toggle.btn-outline {
     border: 2px solid #FFF;
-    color: green;
+    color: darkgreen;
     background-color: #FFF;
 }
 
@@ -223,11 +223,11 @@ fieldset[disabled] .btn-outline:active,
 .btn-outline[disabled].active,
 fieldset[disabled] .btn-outline.active {
     border-color: #eec32f;
-    background-color: green;
+    background-color: darkgreen;
 }
 
 .btn-outline .badge {
-    color: green;
+    color: darkgreen;
     background-color: #fff;
 }
 
@@ -235,10 +235,10 @@ fieldset[disabled] .btn-outline.active {
     text-transform: uppercase;
     font-family: 'Catamaran', sans-serif, Helvetica, Arial, sans-serif;
     font-weight: 700;
-    color: green;
+    color: darkgreen;
     background-color: transparent;
-    border: 2px solid green;
-    border-color: green
+    border: 2px solid darkgreen;
+    border-color: darkgreen
 }
 
 .btn-outline-orange:hover,
@@ -246,8 +246,8 @@ fieldset[disabled] .btn-outline.active {
 .btn-outline-orange:active,
 .btn-outline-orange.active,
 .open .dropdown-toggle.btn-outline-orange {
-    border: 2px solid green;
-    color: green;
+    border: 2px solid darkgreen;
+    color: darkgreen;
     background-color: #FFF;
 }
 
@@ -273,11 +273,11 @@ fieldset[disabled] .btn-outline-orange:active,
 .btn-outline-orange[disabled].active,
 fieldset[disabled] .btn-outline-orange.active {
     border-color: #eec32f;
-    background-color: green;
+    background-color: darkgreen;
 }
 
 .btn-outline-orange .badge {
-    color: green;
+    color: darkgreen;
     background-color: #fff;
 }
 
@@ -289,7 +289,7 @@ fieldset[disabled] .btn-outline-orange.active {
     font-size: 18px;
     font-weight: 700;
     color: #fff;
-    background-color: green;
+    background-color: darkgreen;
 }
 
 .btn-contact:hover,
@@ -299,7 +299,7 @@ fieldset[disabled] .btn-outline-orange.active {
 .open .dropdown-toggle.btn-contact {
     /*border-color: #f6bf01;*/
     color: #fff;
-    background-color: limegreen;
+    background-color: green;
 }
 
 .btn-contact:active,
@@ -324,11 +324,11 @@ fieldset[disabled] .btn-contact:active,
 .btn-contact[disabled].active,
 fieldset[disabled] .btn-contact.active {
     border-color: #eec32f;
-    background-color: green;
+    background-color: darkgreen;
 }
 
 .btn-contact .badge {
-    color: green;
+    color: darkgreen;
     background-color: #fff;
 }
 
@@ -338,19 +338,19 @@ fieldset[disabled] .btn-contact.active {
 
 .navbar-default {
     border-color: transparent;
-    background-color: green;
+    background-color: darkgreen;
 }
 
 .navbar-default .navbar-brand {
     font-family: 'Catamaran', sans-serif, Helvetica, Arial;
-    color: green;
+    color: darkgreen;
 }
 
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus,
 .navbar-default .navbar-brand:active,
 .navbar-default .navbar-brand.active {
-    color: green;
+    color: darkgreen;
 }
 
 .navbar-default .navbar-collapse {
@@ -408,7 +408,7 @@ fieldset[disabled] .btn-contact.active {
     .navbar-default {
         padding: 15px 0;
         border: 0;
-        background-color: green;
+        background-color: darkgreen;
         color: #FFF;
         -webkit-transition: padding .3s;
         -moz-transition: padding .3s;
@@ -425,7 +425,7 @@ fieldset[disabled] .btn-contact.active {
     }
     .navbar-default.navbar-shrink {
         /*padding: 10px 0; Can be activated to shrink the navbar when page is scrolled */
-        background-color: green;
+        background-color: darkgreen;
         color: #FFF;
     }
     .navbar-default.navbar-shrink .navbar-brand {
@@ -709,7 +709,7 @@ section#menu strong.title {
 }
 
 section#menu .orange-bg {
-    background-color: green;
+    background-color: darkgreen;
     padding: 40px 20px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -749,7 +749,7 @@ section#menu-inner strong.title {
 }
 
 section#menu-inner .orange-bg {
-    background-color: green;
+    background-color: darkgreen;
     padding: 40px 20px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -833,7 +833,7 @@ section#menuv2 .panel-title a.active {
 
 section#menuv2 .panel-default>.panel-heading+.panel-collapse>.panel-body {
     border-top-color: #f9f9f9;
-    color: green;
+    color: darkgreen;
     background-color: rgba(255, 255, 255, 0.1);
 }
 
@@ -926,7 +926,7 @@ section#weeklyspecials strong.title {
 }
 
 section#weeklyspecials .orange-bg {
-    background-color: green;
+    background-color: darkgreen;
     padding: 40px 20px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -965,7 +965,7 @@ section#weeklyspecials-inner strong.title {
 }
 
 section#weeklyspecials-inner .orange-bg {
-    background-color: green;
+    background-color: darkgreen;
     padding: 40px 20px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -1054,7 +1054,7 @@ section#team-inner h3.section-subheading {
     text-transform: none;
     font-size: 36px;
     font-weight: 900;
-    color: green;
+    color: darkgreen;
 }
 
 .team-member p {
@@ -1066,7 +1066,7 @@ section#team-inner h3.section-subheading {
 ================================ */
 
 section#events {
-    background: green;
+    background: darkgreen;
     color: #FFF;
 }
 
@@ -1087,7 +1087,7 @@ section#testimonials h2 {
     font-family: 'Alice', serif;
     font-weight: bold;
     font-size: 36px;
-    color: green
+    color: darkgreen
 }
 
 section#testimonials p {
@@ -1212,7 +1212,7 @@ section#contact .form-control {
 }
 
 section#contact .form-control:focus {
-    border-color: green;
+    border-color: darkgreen;
     box-shadow: none;
 }
 
@@ -1335,7 +1335,7 @@ section#subscribe .form-control {
 }
 
 section#subscribe .form-control:focus {
-    border-color: green;
+    border-color: darkgreen;
     box-shadow: none;
 }
 
@@ -1380,7 +1380,7 @@ section#subscribe .text-danger {
 }
 
 #four-o-four h3 {
-    color: green;
+    color: darkgreen;
     font-size: 11em
 }
 
@@ -1448,7 +1448,7 @@ ul.social-buttons li a {
 ul.social-buttons li a:hover,
 ul.social-buttons li a:focus,
 ul.social-buttons li a:active {
-    background-color: green;
+    background-color: darkgreen;
 }
 
 
@@ -1555,7 +1555,7 @@ ul.social-buttons li a:active {
     font-size: 2em;
     font-family: 'Alice', serif;
     font-weight: bold;
-    color: green;
+    color: darkgreen;
 }
 
 .menu-modal .modal-content p {
@@ -1681,7 +1681,7 @@ img::-moz-selection {
 }
 
 body {
-    webkit-tap-highlight-color: green;
+    webkit-tap-highlight-color: darkgreen;
 }
 
 .border {
@@ -1689,7 +1689,7 @@ body {
 }
 
 .hovercta-bg {
-    background-color: green;
+    background-color: darkgreen;
     padding: 30px;
     margin: 20px 0;
     -webkit-transition: all .6s;
@@ -1714,7 +1714,7 @@ body {
 ================================ */
 
 .orange-accent {
-    color: green
+    color: darkgreen
 }
 
 .white-accent {
