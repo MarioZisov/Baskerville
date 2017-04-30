@@ -14,7 +14,7 @@ namespace Baskerville.Data.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
-            AutomaticMigrationDataLossAllowed = false;
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(BaskervilleContext context)
@@ -108,7 +108,7 @@ namespace Baskerville.Data.Migrations
                 ProductCategory cocktails = new ProductCategory
                 {
                     IsPrimary = true,
-                    NameBg = "Безалкохолни Напитки",
+                    NameBg = "Коктейли",
                     NameEn = "Cocktails",
                     Subcategories = new List<ProductCategory>
                     {
