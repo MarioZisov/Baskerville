@@ -32,7 +32,7 @@
         //{0}: Sub category name.
         //{1}: Left column elements.
         //{2}: Right column elements.
-        private string menuCategory = "<div class=\"row\"><h2 class=\"text-left\">{0}</h2><div class=\"col-md-6 text-left\">{1}</div><div class=\"col-md-6 text-left\">{2}</div></div>";
+        private string menuCategory = "<div class=\"row\"><h2 class=\"text-left\">{0}</h2><div class=\"col-md-6 text-center\">{1}</div><div class=\"col-md-6 text-center\">{2}</div></div>";
         private StringBuilder categoriesBuilder;
 
         //Representatation of a menu item
