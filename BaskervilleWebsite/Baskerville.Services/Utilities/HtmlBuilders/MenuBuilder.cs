@@ -126,10 +126,11 @@
 
         private void GenerateProducts(ProductCategory category)
         {
-            int halfProductsCount = GetProductsHalf(category.Products.Count);
+            var availableProducts = category.Products.Where(p => p.IsPublic && !p.IsRemoved);
+            int halfProductsCount = GetProductsHalf(availableProducts.Count());
             int index = 0;
 
-            foreach (var product in category.Products)
+            foreach (var product in availableProducts)
             {
                 index++;
 
