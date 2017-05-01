@@ -1,16 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Baskerville.Data.Contracts.Repository;
-using Baskerville.Models.DataModels;
-using Baskerville.Data.Repository;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Baskerville.Models.ViewModels;
-using System.Data.Entity;
-using Microsoft.AspNet.Identity;
-
-namespace Baskerville.Services
+﻿namespace Baskerville.Services
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Data.Contracts.Repository;
+    using Models.DataModels;
+    using Data.Repository;
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using Models.ViewModels;
+    using System.Data.Entity;
+    using Microsoft.AspNet.Identity;
+
     public class UsersService : Service
     {
         private IRepository<ApplicationUser> users;
@@ -63,15 +63,7 @@ namespace Baskerville.Services
             }
 
             return false;
-        }
-
-        private IEnumerable<DateTime> GetUserLogsById(string userId, int logsCount)
-        {
-            var user = this.users.GetAll().Include("Logs").First(u => u.Id == userId);
-            var logs = user.Logs.Select(l => l.Date).OrderByDescending(l => l.Date).Take(logsCount);
-
-            return logs;
-        }
+        }        
 
         public IEnumerable<UserListViewModel> GetAllUsers()
         {
@@ -94,6 +86,14 @@ namespace Baskerville.Services
             }
 
             return model;
+        }
+
+        private IEnumerable<DateTime> GetUserLogsById(string userId, int logsCount)
+        {
+            var user = this.users.GetAll().Include("Logs").First(u => u.Id == userId);
+            var logs = user.Logs.Select(l => l.Date).OrderByDescending(l => l.Date).Take(logsCount);
+
+            return logs;
         }
     }
 }

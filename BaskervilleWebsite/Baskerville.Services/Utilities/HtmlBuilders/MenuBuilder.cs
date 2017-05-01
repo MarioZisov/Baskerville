@@ -6,6 +6,7 @@
     using System.Web;
     using System.Text;
     using System.Text.RegularExpressions;
+    using Enums;
 
     public class MenuBuilder : HtmlBuilder
     {
@@ -45,13 +46,13 @@
         private StringBuilder leftItemsBuilder;
         private StringBuilder rightItemsBuilder;
 
-        private bool isLangBg;
+        private DisplayLanguage lang;
         private ICollection<ProductCategory> categories;
 
-        public MenuBuilder(ICollection<ProductCategory> categories, bool isLangBg)
+        public MenuBuilder(ICollection<ProductCategory> categories, DisplayLanguage language)
         {
             this.categories = categories;
-            this.isLangBg = isLangBg;
+            this.lang = language;
             this.leftItemsBuilder = new StringBuilder();
             this.rightItemsBuilder = new StringBuilder();
             this.templatesBuilder = new StringBuilder();
@@ -104,8 +105,8 @@
             string templateId = this.GenerateHtmlId(category.NameEn);
             string imageId = templateId;
 
-            string categoryName = this.isLangBg ? category.NameBg : category.NameEn;
-            string closeButton = this.isLangBg ? CloseButtonBg : CloseButtonEn;
+            string categoryName = this.lang == DisplayLanguage.BG ? category.NameBg : category.NameEn;
+            string closeButton = this.lang == DisplayLanguage.BG ? CloseButtonBg : CloseButtonEn;
 
             this.templatesBuilder.AppendFormat(
                 this.menuTemplate, 
@@ -118,7 +119,7 @@
 
         private void GenerateCategory(ProductCategory category)
         {
-            string categoryName = this.isLangBg ? category.NameBg : category.NameEn;
+            string categoryName = this.lang == DisplayLanguage.BG ? category.NameBg : category.NameEn;
 
             string subCategoryName = category.IsPrimary ? "" : categoryName;
             this.categoriesBuilder.AppendFormat(this.menuCategory, subCategoryName, this.leftItemsBuilder, this.rightItemsBuilder);
@@ -134,9 +135,9 @@
             {
                 index++;
 
-                string productName = this.isLangBg ? product.NameBg : product.NameEn;
-                string description = this.isLangBg ? product.DescriptionBg : product.DescriptionEn;
-                string currency = this.isLangBg ? CurrenyBg : CurrenyEn;
+                string productName = this.lang == DisplayLanguage.BG ? product.NameBg : product.NameEn;
+                string description = this.lang == DisplayLanguage.BG ? product.DescriptionBg : product.DescriptionEn;
+                string currency = this.lang == DisplayLanguage.BG ? CurrenyBg : CurrenyEn;
 
                 if (index <= halfProductsCount)
                     this.leftItemsBuilder.AppendFormat(this.menuItem, productName, product.Price, currency, description);

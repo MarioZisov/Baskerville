@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Baskerville.Data.Contracts.Repository;
-using Baskerville.Models.DataModels;
-using Baskerville.Data.Repository;
-using Baskerville.Models.ViewModels;
-using Baskerville.Models.Enums;
-using Baskerville.Services.Utilities;
-
-namespace Baskerville.Services
+﻿namespace Baskerville.Services
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using Data.Contracts.Repository;
+    using Models.DataModels;
+    using Data.Repository;
+    using Models.ViewModels;
+    using Models.Enums;
+    using Utilities;
+
     public class StatisticsService : Service
     {
         private IRepository<Statistics> statistics;

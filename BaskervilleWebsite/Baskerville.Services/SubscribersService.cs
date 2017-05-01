@@ -1,19 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Baskerville.Data.Contracts.Repository;
-using Baskerville.Models.DataModels;
-using Baskerville.Data.Repository;
-using Baskerville.Models.ViewModels;
-using AutoMapper;
-using Baskerville.Services.Utilities;
-using Baskerville.Services.Constants;
-using Baskerville.Models.Enums;
-
-namespace Baskerville.Services
+﻿namespace Baskerville.Services
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using Data.Contracts.Repository;
+    using Models.DataModels;
+    using Data.Repository;
+    using Models.ViewModels;
+    using AutoMapper;
+    using Utilities;
+    using Constants;
+    using Models.Enums;
+
     public class SubscribersService : Service
     {
         private IRepository<Subscriber> subscribers;

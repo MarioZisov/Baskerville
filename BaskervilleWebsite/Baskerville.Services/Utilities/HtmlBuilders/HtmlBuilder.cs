@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Web;
-
-namespace Baskerville.Services.Utilities.HtmlBuilders
+﻿namespace Baskerville.Services.Utilities.HtmlBuilders
 {
+    using System.Text;
+    using System.Web;
+
     public abstract class HtmlBuilder
     {
         public HtmlBuilder()

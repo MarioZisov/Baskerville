@@ -1,11 +1,9 @@
-﻿using Baskerville.Models.DataModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace Baskerville.Services.Utilities.HtmlBuilders
+﻿namespace Baskerville.Services.Utilities.HtmlBuilders
 {
+    using Models.DataModels;
+    using Enums;
+    using System.Collections.Generic;
+    using System.Web;
     public class PromotionsBuilder : HtmlBuilder
     {
         //Representatation of promotion template
@@ -15,12 +13,12 @@ namespace Baskerville.Services.Utilities.HtmlBuilders
         private string promotionTemplate = "<strong class=\"title orange-accent\">{0}</strong><br> {1}<br><br>";
 
         private ICollection<Promotion> promotions;
-        private bool isLangBg;
+        private DisplayLanguage lang;
 
-        public PromotionsBuilder(ICollection<Promotion> promotions, bool isLangBg)
+        public PromotionsBuilder(ICollection<Promotion> promotions, DisplayLanguage language)
         {
             this.promotions = promotions;
-            this.isLangBg = isLangBg;
+            this.lang = language;
         }
 
         public override HtmlString Render()
@@ -35,8 +33,8 @@ namespace Baskerville.Services.Utilities.HtmlBuilders
         {
             foreach (var promotion in this.promotions)
             {
-                string promoName = this.isLangBg ? promotion.NameBg : promotion.NameEn;
-                string promoDescription = this.isLangBg ? promotion.DescriptionBg : promotion.DescriptionEn;
+                string promoName = this.lang == DisplayLanguage.BG ? promotion.NameBg : promotion.NameEn;
+                string promoDescription = this.lang == DisplayLanguage.BG ? promotion.DescriptionBg : promotion.DescriptionEn;
 
                 this.Builder.AppendFormat(this.promotionTemplate, promoName, promoDescription);
             }

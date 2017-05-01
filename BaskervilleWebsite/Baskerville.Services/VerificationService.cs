@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Baskerville.Data.Contracts.Repository;
-using Baskerville.Models.DataModels;
-using Baskerville.Data.Repository;
-using Baskerville.Services.Utilities;
-using Baskerville.Services.Constants;
-using System.Web;
-
-namespace Baskerville.Services
+﻿namespace Baskerville.Services
 {
+    using System;
+    using Data.Contracts.Repository;
+    using Models.DataModels;
+    using Data.Repository;
+    using Utilities;
+    using Constants;
+    using System.Web;
+
     public class VerificationService : Service
     {
         private IRepository<Subscriber> subscribers;

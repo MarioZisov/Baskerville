@@ -1,19 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Baskerville.Data.Contracts.Repository;
-using Baskerville.Models.DataModels;
-using Baskerville.Data.Repository;
-using Baskerville.Models.ViewModels;
-using AutoMapper;
-using System.Web.Mvc;
-using System.Data.Entity;
-using System.Net;
-
-namespace Baskerville.Services
+﻿namespace Baskerville.Services
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using Data.Contracts.Repository;
+    using Models.DataModels;
+    using Data.Repository;
+    using Models.ViewModels;
+    using AutoMapper;
+    using System.Web.Mvc;
+    using System.Data.Entity;
+    using System.Net;
+
     public class ProductsService : Service
     {
         private IRepository<Product> products;

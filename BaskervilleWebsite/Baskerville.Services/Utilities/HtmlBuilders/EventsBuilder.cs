@@ -1,13 +1,11 @@
-﻿using Baskerville.Models.DataModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
-
-namespace Baskerville.Services.Utilities.HtmlBuilders
+﻿namespace Baskerville.Services.Utilities.HtmlBuilders
 {
+    using Models.DataModels;
+    using Enums;
+    using System;
+    using System.Collections.Generic;
+    using System.Web;
+
     public class EventsBuilder : HtmlBuilder
     {
         //Representatation of event template
@@ -20,13 +18,13 @@ namespace Baskerville.Services.Utilities.HtmlBuilders
         private string eventTemplate = "<div class=\"col-sm-6 text-center\"><div class=\" bounceIn wow\"> <img alt=\"{0}\" class=\"img-responsive center-block\" height=\"600\" src=\"{1}\" width=\"800\"> </div><div class=\"fadeInUp wow\"><p class=\"mrgn20-top text-left\">{2}<br>{3}</p><p class=\"text-left\"><i class=\"fa fa-clock-o\" aria-hidden=\"true\"></i> {4}</p></div></div>";
 
         private IEnumerable<Event> events;
-        private bool isLangBg;   
+        private DisplayLanguage lang;   
 
 
-        public EventsBuilder(IEnumerable<Event> events, bool isLangBg)
+        public EventsBuilder(IEnumerable<Event> events, DisplayLanguage language)
         {
             this.events = events;
-            this.isLangBg = isLangBg;
+            this.lang = language;
         }
 
         public override HtmlString Render()
@@ -41,8 +39,8 @@ namespace Baskerville.Services.Utilities.HtmlBuilders
         {
             foreach (var evnt in this.events)
             {
-                string eventName = this.isLangBg ? evnt.NameBg : evnt.NameEn;
-                string eventDescription = this.isLangBg ? evnt.DescriptionBg : evnt.DescriptionEn;
+                string eventName = this.lang == DisplayLanguage.BG ? evnt.NameBg : evnt.NameEn;
+                string eventDescription = this.lang == DisplayLanguage.BG ? evnt.DescriptionBg : evnt.DescriptionEn;
                 string date = this.FormatDate(evnt.StartDate);
 
                 this.Builder.AppendFormat(this.eventTemplate, evnt.NameEn, evnt.ImageUrl, eventName, eventDescription, date);
@@ -52,7 +50,7 @@ namespace Baskerville.Services.Utilities.HtmlBuilders
         private string FormatDate(DateTime date)
         {
             string dayOfMonth = date.ToString("dd");
-            string month = this.isLangBg 
+            string month = this.lang == DisplayLanguage.BG
                 ? LanguageTranslator.TranslateEnBgMonth(date.ToString("MMMM")) 
                 : date.ToString("MMMM");
             string time = date.ToString("HH:mm");

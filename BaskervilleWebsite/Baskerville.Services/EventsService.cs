@@ -1,18 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Baskerville.Data.Contracts.Repository;
-using Baskerville.Models.DataModels;
-using Baskerville.Data.Repository;
-using Baskerville.Models.ViewModels;
-using AutoMapper;
-using System.Net;
-
-namespace Baskerville.Services
+﻿namespace Baskerville.Services
 {
-    public class EventsService : Service
+    using System.Collections.Generic;
+    using System.Linq;
+    using Data.Contracts.Repository;
+    using Models.DataModels;
+    using Data.Repository;
+    using Models.ViewModels;
+    using AutoMapper;
+    using System.Net;
+    using Contracts;
+
+    public class EventsService : Service, IEventsService
     {
         private IRepository<Event> events;
 

@@ -1,28 +1,20 @@
-﻿using Baskerville.Data.Contracts.Repository;
-using Baskerville.Data.Repository;
-using Baskerville.Models.DataModels;
-using Baskerville.Models.Enums;
-using Baskerville.Models.ViewModels;
-using Baskerville.Models.ViewModels.Public;
-using Baskerville.Services.Constants;
-using Baskerville.Services.Utilities;
-using Baskerville.Services.Utilities.HtmlBuilders;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data.Entity;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Net.Configuration;
-using System.Net.Mail;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-
-namespace Baskerville.Services
+﻿namespace Baskerville.Services
 {
+    using System;
+    using System.Linq;
+    using System.Web;
+    using System.Web.Mvc;
+    using Data.Contracts.Repository;
+    using Data.Repository;
+    using Models.DataModels;
+    using Models.Enums;
+    using Models.ViewModels;
+    using Models.ViewModels.Public;
+    using Constants;
+    using Utilities;
+    using Utilities.HtmlBuilders;
+    using Enums;
+
     public class HomeService : Service
     {
         private IRepository<Subscriber> subscribers;
@@ -31,8 +23,9 @@ namespace Baskerville.Services
         private IRepository<Event> events;
         private IRepository<News> news;
         private HtmlBuilder htmlBuilder;
+        private DisplayLanguage lang;
 
-        public HomeService(IDbContext context)
+        public HomeService(IDbContext context, DisplayLanguage language)
             : base(context)
         {
             this.categories = new Repository<ProductCategory>(context);
@@ -40,15 +33,16 @@ namespace Baskerville.Services
             this.events = new Repository<Event>(context);
             this.news = new Repository<News>(context);
             this.subscribers = new Repository<Subscriber>(context);
+            this.lang = language;
         }
 
-        public HomeViewModel GetHomeModel(bool isLangBg)
+        public HomeViewModel GetHomeModel()
         {
             HomeViewModel model = new HomeViewModel();
 
-            model.Promotions = this.GetPromotionsHtml(isLangBg);
-            model.Events = this.GetEventsHtml(isLangBg);
-            model.News = this.GetNewsHtml(isLangBg);
+            model.Promotions = this.GetPromotionsHtml();
+            model.Events = this.GetEventsHtml();
+            model.News = this.GetNewsHtml();
 
             model.ContactModelBg = new ContactViewModelBg();
             model.ContactModelEn = new ContactViewModelEn();
@@ -59,7 +53,7 @@ namespace Baskerville.Services
             return model;
         }        
 
-        public void CheckEmailUnicness(SubscribeBindingModel model, ModelStateDictionary modelState, bool isLangBg)
+        public void CheckEmailUnicness(SubscribeBindingModel model, ModelStateDictionary modelState)
         {
             if (model != null && model.Email != null)
             {
@@ -67,7 +61,7 @@ namespace Baskerville.Services
 
                 if (exists)
                 {
-                    string message = isLangBg ? PublicMessages.EmailExistMessageBg : PublicMessages.EmailExistMessageEn;
+                    string message = this.lang == DisplayLanguage.BG ? PublicMessages.EmailExistMessageBg : PublicMessages.EmailExistMessageEn;
                     modelState.AddModelError("Email", message);
                 }
             }
@@ -127,37 +121,37 @@ namespace Baskerville.Services
             this.SendVerificationEmail(verificationCode, email);
         }
 
-        private HtmlString GetPromotionsHtml(bool isLangBg)
+        private HtmlString GetPromotionsHtml()
         {
             var fitleredPromotions = this.promotions
                 .Find(c => c.IsPublic && !c.IsRemoved)
                 .ToList();
 
-            this.htmlBuilder = new PromotionsBuilder(fitleredPromotions, isLangBg);
+            this.htmlBuilder = new PromotionsBuilder(fitleredPromotions, this.lang);
             var html = this.htmlBuilder.Render();
 
             return html;
         }
 
-        private HtmlString GetEventsHtml(bool isLangBg)
+        private HtmlString GetEventsHtml()
         {
             var filteredEvents = this.events
                 .Find(e => e.IsPublic && !e.IsRemoved)
                 .ToList();
 
-            this.htmlBuilder = new EventsBuilder(filteredEvents, isLangBg);
+            this.htmlBuilder = new EventsBuilder(filteredEvents, this.lang);
             var html = this.htmlBuilder.Render();
 
             return html;
         }
 
-        private HtmlString GetNewsHtml(bool isLangBg)
+        private HtmlString GetNewsHtml()
         {
             var filteredNews = this.news
                 .Find(n => n.IsPublic && !n.IsRemoved)
                 .ToList();
 
-            this.htmlBuilder = new NewsBuilder(filteredNews, isLangBg);
+            this.htmlBuilder = new NewsBuilder(filteredNews, this.lang);
             var html = this.htmlBuilder.Render();
 
             return html;
@@ -175,5 +169,4 @@ namespace Baskerville.Services
             emailer.SendEmail(body, subject, true, email);
         }
     }
-
 }

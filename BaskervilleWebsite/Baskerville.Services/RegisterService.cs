@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Baskerville.Data.Contracts.Repository;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Baskerville.Data.Repository;
-using Baskerville.Models.DataModels;
-
-namespace Baskerville.Services
+﻿namespace Baskerville.Services
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Data.Contracts.Repository;
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using Data.Repository;
+    using Models.DataModels;
+
     public class RegisterService : Service
     {
         private IRepository<IdentityRole> roles;
