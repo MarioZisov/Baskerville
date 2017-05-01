@@ -596,7 +596,7 @@ header .intro-text-sm .intro-heading {
 }
 
 #aboutus {
-    background-image: url(../img/headers/aboutus-header.jpg);
+    background-image: url(../img/message-header.jpg);
 }
 
 #menubg {
@@ -1381,7 +1381,7 @@ section#subscribe .text-danger {
 
 #four-o-four h3 {
     color: darkgreen;
-    font-size: 11em
+    font-size: 80px;
 }
 
 #four-o-four p {
