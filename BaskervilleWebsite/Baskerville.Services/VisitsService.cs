@@ -4,15 +4,15 @@
     using Models.DataModels;
     using Data.Repository;
     using Utilities;
+    using Contracts;
 
-    public class VisitsService : Service
+    public class VisitsService : Service, IVisitsService
     {
         IRepository<Statistics> statistics;
 
-        public VisitsService(IDbContext context)
-            : base(context)
+        public VisitsService()
         {
-            this.statistics = new Repository<Statistics>(context);
+            this.statistics = new Repository<Statistics>(this.Context);
         }
 
         public void VisitsIncrement()

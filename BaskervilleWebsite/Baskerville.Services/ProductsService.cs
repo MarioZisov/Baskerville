@@ -10,17 +10,17 @@
     using System.Web.Mvc;
     using System.Data.Entity;
     using System.Net;
+    using Contracts;
 
-    public class ProductsService : Service
+    public class ProductsService : Service, IProductService
     {
         private IRepository<Product> products;
         private IRepository<ProductCategory> categories;
 
-        public ProductsService(IDbContext context)
-            : base(context)
+        public ProductsService()
         {
-            this.products = new Repository<Product>(context);
-            this.categories = new Repository<ProductCategory>(context);
+            this.products = new Repository<Product>(this.Context);
+            this.categories = new Repository<ProductCategory>(this.Context);
         }
 
         public ProductViewModel GetProduct(int id)

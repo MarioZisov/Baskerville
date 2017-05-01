@@ -1,21 +1,17 @@
-﻿using Baskerville.Data;
-using Baskerville.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.Routing;
-
-namespace Baskerville.App.Controllers
+﻿namespace Baskerville.App.Controllers
 {
+    using Services;
+    using Services.Contracts;
+    using System.Web.Mvc;
+    using System.Web.Routing;
+
     public abstract class BaseController : Controller
     {
-        private VisitsService service;
+        private IVisitsService service;
 
         protected BaseController()
         {
-            this.service = new VisitsService(new BaskervilleContext());
+            this.service = new VisitsService();
         }
 
         protected override void Initialize(RequestContext requestContext)

@@ -10,15 +10,16 @@
     using Utilities;
     using Constants;
     using Models.Enums;
+    using System.Net;
+    using Contracts;
 
-    public class SubscribersService : Service
+    public class SubscribersService : Service, ISubscribersService
     {
         private IRepository<Subscriber> subscribers;
 
-        public SubscribersService(IDbContext context)
-            : base(context)
+        public SubscribersService()
         {
-            this.subscribers = new Repository<Subscriber>(context);
+            this.subscribers = new Repository<Subscriber>(this.Context);
         }
 
         public IEnumerable<SubscriberViewModel> GetActiveSubscribers()
@@ -31,11 +32,18 @@
             return subscribersViewModel;
         }
 
-        public void RemoveSubscriber(int id)
+        public HttpStatusCode RemoveSubscriber(int id)
         {
             var subscriber = this.subscribers.GetById(id);
-            subscriber.IsRemoved = true;
-            this.subscribers.Update(subscriber);
+            if (subscriber != null)
+            {
+                subscriber.IsRemoved = true;
+                this.subscribers.Update(subscriber);
+
+                return HttpStatusCode.OK;
+            }
+
+            return HttpStatusCode.NotFound;
         }
 
         public void SendMessageToSubscribers(MessageViewModel model)

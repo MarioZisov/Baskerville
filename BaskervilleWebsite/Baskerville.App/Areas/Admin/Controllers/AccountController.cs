@@ -1,27 +1,25 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using Baskerville.Models.ViewModels.Account;
-using Baskerville.Models.DataModels;
-using Baskerville.Services;
-using Baskerville.Data;
-
-namespace Baskerville.App.Areas.Admin.Controllers
+﻿namespace Baskerville.App.Areas.Admin.Controllers
 {
-    [Authorize]
-    public class AccountController : Controller
+    using System.Linq;
+    using System.Threading.Tasks;
+    using System.Web;
+    using System.Web.Mvc;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.Owin;
+    using Microsoft.Owin.Security;
+    using Models.ViewModels.Account;
+    using Models.DataModels;
+    using Services.Contracts;
+
+    public class AccountController : AuthorizedController
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        private RegisterService service;
+        private IRegisterService service;
 
-        public AccountController()
+        public AccountController(IRegisterService service)
         {
-            this.service = new RegisterService(new BaskervilleContext());
+            this.service = service;
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)

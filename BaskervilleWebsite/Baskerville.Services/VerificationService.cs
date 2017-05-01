@@ -7,17 +7,17 @@
     using Utilities;
     using Constants;
     using System.Web;
+    using Contracts;
 
-    public class VerificationService : Service
+    public class VerificationService : Service, IVerificationService
     {
         private IRepository<Subscriber> subscribers;
         private IRepository<Statistics> statistics;
 
-        public VerificationService(IDbContext context)
-            : base(context)
+        public VerificationService()
         {
-            this.subscribers = new Repository<Subscriber>(context);
-            this.statistics = new Repository<Statistics>(context);
+            this.subscribers = new Repository<Subscriber>(this.Context);
+            this.statistics = new Repository<Statistics>(this.Context);
         }
 
         public bool VerificateSubscribtionCode(string code)

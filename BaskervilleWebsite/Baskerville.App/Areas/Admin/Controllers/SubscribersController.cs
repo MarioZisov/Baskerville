@@ -1,22 +1,17 @@
-﻿using Baskerville.Data;
-using Baskerville.Models.ViewModels;
-using Baskerville.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-
-namespace Baskerville.App.Areas.Admin.Controllers
+﻿namespace Baskerville.App.Areas.Admin.Controllers
 {
+    using Models.ViewModels;
+    using Services.Contracts;
+    using System.Net;
+    using System.Web.Mvc;
+
     public class SubscribersController : AuthorizedController
     {
-        private SubscribersService service;
+        private ISubscribersService service;
 
-        public SubscribersController()
+        public SubscribersController(ISubscribersService service)
         {
-            this.service = new SubscribersService(new BaskervilleContext());
+            this.service = service;
         }
 
         // GET: Subscribers
@@ -52,8 +47,9 @@ namespace Baskerville.App.Areas.Admin.Controllers
         [Authorize(Roles = "Admin,Owner")]
         public ActionResult Delete(int id)
         {
-            this.service.RemoveSubscriber(id);
-            return new HttpStatusCodeResult(HttpStatusCode.OK);
+            var status = this.service.RemoveSubscriber(id);
+
+            return new HttpStatusCodeResult(status);
         }
 
     }

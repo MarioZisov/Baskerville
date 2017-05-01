@@ -1,22 +1,16 @@
-﻿using Baskerville.App.Constants;
-using Baskerville.Data;
-using Baskerville.Models.ViewModels.Public;
-using Baskerville.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-
-namespace Baskerville.App.Controllers
+﻿namespace Baskerville.App.Controllers
 {
+    using Constants;
+    using Services.Contracts;
+    using System.Web.Mvc;
+
     public class VerificationController : BaseController
     {
-        private VerificationService service;
+        private IVerificationService service;
 
-        public VerificationController()
+        public VerificationController(IVerificationService service)
         {
-            this.service = new VerificationService(new BaskervilleContext());
+            this.service = service;
         }
 
         public ActionResult Subscribe(string code)
@@ -28,16 +22,14 @@ namespace Baskerville.App.Controllers
 
                 this.ViewBag.Header = PublicMessages.SubscribeVerifiedTitleEn;
                 this.ViewBag.Paragraph = PublicMessages.SubscribeVerifiedContentEn;
-
-                return View("MessagePage");
             }
             else
             {
                 this.ViewBag.Header = PublicMessages.WrongCodeTitleEn;
                 this.ViewBag.Paragraph = PublicMessages.WrongCodeContentEn;
-
-                return View("MessagePage");
             }
+
+            return View("MessagePage");
         }
 
         public ActionResult Unsubscribe(string code)
@@ -47,16 +39,14 @@ namespace Baskerville.App.Controllers
             {
                 this.ViewBag.Header = PublicMessages.UnsubscribeVerifiedTitleEn;
                 this.ViewBag.Paragraph = PublicMessages.UnsubscribeVerifiedContentEn;
-
-                return View("MessagePage");
             }
             else
             {
                 this.ViewBag.Header = PublicMessages.WrongCodeTitleEn;
                 this.ViewBag.Paragraph = PublicMessages.WrongCodeContentEn;
-
-                return View("MessagePage");
             }
+
+            return View("MessagePage");
         }
     }
 }

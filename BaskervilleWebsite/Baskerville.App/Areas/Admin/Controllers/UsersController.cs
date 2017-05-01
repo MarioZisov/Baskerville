@@ -1,27 +1,18 @@
-﻿using Baskerville.Data;
-using Baskerville.Models.DataModels;
-using Baskerville.Models.ViewModels;
-using Baskerville.Services;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNet.Identity.Owin;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.Security;
-
-namespace Baskerville.App.Areas.Admin.Controllers
+﻿namespace Baskerville.App.Areas.Admin.Controllers
 {
-    [Authorize(Roles = "Admin,Owner")]
-    public class UsersController : Controller
-    {
-        private UsersService service;
+    using Models.ViewModels;
+    using Services.Contracts;
+    using System.Net;
+    using System.Web.Mvc;
 
-        public UsersController()
+    [Authorize(Roles = "Admin,Owner")]
+    public class UsersController : AuthorizedController
+    {
+        private IUsersService service;
+
+        public UsersController(IUsersService service)
         {
-            var context = new BaskervilleContext();
-            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
-            this.service = new UsersService(context, userManager);
+            this.service = service;
         }
 
         [HttpGet]
@@ -56,11 +47,9 @@ namespace Baskerville.App.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Delete(string id)
         {
-            var result = this.service.DeleteUser(id);
-            if (result)
-                return new HttpStatusCodeResult(HttpStatusCode.OK);
-            else
-                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+            var status = this.service.DeleteUser(id);
+
+            return new HttpStatusCodeResult(status);
         }
     }
 }

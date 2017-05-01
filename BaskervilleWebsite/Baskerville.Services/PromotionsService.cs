@@ -8,15 +8,15 @@
     using Models.ViewModels;
     using AutoMapper;
     using System.Net;
+    using Contracts;
 
-    public class PromotionsService : Service
+    public class PromotionsService : Service, IPromotionService
     {
         private IRepository<Promotion> promotions;
 
-        public PromotionsService(IDbContext context)
-            : base(context)
+        public PromotionsService()
         {
-            this.promotions = new Repository<Promotion>(context);
+            this.promotions = new Repository<Promotion>(this.Context);
         }
 
         public IEnumerable<PromotionViewModel> GetAllPromotions()

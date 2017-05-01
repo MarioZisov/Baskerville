@@ -1,22 +1,17 @@
-﻿using Baskerville.Data;
-using Baskerville.Models.ViewModels;
-using Baskerville.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-
-namespace Baskerville.App.Areas.Admin.Controllers
+﻿namespace Baskerville.App.Areas.Admin.Controllers
 {
+    using Models.ViewModels;
+    using Services.Contracts;
+    using System.Net;
+    using System.Web.Mvc;
+
     public class NewsController : AuthorizedController
     {
-        NewsService service;
+        INewsService service;
 
-        public NewsController()
+        public NewsController(INewsService service)
         {
-            this.service = new NewsService(new BaskervilleContext());
+            this.service = service;
         }
 
         [HttpGet]

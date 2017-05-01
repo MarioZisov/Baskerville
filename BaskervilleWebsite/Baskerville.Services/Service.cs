@@ -1,22 +1,15 @@
-﻿using Baskerville.Data.Contracts.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Baskerville.Services
+﻿namespace Baskerville.Services
 {
+    using Data;
+    using Data.Contracts.Repository;
+
     public abstract class Service
     {
-        private IDbContext context;
-
-        public Service(IDbContext context)
+        public Service()
         {
-            this.context = context;
+            this.Context = new BaskervilleContext();
         }
 
-        protected IDbContext Context
-            => this.context;
+        protected IDbContext Context { get; private set; }
     }
 }

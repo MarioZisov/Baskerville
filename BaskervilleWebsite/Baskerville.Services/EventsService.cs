@@ -14,10 +14,9 @@
     {
         private IRepository<Event> events;
 
-        public EventsService(IDbContext context)
-            : base(context)
+        public EventsService()
         {
-            this.events = new Repository<Event>(context);
+            this.events = new Repository<Event>(this.Context);
         }
 
         public IEnumerable<EventViewModel> GetAllEvents()

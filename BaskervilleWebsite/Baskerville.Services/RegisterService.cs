@@ -7,17 +7,17 @@
     using Microsoft.AspNet.Identity.EntityFramework;
     using Data.Repository;
     using Models.DataModels;
+    using Contracts;
 
-    public class RegisterService : Service
+    public class RegisterService : Service, IRegisterService
     {
         private IRepository<IdentityRole> roles;
         private IRepository<ApplicationUser> users;
 
-        public RegisterService(IDbContext context)
-            : base(context)
+        public RegisterService()
         {
-            this.roles = new Repository<IdentityRole>(context);
-            this.users = new Repository<ApplicationUser>(context);
+            this.roles = new Repository<IdentityRole>(this.Context);
+            this.users = new Repository<ApplicationUser>(this.Context);
         }
 
         public IEnumerable<string> GetRolesNames()

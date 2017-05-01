@@ -11,23 +11,24 @@ using System.Data.Entity;
 using Baskerville.Services.Utilities.HtmlBuilders;
 using Baskerville.Models.ViewModels.Public;
 using Baskerville.Services.Enums;
+using Baskerville.Services.Contracts;
 
 namespace Baskerville.Services
 {
-    public class MenuService : Service
+    public class MenuService : Service, IMenuService
     {
         private IRepository<ProductCategory> categories;
         private IRepository<News> news;
         private HtmlBuilder htmlBuilder;
-        private DisplayLanguage lang;
-
-        public MenuService(IDbContext context, DisplayLanguage language)
-            : base(context)
+        
+        public MenuService()
         {
-            this.categories = new Repository<ProductCategory>(context);
-            this.news = new Repository<News>(context);
-            this.lang = language;
+            this.categories = new Repository<ProductCategory>(this.Context);
+            this.news = new Repository<News>(this.Context);
+            this.Lang = DisplayLanguage.BG;
         }
+
+        public DisplayLanguage Lang { get; set; }
 
         public MenuViewModel GetMenuModel()
         {
@@ -37,14 +38,14 @@ namespace Baskerville.Services
                 .Include("Subcategories.Products")
                 .ToList();
 
-            this.htmlBuilder = new MenuBuilder(filteredCategories, this.lang);
+            this.htmlBuilder = new MenuBuilder(filteredCategories, this.Lang);
             var menuHtml = this.htmlBuilder.Render();
 
             var allActiveNews = this.news
                 .Find(n => n.IsPublic && !n.IsRemoved)
                 .ToList();
 
-            this.htmlBuilder = new NewsBuilder(allActiveNews, this.lang);
+            this.htmlBuilder = new NewsBuilder(allActiveNews, this.Lang);
             var newsHtml = this.htmlBuilder.Render();
 
             MenuViewModel model = new MenuViewModel

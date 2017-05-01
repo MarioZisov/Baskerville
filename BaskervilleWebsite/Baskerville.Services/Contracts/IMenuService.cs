@@ -2,7 +2,7 @@
 {
     using Models.ViewModels.Public;
 
-    public interface IMenuService
+    public interface IMenuService : IMultilingual
     {
         MenuViewModel GetMenuModel();
     }

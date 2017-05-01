@@ -8,15 +8,15 @@
     using Models.ViewModels;
     using AutoMapper;
     using System.Net;
+    using Contracts;
 
-    public class NewsService : Service
+    public class NewsService : Service, INewsService
     {
         private IRepository<News> news;
 
-        public NewsService(IDbContext context)
-            : base(context)
+        public NewsService()
         {
-            this.news = new Repository<News>(context);
+            this.news = new Repository<News>(this.Context);
         }
 
         public IEnumerable<NewsViewModel> GetAllNews()

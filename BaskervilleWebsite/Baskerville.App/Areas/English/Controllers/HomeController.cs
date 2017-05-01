@@ -1,29 +1,28 @@
-﻿using AutoMapper;
-using Baskerville.App.Controllers;
-using Baskerville.Data;
-using Baskerville.Models.ViewModels;
-using Baskerville.Models.ViewModels.Public;
-using Baskerville.Services;
-using System.ComponentModel.DataAnnotations;
-using System.Diagnostics;
-using System.Web.Mvc;
-using System.Web.Routing;
-
-namespace Baskerville.App.Areas.English.Controllers
+﻿namespace Baskerville.App.Areas.English.Controllers
 {
+    using App.Controllers;
+    using AutoMapper;
+    using Models.ViewModels.Public;
+    using Services.Contracts;
+    using Services.Enums;
+    using System.Web.Mvc;
+
     public class HomeController : BaseController
     {
-        private HomeService service;
+        private const DisplayLanguage DefaultLanguage = DisplayLanguage.EN;
 
-        public HomeController()
+        private IHomeService service;
+
+        public HomeController(IHomeService service)
         {
-            this.service = new HomeService(new BaskervilleContext());
+            this.service = service;
+            this.service.Lang = DefaultLanguage;
         }
 
         [HttpGet]
         public ActionResult Index()
         {            
-            var model = this.service.GetHomeModel(false);
+            var model = this.service.GetHomeModel();
             return View(model);
         }
 
@@ -33,7 +32,7 @@ namespace Baskerville.App.Areas.English.Controllers
         {
             if (!ModelState.IsValid)
             {
-                var homeModel = this.service.GetHomeModel(false);
+                var homeModel = this.service.GetHomeModel();
                 //check language
                 if (true)
                     Mapper.Map(bindingModel, homeModel.ContactModelEn);
@@ -64,11 +63,11 @@ namespace Baskerville.App.Areas.English.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Subscribe(SubscribeBindingModel bindingModel)
         {
-            this.service.CheckEmailUnicness(bindingModel, this.ModelState, false);
+            this.service.CheckEmailUnicness(bindingModel, this.ModelState);
 
             if (!ModelState.IsValid)
             {
-                var homeModel = this.service.GetHomeModel(false);
+                var homeModel = this.service.GetHomeModel();
                 //check language
                 if (true)
                     Mapper.Map(bindingModel, homeModel.SubscribeModelEn);

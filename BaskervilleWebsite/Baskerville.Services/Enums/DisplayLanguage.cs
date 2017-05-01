@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Baskerville.Services.Enums
 {
-    public enum Language
+    public enum DisplayLanguage
     {
         BG,
         EN

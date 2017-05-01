@@ -1,22 +1,19 @@
-﻿using Baskerville.Data;
-using Baskerville.Models.ViewModels;
-using Baskerville.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-
-namespace Baskerville.App.Areas.Admin.Controllers
+﻿namespace Baskerville.App.Areas.Admin.Controllers
 {
+    using Data;
+    using Models.ViewModels;
+    using Services;
+    using Services.Contracts;
+    using System.Net;
+    using System.Web.Mvc;
+
     public class EventsController : AuthorizedController
     {
-        private EventsService service;
+        private IEventsService service;
 
-        public EventsController()
+        public EventsController(IEventsService service)
         {
-            this.service = new EventsService(new BaskervilleContext());
+            this.service = service;
         }
 
         [HttpGet]

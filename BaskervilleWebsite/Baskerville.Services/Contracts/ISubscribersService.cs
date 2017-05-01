@@ -1,13 +1,14 @@
 ﻿namespace Baskerville.Services.Contracts
 {
-    using Baskerville.Models.ViewModels;
+    using Models.ViewModels;
     using System.Collections.Generic;
+    using System.Net;
 
     public interface ISubscribersService
     {
         IEnumerable<SubscriberViewModel> GetActiveSubscribers();
 
-        void RemoveSubscriber(int id);
+        HttpStatusCode RemoveSubscriber(int id);
 
         void SendMessageToSubscribers(MessageViewModel model);
     }

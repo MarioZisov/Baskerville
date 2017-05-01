@@ -1,29 +1,27 @@
-﻿using Baskerville.App.Controllers;
-using Baskerville.Data;
-using Baskerville.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.Routing;
-
-namespace Baskerville.App.Areas.English.Controllers
+﻿namespace Baskerville.App.Areas.English.Controllers
 {
+    using App.Controllers;
+    using Services.Contracts;
+    using Services.Enums;
+    using System.Web.Mvc;
+
     public class MenuController : BaseController
     {
-        MenuService service;
+        private const DisplayLanguage DefaultLanguage = DisplayLanguage.EN;
 
-        public MenuController()
+        IMenuService service;
+
+        public MenuController(IMenuService service)
         {
-            this.service = new MenuService(new BaskervilleContext());
+            this.service = service;
+            this.service.Lang = DefaultLanguage;
         }
 
         [HttpGet]
         public ActionResult Index()
         {
-            var html = this.service.GetMenuModel(false);
-            return View(html);
+            var model = this.service.GetMenuModel();
+            return View(model);
         }
     }
 }

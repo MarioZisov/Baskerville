@@ -1,21 +1,15 @@
-﻿using Baskerville.App.Attributes;
-using Baskerville.Data;
-using Baskerville.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-
-namespace Baskerville.App.Areas.Admin.Controllers
+﻿namespace Baskerville.App.Areas.Admin.Controllers
 {
+    using Services.Contracts;
+    using System.Web.Mvc;
+
     public class StatisticsController : AuthorizedController
     {
-        private StatisticsService service;
+        private IStatisticsService service;
 
-        public StatisticsController()
+        public StatisticsController(IStatisticsService service)
         {
-            this.service = new StatisticsService(new BaskervilleContext());
+            this.service = service;
         }
 
         [HttpGet]

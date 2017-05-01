@@ -14,8 +14,9 @@
     using Utilities;
     using Utilities.HtmlBuilders;
     using Enums;
+    using Contracts;
 
-    public class HomeService : Service
+    public class HomeService : Service, IHomeService
     {
         private IRepository<Subscriber> subscribers;
         private IRepository<ProductCategory> categories;
@@ -23,18 +24,18 @@
         private IRepository<Event> events;
         private IRepository<News> news;
         private HtmlBuilder htmlBuilder;
-        private DisplayLanguage lang;
 
-        public HomeService(IDbContext context, DisplayLanguage language)
-            : base(context)
+        public HomeService()
         {
-            this.categories = new Repository<ProductCategory>(context);
-            this.promotions = new Repository<Promotion>(context);
-            this.events = new Repository<Event>(context);
-            this.news = new Repository<News>(context);
-            this.subscribers = new Repository<Subscriber>(context);
-            this.lang = language;
+            this.categories = new Repository<ProductCategory>(this.Context);
+            this.promotions = new Repository<Promotion>(this.Context);
+            this.events = new Repository<Event>(this.Context);
+            this.news = new Repository<News>(this.Context);
+            this.subscribers = new Repository<Subscriber>(this.Context);
+            this.Lang = DisplayLanguage.BG;
         }
+
+        public DisplayLanguage Lang { get; set; }
 
         public HomeViewModel GetHomeModel()
         {
@@ -61,7 +62,7 @@
 
                 if (exists)
                 {
-                    string message = this.lang == DisplayLanguage.BG ? PublicMessages.EmailExistMessageBg : PublicMessages.EmailExistMessageEn;
+                    string message = this.Lang == DisplayLanguage.BG ? PublicMessages.EmailExistMessageBg : PublicMessages.EmailExistMessageEn;
                     modelState.AddModelError("Email", message);
                 }
             }
@@ -127,7 +128,7 @@
                 .Find(c => c.IsPublic && !c.IsRemoved)
                 .ToList();
 
-            this.htmlBuilder = new PromotionsBuilder(fitleredPromotions, this.lang);
+            this.htmlBuilder = new PromotionsBuilder(fitleredPromotions, this.Lang);
             var html = this.htmlBuilder.Render();
 
             return html;
@@ -139,7 +140,7 @@
                 .Find(e => e.IsPublic && !e.IsRemoved)
                 .ToList();
 
-            this.htmlBuilder = new EventsBuilder(filteredEvents, this.lang);
+            this.htmlBuilder = new EventsBuilder(filteredEvents, this.Lang);
             var html = this.htmlBuilder.Render();
 
             return html;
@@ -151,7 +152,7 @@
                 .Find(n => n.IsPublic && !n.IsRemoved)
                 .ToList();
 
-            this.htmlBuilder = new NewsBuilder(filteredNews, this.lang);
+            this.htmlBuilder = new NewsBuilder(filteredNews, this.Lang);
             var html = this.htmlBuilder.Render();
 
             return html;

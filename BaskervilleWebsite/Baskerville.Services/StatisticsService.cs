@@ -8,19 +8,19 @@
     using Models.ViewModels;
     using Models.Enums;
     using Utilities;
+    using Contracts;
 
-    public class StatisticsService : Service
+    public class StatisticsService : Service, IStatisticsService
     {
         private IRepository<Statistics> statistics;
         private IRepository<Subscriber> subscribers;
         private IRepository<UserLog> userLogs;
 
-        public StatisticsService(IDbContext context)
-            : base(context)
+        public StatisticsService()
         {
-            this.statistics = new Repository<Statistics>(context);
-            this.subscribers = new Repository<Subscriber>(context);
-            this.userLogs = new Repository<UserLog>(context);
+            this.statistics = new Repository<Statistics>(this.Context);
+            this.subscribers = new Repository<Subscriber>(this.Context);
+            this.userLogs = new Repository<UserLog>(this.Context);
         }
 
         public IEnumerable<BarChartViewModel> GetBarChartData(int year)

@@ -1,7 +1,8 @@
 ﻿namespace Baskerville.Services.Contracts
 {
-    using Baskerville.Models.ViewModels;
+    using Models.ViewModels;
     using System.Collections.Generic;
+    using System.Net;
 
     public interface IUsersService
     {
@@ -9,7 +10,7 @@
 
         void UpdateUserRole(UserViewModel model);
 
-        bool DeleteUser(string id);
+        HttpStatusCode DeleteUser(string id);
 
         IEnumerable<UserListViewModel> GetAllUsers();
     }

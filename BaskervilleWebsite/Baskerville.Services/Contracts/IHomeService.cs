@@ -4,7 +4,7 @@
     using Models.ViewModels.Public;
     using System.Web.Mvc;
 
-    public interface IHomeService
+    public interface IHomeService : IMultilingual
     {
         HomeViewModel GetHomeModel();
 

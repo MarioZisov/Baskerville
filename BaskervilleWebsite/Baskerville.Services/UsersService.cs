@@ -10,21 +10,22 @@
     using Models.ViewModels;
     using System.Data.Entity;
     using Microsoft.AspNet.Identity;
+    using System.Net;
+    using Contracts;
 
-    public class UsersService : Service
+    public class UsersService : Service, IUsersService
     {
         private IRepository<ApplicationUser> users;
         private IRepository<IdentityRole> roles;
         private IRepository<IdentityUserRole> userRoles;
         private UserManager<ApplicationUser> userManager;
 
-        public UsersService(IDbContext context, UserManager<ApplicationUser> userManager)
-            : base(context)
+        public UsersService()
         {
-            this.users = new Repository<ApplicationUser>(context);
-            this.roles = new Repository<IdentityRole>(context);
-            this.userRoles = new Repository<IdentityUserRole>(context);
-            this.userManager = userManager;
+            this.users = new Repository<ApplicationUser>(this.Context);
+            this.roles = new Repository<IdentityRole>(this.Context);
+            this.userRoles = new Repository<IdentityUserRole>(this.Context);
+            this.userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>((DbContext)this.Context));
 
         }
 
@@ -53,16 +54,16 @@
             this.userManager.AddToRole(model.Id, model.RoleName);
         }
 
-        public bool DeleteUser(string id)
+        public HttpStatusCode DeleteUser(string id)
         {
             var user = this.users.GetById(id);
             if (user != null)
             {
                 this.users.Delete(user);
-                return true;
+                return HttpStatusCode.OK;
             }
 
-            return false;
+            return HttpStatusCode.NotFound;
         }        
 
         public IEnumerable<UserListViewModel> GetAllUsers()
