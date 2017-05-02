@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Baskerville.Models.DataModels
+﻿namespace Baskerville.Models.DataModels
 {
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+
     public class ProductCategory
     {
         public ProductCategory()
@@ -16,8 +13,10 @@ namespace Baskerville.Models.DataModels
 
         public int Id { get; set; }
 
+        [Required]
         public string NameBg { get; set; }
 
+        [Required]
         public string NameEn { get; set; }
 
         public bool IsRemoved { get; set; }
