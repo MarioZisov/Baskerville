@@ -108,7 +108,6 @@
     <Compile Include="DataModels\Promotion.cs" />
     <Compile Include="DataModels\Statistics.cs" />
     <Compile Include="DataModels\Subscriber.cs" />
-    <Compile Include="DataModels\MeasurementUnit.cs" />
     <Compile Include="DataModels\UserLog.cs" />
     <Compile Include="DataTransferObjects\SubscriberDto.cs" />
     <Compile Include="Enums\Language.cs" />
