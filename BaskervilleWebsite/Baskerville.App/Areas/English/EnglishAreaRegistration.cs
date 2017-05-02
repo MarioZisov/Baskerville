@@ -17,7 +17,7 @@ namespace Baskerville.App.Areas.English
             context.MapRoute(
                 "English_default",
                 "en/{controller}/{action}/{id}",
-                new { controller = "home", action = "Index", id = UrlParameter.Optional },
+                new { controller = "home", action = "index", id = UrlParameter.Optional },
                 namespaces: new[] { "Baskerville.App.Areas.English.Controllers" }
             );
         }

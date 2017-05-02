@@ -1,7 +1,7 @@
-﻿using System.Web.Mvc;
-
-namespace Baskerville.App.Areas.Admin
+﻿namespace Baskerville.App.Areas.Admin
 {
+    using System.Web.Mvc;
+
     public class AdminAreaRegistration : AreaRegistration 
     {
         public override string AreaName 
@@ -17,7 +17,7 @@ namespace Baskerville.App.Areas.Admin
             context.MapRoute(
                 "Admin_default",
                 "admin/{controller}/{action}/{id}",
-                new { area = "admin", action = "index", id = UrlParameter.Optional }
+                new { area = "admin", controller = "statistics", action = "index", id = UrlParameter.Optional }
             );
         }
     }
