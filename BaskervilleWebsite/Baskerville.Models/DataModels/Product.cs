@@ -1,25 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Baskerville.Models.DataModels
+﻿namespace Baskerville.Models.DataModels
 {
+    using Constants;
+    using System.ComponentModel.DataAnnotations;
+
     public class Product
     {
         public int Id { get; set; }
 
+        [Required]
+        [StringLength(
+            maximumLength: AdminMessages.MaxProductNameLegnth,
+            MinimumLength = AdminMessages.MinProductNameLegnth)]
         public string NameBg { get; set; }
 
+        [Required]
+        [StringLength(
+            maximumLength: AdminMessages.MaxProductNameLegnth,
+            MinimumLength = AdminMessages.MinProductNameLegnth)]
         public string NameEn { get; set; }
 
         public string DescriptionBg { get; set; }
 
         public string DescriptionEn { get; set; }
-
-        public double Quantity { get; set; }
 
         public double Price { get; set; }
 

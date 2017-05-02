@@ -1,15 +1,11 @@
-﻿using Baskerville.Models.Constants;
-using Baskerville.Models.DataModels;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Mvc;
-
-namespace Baskerville.Models.ViewModels
+﻿namespace Baskerville.Models.ViewModels
 {
+    using Constants;
+    using DataModels;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.Web.Mvc;
+
     public class ProductViewModel
     {       
         public ProductViewModel()
@@ -22,17 +18,17 @@ namespace Baskerville.Models.ViewModels
 
         [Required(ErrorMessage = AdminMessages.RequiredFieldMessage)]
         [StringLength(
-            maximumLength: AdminMessages.MaxProductNameLegnth
-            , MinimumLength = AdminMessages.MinProductNameLegnth
-            , ErrorMessage = AdminMessages.NameLenghtMessage)]
+            maximumLength: AdminMessages.MaxProductNameLegnth,
+            MinimumLength = AdminMessages.MinProductNameLegnth,
+            ErrorMessage = AdminMessages.NameLenghtMessage)]
         [Display(Name = "Име (БГ)")]
         public string NameBg { get; set; }
 
         [Required(ErrorMessage = AdminMessages.RequiredFieldMessage)]
         [StringLength(
-            maximumLength: AdminMessages.MaxProductNameLegnth
-            , MinimumLength = AdminMessages.MinProductNameLegnth
-            , ErrorMessage = AdminMessages.NameLenghtMessage)]
+            maximumLength: AdminMessages.MaxProductNameLegnth,
+            MinimumLength = AdminMessages.MinProductNameLegnth,
+            ErrorMessage = AdminMessages.NameLenghtMessage)]
         [Display(Name = "Име (АНГ)")]
         public string NameEn { get; set; }
 
@@ -41,10 +37,6 @@ namespace Baskerville.Models.ViewModels
 
         [Display(Name = "Описание (АНГ)")]
         public string DescriptionEn { get; set; }
-
-        [Required(ErrorMessage = AdminMessages.RequiredFieldMessage)]
-        [Display(Name = "Количество")]
-        public double Quantity { get; set; }
 
         [Required(ErrorMessage = AdminMessages.RequiredFieldMessage)]
         [Display(Name = "Цена")]
