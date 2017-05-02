@@ -1,24 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Baskerville.Models.DataModels
+﻿namespace Baskerville.Models.DataModels
 {
+    using Constants;
+    using System.ComponentModel.DataAnnotations;
+
     public class Promotion
     {
         public int Id { get; set; }
 
+        [Required]
+        [StringLength(
+            maximumLength: AdminMessages.MaxPromotionNameLength,
+            MinimumLength = AdminMessages.MinPromotionNameLength)]
         public string NameBg { get; set; }
 
+        [Required]
+        [StringLength(
+            maximumLength: AdminMessages.MaxPromotionNameLength,
+            MinimumLength = AdminMessages.MinPromotionNameLength)]
         public string NameEn { get; set; }
 
+        [Required]
+        [StringLength(
+            maximumLength: AdminMessages.MaxPromotionDescriptionLength,
+            MinimumLength = AdminMessages.MinPromotionDescriptionLength)]
         public string DescriptionBg { get; set; }
 
+        [Required]
+        [StringLength(
+            maximumLength: AdminMessages.MaxPromotionDescriptionLength,
+            MinimumLength = AdminMessages.MinPromotionDescriptionLength)]
         public string DescriptionEn { get; set; }
-
-        public string ImageUrl { get; set; }
 
         public bool IsRemoved { get; set; }
 

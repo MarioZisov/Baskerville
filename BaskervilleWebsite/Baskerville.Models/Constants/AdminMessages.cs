@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Baskerville.Models.Constants
+﻿namespace Baskerville.Models.Constants
 {
     internal static class AdminMessages
     {
@@ -59,5 +53,13 @@ namespace Baskerville.Models.Constants
         internal const int MaxFromLength = 20;
 
         internal const int MinFromLength = 2;
+
+        internal const int MaxPromotionNameLength = 50;
+
+        internal const int MinPromotionNameLength = 2;
+
+        internal const int MaxPromotionDescriptionLength = 500;
+
+        internal const int MinPromotionDescriptionLength = 10;
     }
 }
