@@ -18,7 +18,7 @@
             var result = this.service.VerificateSubscribtionCode(code);
             if (result)
             {
-                this.service.SendWelcomeEmail(code);
+                this.service.SendWelcomeEmail();
 
                 this.ViewBag.Header = PublicMessages.SubscribeVerifiedTitleEn;
                 this.ViewBag.Paragraph = PublicMessages.SubscribeVerifiedContentEn;

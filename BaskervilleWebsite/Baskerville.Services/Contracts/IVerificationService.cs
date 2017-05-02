@@ -4,7 +4,7 @@
     {
         bool VerificateSubscribtionCode(string code);
 
-        void SendWelcomeEmail(string code);
+        void SendWelcomeEmail();
 
         bool VerificateUnsubscribeCode(string code);
     }

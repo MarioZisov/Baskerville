@@ -13,6 +13,7 @@
     {
         private IRepository<Subscriber> subscribers;
         private IRepository<Statistics> statistics;
+        private string currentSubscriberEmail;
 
         public VerificationService()
         {
@@ -31,6 +32,8 @@
             if (passedHours > 24)
                 return false;
 
+            this.currentSubscriberEmail = subscriber.Email;
+
             string unsubsribeCode = CodeGenerator.GenerateVerificationCode(subscriber.Email);
 
             subscriber.IsActive = true;
@@ -46,9 +49,9 @@
             return true;
         }               
 
-        public void SendWelcomeEmail(string code)
+        public void SendWelcomeEmail()
         {
-            var subscriber = this.subscribers.GetFirst(s => s.SubscriptionVerificationCode == code && s.IsActive && !s.IsRemoved);
+            var subscriber = this.subscribers.GetFirst(s => s.Email == this.currentSubscriberEmail);
             Emailer emailer = new Emailer(MailSettings.SensatoSettings);
             string verificationUrl = "http://localhost:55555/verification/unsubscribe?code=" + HttpUtility.UrlEncode(subscriber.UnsubscribeVerificationCode);
 
