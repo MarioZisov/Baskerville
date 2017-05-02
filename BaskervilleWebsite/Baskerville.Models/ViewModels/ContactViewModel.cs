@@ -1,21 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Mvc;
-
-namespace Baskerville.Models.ViewModels
+﻿namespace Baskerville.Models.ViewModels
 {
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.Web.Mvc;
+
     public class ContactViewModel
     {
         #region English Properties       
         public readonly IEnumerable<SelectListItem> SubjectsEn = new List<SelectListItem>
         {
-            new SelectListItem {Text = "Question asdasdadsad", Value = "Question asdasdadsad" },
-            new SelectListItem {Text = "Another asdasdadsad", Value = "Another asdasdadsad" },
-            new SelectListItem {Text = "AAAA fakQuestion asdasdadsad", Value = "AAAA fakQuestion asdasdadsad" }
+            new SelectListItem {Text = "Option 1", Value = "Option 1" },
+            new SelectListItem {Text = "Option 2", Value = "Option 2" },
+            new SelectListItem {Text = "Option 3", Value = "Option 3" }
         };
 
         [Required]
@@ -37,9 +33,9 @@ namespace Baskerville.Models.ViewModels
         #region Builgarian Properties
         public readonly IEnumerable<SelectListItem> SubjectsBg = new List<SelectListItem>
         {
-            new SelectListItem {Text = "Question asdasdadsad", Value = "Question asdasdadsad" },
-            new SelectListItem {Text = "Another asdasdadsad", Value = "Another asdasdadsad" },
-            new SelectListItem {Text = "AAAA fakQuestion asdasdadsad", Value = "AAAA fakQuestion asdasdadsad" }
+            new SelectListItem {Text = "Вариант 1", Value = "Вариант 1" },
+            new SelectListItem {Text = "Вариант 2", Value = "Вариант 2" },
+            new SelectListItem {Text = "Вариант 3", Value = "Вариант 3" }
         };
         
         public string NameBg { get; set; }
