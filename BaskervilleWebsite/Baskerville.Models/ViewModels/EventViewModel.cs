@@ -48,7 +48,7 @@ namespace Baskerville.Models.ViewModels
 
         [Required(ErrorMessage = AdminMessages.RequiredFieldMessage)]
         [Display(Name = "Начало")]
-        public DateTime? StartDate
+        public DateTime StartDate
         {
             get { return this.startDate ?? DateTime.Now; }
             set { this.startDate = value; }

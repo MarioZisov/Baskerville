@@ -218,7 +218,6 @@
     <Compile Include="Areas\English\Controllers\MenuController.cs" />
     <Compile Include="Areas\English\Controllers\VerificationController.cs" />
     <Compile Include="Areas\English\EnglishAreaRegistration.cs" />
-    <Compile Include="Attributes\CustomAuthorizeAttribute.cs" />
     <Compile Include="Constants\PublicMessages.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
