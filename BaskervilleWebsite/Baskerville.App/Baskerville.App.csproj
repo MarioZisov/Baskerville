@@ -222,6 +222,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
+    <Compile Include="Controllers\StaticContentController.cs" />
     <Compile Include="Controllers\VerificationController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -398,7 +399,6 @@
     <Content Include="Content\DataTables\css\mixins.scss" />
     <Content Include="Content\DataTables\css\common.scss" />
     <Content Include="Areas\Admin\Views\web.config" />
-    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
@@ -432,7 +432,6 @@
     <Content Include="Areas\Admin\Views\Promotions\PromotionForm.cshtml" />
     <Content Include="Areas\Admin\Views\Subscribers\SubscribersReadOnlyList.cshtml" />
     <Content Include="Areas\Admin\Views\Products\ProductsReadOnlyList.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\_LoginPartial - Copy.cshtml" />
     <Content Include="Areas\Admin\Views\Users\UsersList.cshtml" />
     <Content Include="Areas\Admin\Views\Users\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Subscribers\Message.cshtml" />
@@ -571,7 +570,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_NavBar.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
-    <Content Include="Views\Home\MessageSent.cshtml" />
     <Content Include="Views\Shared\MessagePage.cshtml" />
     <Content Include="Views\Shared\404.cshtml" />
     <Content Include="Views\Menu\Index.cshtml" />

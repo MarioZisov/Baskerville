@@ -1,42 +1,38 @@
 ﻿
 @{
-    ViewBag.Title = "Response";
+    ViewBag.Title = "404";
 }
 
-<h2>Response</h2>
+@Html.Partial("_NavBar")
+<!-- Header Small -->
+<header id="notfound">
+    <div class="container">
+        <!-- Intro Section: Logo and Heading -->
 
-    @Html.Partial("_NavBar")
-    <!-- Header Small -->
-    <header id="aboutus">
-        <div class="container">
-            <!-- Intro Section: Logo and Heading -->
-
-            <div class="intro-text-sm">
-                <div class="intro-lead-in">
-                    <img alt="Full Spoon" class="img-responsive center-block" height="80" src="~/CustomContent/img/full-spoon-logo.svg" width="450">
-                    <p><img alt="Full Spoon" src="~/CustomContent/img/bits/cake.svg"> </p>
-                    <div class="intro-heading"> Muffins & Cakes Café </div>
-                </div>
-            </div>
-            <!-- /.Intro Section: Logo and Heading -->
-        </div>
-        <!-- /.container -->
-    </header>
-    <!-- /.Header Small -->
-    <!-- Section 404 -->
-    <section id="four-o-four">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <h3>404</h3>
-                    <p>Oopps, the thing you searched for doesn't exist or has been moved</p>
-                    <p><img src="~/CustomContent/img/bits/fork-knife.svg" class="img-responsive center-block" alt="Full Spoon" />
-                </div>
+        <div class="intro-text-sm">
+            <div style="padding-bottom: 30px" class="intro-lead-in">
+                <img alt="Baskerville" class="img-responsive center-block" height="80" src="~/CustomContent/img/baskerville5.png" width="450">
             </div>
         </div>
-    </section>
-    <!-- /.Section 404 -->
-    <!-- Footer -->
+        <!-- /.Intro Section: Logo and Heading -->
+    </div>
+    <!-- /.container -->
+</header>
+<!-- /.Header Small -->
+<!-- Section 404 -->
+<section id="four-o-four">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h3>404 :(</h3>
+                <p>Това което търсихте не съшествува или вече е премахнато</p>
+                <p><img src="~/CustomContent/img/icons/paw-green72.png" class="img-responsive center-block" alt="Baskerville" />
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /.Section 404 -->
+<!-- Footer -->
 @Html.Partial("_Footer")
 
 

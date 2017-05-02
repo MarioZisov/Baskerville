@@ -599,6 +599,10 @@ header .intro-text-sm .intro-heading {
     background-image: url(../img/message-header.jpg);
 }
 
+#notfound {
+    background-image: url(../img/error.jpg);
+}
+
 #menubg {
     background-image: url(../img/headers/menu-header.jpg);
 }
