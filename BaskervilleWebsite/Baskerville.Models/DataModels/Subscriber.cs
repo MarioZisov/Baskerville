@@ -1,23 +1,21 @@
-﻿using Baskerville.Models.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Baskerville.Models.DataModels
+﻿namespace Baskerville.Models.DataModels
 {
+    using Enums;
+    using System;
+    using System.ComponentModel.DataAnnotations;
+
     public class Subscriber
     {
         public int Id { get; set; }
         
+        [Required]
         public string Email { get; set; }
 
         public bool IsActive { get; set; }
 
         public Language PreferedLanguage { get; set; }
 
-        public DateTime? SubscriptionPendingDate { get; set; }
+        public DateTime SubscriptionPendingDate { get; set; }
 
         public DateTime? SubscriptionDate { get; set; }
 

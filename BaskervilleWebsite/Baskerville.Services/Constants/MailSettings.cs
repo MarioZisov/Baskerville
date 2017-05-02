@@ -10,8 +10,8 @@ namespace Baskerville.Services.Constants
     {
         internal const string SmtpSettings = "MyMailSettings/";
 
-        internal const string NoReplySettings = "smtp";
+        internal const string SensatoSettings = "smtp";
 
-        internal const string NoReplyEmailAdress = "sensato.report@gmail.com";
+        internal const string SensatoEmail = "sensato.report@gmail.com";
     }
 }

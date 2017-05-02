@@ -70,12 +70,12 @@
 
         public bool SendContactEmail(ContactBindingModel contactModel)
         {
-            var emailer = new Emailer(MailSettings.NoReplySettings);
+            var emailer = new Emailer(MailSettings.SensatoSettings);
 
             string body = $"Name: {contactModel.Name}{Environment.NewLine}Phone: {contactModel.PhoneNumber}{Environment.NewLine}Email: {contactModel.Email}{Environment.NewLine}{contactModel.Message}";
             string subject = contactModel.Subject;
 
-            return emailer.SendEmail(body, subject, false, MailSettings.NoReplyEmailAdress);
+            return emailer.SendEmail(body, subject, false, MailSettings.SensatoEmail);
         }
 
         public void AddSubscriber(SubscribeBindingModel subscribeModel)
@@ -160,7 +160,7 @@
 
         private void SendVerificationEmail(string verificationCode, string email)
         {
-            var emailer = new Emailer(MailSettings.NoReplySettings);
+            var emailer = new Emailer(MailSettings.SensatoSettings);
 
             string verificationUrl = "http://localhost:55555/verification/subscribe?code=" + HttpUtility.UrlEncode(verificationCode);
 

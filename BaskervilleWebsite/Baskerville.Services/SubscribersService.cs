@@ -58,7 +58,7 @@
                 .Select(s => s.Email)
                 .ToList();
 
-            Emailer emailer = new Emailer(MailSettings.NoReplySettings);
+            Emailer emailer = new Emailer(MailSettings.SensatoSettings);
 
             emailer.SendEmail(model.ContentBg, model.SubjectBg, false, subscribersBg);
             emailer.SendEmail(model.ContentEn, model.SubjectEn, false, subscribersEn);

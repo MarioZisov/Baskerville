@@ -27,7 +27,7 @@
             if (subscriber == null)
                 return false;
 
-            int passedHours = (DateTime.Now - subscriber.SubscriptionPendingDate).Value.Hours;
+            int passedHours = (DateTime.Now - subscriber.SubscriptionPendingDate).Hours;
             if (passedHours > 24)
                 return false;
 
@@ -35,6 +35,7 @@
 
             subscriber.IsActive = true;
             subscriber.SubscriptionDate = DateTime.Now;
+            subscriber.SubscriptionVerificationCode = null;
             subscriber.UnsubscribeVerificationCode = unsubsribeCode;
 
             this.subscribers.Update(subscriber);
@@ -48,7 +49,7 @@
         public void SendWelcomeEmail(string code)
         {
             var subscriber = this.subscribers.GetFirst(s => s.SubscriptionVerificationCode == code && s.IsActive && !s.IsRemoved);
-            Emailer emailer = new Emailer(MailSettings.NoReplySettings);
+            Emailer emailer = new Emailer(MailSettings.SensatoSettings);
             string verificationUrl = "http://localhost:55555/verification/unsubscribe?code=" + HttpUtility.UrlEncode(subscriber.UnsubscribeVerificationCode);
 
             string body = verificationUrl;

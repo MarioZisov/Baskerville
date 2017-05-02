@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Baskerville.Models.DataModels
+﻿namespace Baskerville.Models.DataModels
 {
+    using System;
+    using System.ComponentModel.DataAnnotations;
+
     public class UserLog
     {
         public int Id { get; set; }
