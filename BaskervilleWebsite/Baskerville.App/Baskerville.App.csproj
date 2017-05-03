@@ -447,6 +447,7 @@
     <Content Include="Areas\English\Views\Home\Index.cshtml" />
     <Content Include="Areas\English\Views\Menu\Index.cshtml" />
     <Content Include="Areas\English\Views\_ViewStart.cshtml" />
+    <Content Include="PrimaryMailSettings.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootbox.js" />
     <Content Include="Scripts\bootbox.min.js" />

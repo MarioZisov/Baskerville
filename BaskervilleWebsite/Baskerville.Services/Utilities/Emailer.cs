@@ -31,6 +31,12 @@ namespace Baskerville.Services.Utilities
             this.client.Host = section.Network.Host;
             this.client.Credentials = new NetworkCredential(section.Network.UserName, section.Network.Password);
             this.client.EnableSsl = section.Network.EnableSsl;
+
+            //this.client = new SmtpClient();
+            //this.client.Port = 587;
+            //this.client.Host = "smtp.gmail.com";
+            //this.client.Credentials = new NetworkCredential("sensato.report@gmail.com", "t0beesensato");
+            //this.client.EnableSsl = true;
         }
 
         public bool SendEmail(string body, string subject, bool isHtml, string receiver)
@@ -47,6 +53,7 @@ namespace Baskerville.Services.Utilities
                 foreach (var receiver in receivers)
                 {
                     MailMessage message = new MailMessage();
+                    //message.From = new MailAddress("sensato.report@gmail.com", "Baskerville");
                     message.From = new MailAddress(this.section.From, "Club Baskerville");
                     message.Subject = subject;
                     message.Body = body;
