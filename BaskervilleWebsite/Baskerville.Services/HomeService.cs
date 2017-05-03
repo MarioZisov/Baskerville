@@ -58,7 +58,7 @@
         {
             if (model != null && model.Email != null)
             {
-                bool exists = this.subscribers.Exists(s => s.Email == model.Email && s.IsActive);
+                bool exists = this.subscribers.Exists(s => s.Email == model.Email && s.IsActive && !s.IsRemoved);
 
                 if (exists)
                 {
