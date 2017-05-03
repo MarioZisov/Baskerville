@@ -18,6 +18,8 @@
 
     public class HomeService : Service, IHomeService
     {
+        private const DisplayLanguage DefaultLanguage = DisplayLanguage.BG;
+
         private IRepository<Subscriber> subscribers;
         private IRepository<ProductCategory> categories;
         private IRepository<Promotion> promotions;
@@ -32,7 +34,7 @@
             this.events = new Repository<Event>(this.Context);
             this.news = new Repository<News>(this.Context);
             this.subscribers = new Repository<Subscriber>(this.Context);
-            this.Lang = DisplayLanguage.BG;
+            this.Lang = DefaultLanguage;
         }
 
         public DisplayLanguage Lang { get; set; }
@@ -162,12 +164,23 @@
         {
             var emailer = new Emailer(MailSettings.SensatoSettings);
 
-            string verificationUrl = "http://localhost:55555/verification/subscribe?code=" + HttpUtility.UrlEncode(verificationCode);
+            string verificationUrl = this.GenerateSubscribtionUrl(verificationCode);
 
             string body = verificationUrl;
             string subject = "Subcribe";
 
             emailer.SendEmail(body, subject, true, email);
+        }
+
+        private string GenerateSubscribtionUrl(string verificationCode)
+        {
+            string url = this.Lang == DisplayLanguage.BG
+                ? "http://localhost:55555/verification/subscribe?code="
+                : "http://localhost:55555/en/verification/subscribe?code=";
+
+            string verificationUrl = url + HttpUtility.UrlEncode(verificationCode);
+
+            return verificationUrl;
         }
     }
 }

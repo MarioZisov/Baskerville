@@ -8,18 +8,24 @@
     using Constants;
     using System.Web;
     using Contracts;
+    using Enums;
 
     public class VerificationService : Service, IVerificationService
     {
+        private const DisplayLanguage DefaultLanguage = DisplayLanguage.BG;
+
         private IRepository<Subscriber> subscribers;
         private IRepository<Statistics> statistics;
         private string currentSubscriberEmail;
-
+                
         public VerificationService()
         {
             this.subscribers = new Repository<Subscriber>(this.Context);
             this.statistics = new Repository<Statistics>(this.Context);
+            this.Lang = DefaultLanguage;
         }
+
+        public DisplayLanguage Lang { get; set; }
 
         public bool VerificateSubscribtionCode(string code)
         {
@@ -53,7 +59,8 @@
         {
             var subscriber = this.subscribers.GetFirst(s => s.Email == this.currentSubscriberEmail);
             Emailer emailer = new Emailer(MailSettings.SensatoSettings);
-            string verificationUrl = "http://localhost:55555/verification/unsubscribe?code=" + HttpUtility.UrlEncode(subscriber.UnsubscribeVerificationCode);
+
+            string verificationUrl = this.GenerateUnsubscribeUrl(subscriber.UnsubscribeVerificationCode);
 
             string body = verificationUrl;
             string subject = "Unsubcribe";
@@ -73,6 +80,17 @@
 
             this.subscribers.Update(subscriber);
             return true;
+        }
+
+        private string GenerateUnsubscribeUrl(string code)
+        {
+            string url = this.Lang == DisplayLanguage.BG
+                ? "http://localhost:55555/verification/unsubscribe?code="
+                : "http://localhost:55555/en/verification/unsubscribe?code=";
+
+            string verificationUrl = url + HttpUtility.UrlEncode(code);
+
+            return verificationUrl;
         }
     }
 }

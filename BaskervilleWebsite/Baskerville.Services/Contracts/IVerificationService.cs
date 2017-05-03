@@ -1,6 +1,6 @@
 ﻿namespace Baskerville.Services.Contracts
 {
-    public interface IVerificationService
+    public interface IVerificationService : IMultilingual
     {
         bool VerificateSubscribtionCode(string code);
 

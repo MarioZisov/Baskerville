@@ -3,15 +3,19 @@
     using App.Controllers;
     using Constants;
     using Services.Contracts;
+    using Services.Enums;
     using System.Web.Mvc;
 
     public class VerificationController : BaseController
     {
+        private const DisplayLanguage DefaultLanguage = DisplayLanguage.EN;
+
         private IVerificationService service;
 
         public VerificationController(IVerificationService service)
         {
             this.service = service;
+            this.service.Lang = DefaultLanguage;
         }
 
         public ActionResult Subscribe(string code)

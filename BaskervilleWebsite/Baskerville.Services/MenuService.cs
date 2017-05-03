@@ -1,22 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Baskerville.Data.Contracts.Repository;
-using Baskerville.Models.DataModels;
-using Baskerville.Data.Repository;
-using System.Web;
-using System.Data.Entity;
-using Baskerville.Services.Utilities.HtmlBuilders;
-using Baskerville.Models.ViewModels.Public;
-using Baskerville.Services.Enums;
-using Baskerville.Services.Contracts;
-
-namespace Baskerville.Services
+﻿namespace Baskerville.Services
 {
+    using System.Linq;
+    using Data.Contracts.Repository;
+    using Models.DataModels;
+    using Data.Repository;
+    using System.Data.Entity;
+    using Utilities.HtmlBuilders;
+    using Models.ViewModels.Public;
+    using Enums;
+    using Contracts;
+
     public class MenuService : Service, IMenuService
     {
+        private const DisplayLanguage DefaultLanguage = DisplayLanguage.BG;
+
         private IRepository<ProductCategory> categories;
         private IRepository<News> news;
         private HtmlBuilder htmlBuilder;
@@ -25,7 +22,7 @@ namespace Baskerville.Services
         {
             this.categories = new Repository<ProductCategory>(this.Context);
             this.news = new Repository<News>(this.Context);
-            this.Lang = DisplayLanguage.BG;
+            this.Lang = DefaultLanguage;
         }
 
         public DisplayLanguage Lang { get; set; }
