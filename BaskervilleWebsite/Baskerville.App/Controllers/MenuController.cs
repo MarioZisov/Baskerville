@@ -6,7 +6,7 @@
 
     public class MenuController : BaseController
     {
-        private const DisplayLanguage DefaultLanguage = DisplayLanguage.EN;
+        private const DisplayLanguage DefaultLanguage = DisplayLanguage.BG;
 
         IMenuService service;
 

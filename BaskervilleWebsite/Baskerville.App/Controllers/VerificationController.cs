@@ -7,7 +7,7 @@
 
     public class VerificationController : BaseController
     {
-        private const DisplayLanguage DefaultLanguage = DisplayLanguage.EN;
+        private const DisplayLanguage DefaultLanguage = DisplayLanguage.BG;
 
         private IVerificationService service;
 
@@ -24,13 +24,13 @@
             {
                 this.service.SendWelcomeEmail();
 
-                this.ViewBag.Header = PublicMessages.SubscribeVerifiedTitleEn;
-                this.ViewBag.Paragraph = PublicMessages.SubscribeVerifiedContentEn;
+                this.ViewBag.Header = PublicMessages.SubscribeVerifiedHeaderBg;
+                this.ViewBag.Paragraph = PublicMessages.SubscribeVerifiedParagraphBg;
             }
             else
             {
-                this.ViewBag.Header = PublicMessages.WrongCodeTitleEn;
-                this.ViewBag.Paragraph = PublicMessages.WrongCodeContentEn;
+                this.ViewBag.Header = PublicMessages.WrongCodeHeaderBg;
+                this.ViewBag.Paragraph = PublicMessages.WrongCodeParagraphBg;
             }
 
             return View("MessagePage");
@@ -41,13 +41,13 @@
             var result = this.service.VerificateUnsubscribeCode(code);
             if (result)
             {
-                this.ViewBag.Header = PublicMessages.UnsubscribeVerifiedTitleEn;
-                this.ViewBag.Paragraph = PublicMessages.UnsubscribeVerifiedContentEn;
+                this.ViewBag.Header = PublicMessages.UnsubscribeVerifiedHeaderBg;
+                this.ViewBag.Paragraph = PublicMessages.UnsubscribeVerifiedParagraphBg;
             }
             else
             {
-                this.ViewBag.Header = PublicMessages.WrongCodeTitleEn;
-                this.ViewBag.Paragraph = PublicMessages.WrongCodeContentEn;
+                this.ViewBag.Header = PublicMessages.WrongCodeHeaderBg;
+                this.ViewBag.Paragraph = PublicMessages.WrongCodeParagraphBg;
             }
 
             return View("MessagePage");

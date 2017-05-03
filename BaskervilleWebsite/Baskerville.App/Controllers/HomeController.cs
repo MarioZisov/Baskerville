@@ -1,6 +1,7 @@
 ﻿namespace Baskerville.App.Controllers
 {
     using AutoMapper;
+    using Constants;
     using Models.ViewModels.Public;
     using Services.Contracts;
     using Services.Enums;
@@ -8,7 +9,7 @@
 
     public class HomeController : BaseController
     {
-        private const DisplayLanguage DefaultLanguage = DisplayLanguage.EN;
+        private const DisplayLanguage DefaultLanguage = DisplayLanguage.BG;
 
         private IHomeService service;
 
@@ -20,7 +21,7 @@
 
         [HttpGet]
         public ActionResult Index()
-        {            
+        {
             var model = this.service.GetHomeModel();
             return View(model);
         }
@@ -32,11 +33,7 @@
             if (!ModelState.IsValid)
             {
                 var homeModel = this.service.GetHomeModel();
-                //check language
-                if (true)
-                    Mapper.Map(bindingModel, homeModel.ContactModelEn);
-                else
-                    Mapper.Map(bindingModel, homeModel.ContactModelBg);
+                Mapper.Map(bindingModel, homeModel.ContactModelBg);
 
                 return View("Index", homeModel);
             }
@@ -44,15 +41,15 @@
             bool success = this.service.SendContactEmail(bindingModel);
             if (success)
             {
-                this.ViewBag.Header = "Message sent";
-                this.ViewBag.Paragraph = "Thank you for your message.";
+                this.ViewBag.Header = PublicMessages.MessageSentHeaderBg;
+                this.ViewBag.Paragraph = PublicMessages.MessageSentParagraphBg;
 
                 return View("MessagePage");
             }
             else
             {
-                this.ViewBag.Header = "Problem occurred";
-                this.ViewBag.Paragraph = "Please try to send your message again.";
+                this.ViewBag.Header = PublicMessages.MessageNotSentHeaderBg;
+                this.ViewBag.Paragraph = PublicMessages.MessageNotSentParagraphBg;
 
                 return View("MessagePage");
             }
@@ -78,8 +75,8 @@
 
             this.service.AddSubscriber(bindingModel);
 
-            this.ViewBag.Header = "One last step.";
-            this.ViewBag.Paragraph = "Confirm your email adress and will become part of our club";
+            this.ViewBag.Header = PublicMessages.ConfirmEmailHeaderBg;
+            this.ViewBag.Paragraph = PublicMessages.ConfirmEmailParagraphBg;
 
             return View("MessagePage");
         }

@@ -25,13 +25,13 @@
             {
                 this.service.SendWelcomeEmail();
 
-                this.ViewBag.Header = PublicMessages.SubscribeVerifiedTitleEn;
-                this.ViewBag.Paragraph = PublicMessages.SubscribeVerifiedContentEn;
+                this.ViewBag.Header = PublicMessages.SubscribeVerifiedHeaderEn;
+                this.ViewBag.Paragraph = PublicMessages.SubscribeVerifiedParagraphEn;
             }
             else
             {
-                this.ViewBag.Header = PublicMessages.WrongCodeTitleEn;
-                this.ViewBag.Paragraph = PublicMessages.WrongCodeContentEn;
+                this.ViewBag.Header = PublicMessages.WrongCodeHeaderEn;
+                this.ViewBag.Paragraph = PublicMessages.WrongCodeParagraphEn;
             }
 
             return View("MessagePage");
@@ -42,13 +42,13 @@
             var result = this.service.VerificateUnsubscribeCode(code);
             if (result)
             {
-                this.ViewBag.Header = PublicMessages.UnsubscribeVerifiedTitleEn;
-                this.ViewBag.Paragraph = PublicMessages.UnsubscribeVerifiedContentEn;
+                this.ViewBag.Header = PublicMessages.UnsubscribeVerifiedHeaderEn;
+                this.ViewBag.Paragraph = PublicMessages.UnsubscribeVerifiedParagraphEn;
             }
             else
             {
-                this.ViewBag.Header = PublicMessages.WrongCodeTitleEn;
-                this.ViewBag.Paragraph = PublicMessages.WrongCodeContentEn;
+                this.ViewBag.Header = PublicMessages.WrongCodeHeaderEn;
+                this.ViewBag.Paragraph = PublicMessages.WrongCodeParagraphEn;
             }
 
             return View("MessagePage");

@@ -2,6 +2,7 @@
 {
     using App.Controllers;
     using AutoMapper;
+    using Constants;
     using Models.ViewModels.Public;
     using Services.Contracts;
     using Services.Enums;
@@ -45,15 +46,15 @@
             bool success = this.service.SendContactEmail(bindingModel);
             if (success)
             {
-                this.ViewBag.Header = "Message sent";
-                this.ViewBag.Paragraph = "Thank you for your message.";
+                this.ViewBag.Header = PublicMessages.MessageSentHeaderEn;
+                this.ViewBag.Paragraph = PublicMessages.MessageSentParagraphEn;
 
                 return View("MessagePage");
             }
             else
             {
-                this.ViewBag.Header = "Problem occurred";
-                this.ViewBag.Paragraph = "Please try to send your message again.";
+                this.ViewBag.Header = PublicMessages.MessageNotSentHeaderEn;
+                this.ViewBag.Paragraph = PublicMessages.MessageNotSentParagraphEn;
 
                 return View("MessagePage");
             }
@@ -79,8 +80,8 @@
 
             this.service.AddSubscriber(bindingModel);
 
-            this.ViewBag.Header = "One last step.";
-            this.ViewBag.Paragraph = "Confirm your email adress and will become part of our club";
+            this.ViewBag.Header = PublicMessages.ConfirmEmailHeaderEn;
+            this.ViewBag.Paragraph = PublicMessages.ConfirmEmailParagraphEn;
 
             return View("MessagePage");
         }
