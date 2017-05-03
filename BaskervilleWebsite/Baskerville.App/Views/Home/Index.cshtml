@@ -1,7 +1,7 @@
-﻿@model Baskerville.Models.ViewModels.HomeViewModel
+﻿@model Baskerville.Models.ViewModels.Public.HomeViewModel
 
 @{
-    ViewBag.Title = "Home";
+    ViewBag.Title = "Начало";
 }
 
 <!-- Navigation -->
@@ -19,14 +19,14 @@
                 <li class="hidden">
                     <a href="#page-top"></a>
                 </li>
-                <li> <a class="page-scroll" href="#page-top">Home</a> </li>
-                <li> <a class="page-scroll" href="#about">About</a> </li>
-                <li> @Html.ActionLink("Menu", "index", "menu", null, new { @class = "page-scroll" }) </li>
-                <li> <a class="page-scroll" href="#menu">Promotions</a> </li>
-                <li> <a class="page-scroll" href="#events">Events</a> </li>
-                <li> <a class="page-scroll" href="#subscribe">Subscribe</a> </li>
-                <li> <a class="page-scroll" href="#contact">Contact us</a> </li>
-                <li> <a href="/home">BG <img src="~/CustomContent/img/icons/flag-bg.png" alt="BG" /></a> </li>            
+                <li> <a class="page-scroll" href="#page-top">Начало</a> </li>
+                <li> <a class="page-scroll" href="#about">За нас</a> </li>
+                <li> @Html.ActionLink("Меню", "index", "menu", null, new { @class = "page-scroll" }) </li>
+                <li> <a class="page-scroll" href="#menu">Промоции</a> </li>
+                <li> <a class="page-scroll" href="#events">Събития</a> </li>
+                <li> <a class="page-scroll" href="#subscribe">Абонирай се</a> </li>
+                <li> <a class="page-scroll" href="#contact">За нас</a> </li>
+                <li> <a href="/en/home">EN <img src="~/CustomContent/img/icons/flag-en.png" alt="EN" /></a> </li>       
             </ul>            
         </div>        
         <!-- /.navbar-collapse -->
@@ -42,14 +42,14 @@
         <div class="intro-text">
             <div class="fadeInDown wow">
                 <div class="intro-lead-in">
-                    <img alt="Full Spoon" class="img-responsive center-block" height="123" src="~/CustomContent/img/baskerville5.png" width="682">
+                    <img alt="Baskerville" class="img-responsive center-block" height="123" src="~/CustomContent/img/baskerville5.png" width="682">
                     @*<img alt="Full Spoon" class="img-responsive center-block" height="100" src="~/CustomContent/img/paw.png" width="100">*@
                     @*<img alt="Full Spoon" class="img-responsive center-block" height="123" src="~/CustomContent/img/full-spoon-logo.svg" width="682">*@
                     @*<p class="mrgn40-btm"><img alt="Full Spoon" src="~/CustomContent/img/bits/cake.svg"> </p>*@
                 </div>
                 @*<div class="intro-heading"> Muffins & Cakes Café </div>*@
             </div>
-            <p class="address  fadeInUp wow">16 Ivan Denkoglu St<br> Sofia, Bulgaria<br> 9:00 - 23:00<br> 0886 796 888</p>
+            <p class="address  fadeInUp wow">ул. Иван Денкоглу 16<br> София, България<br> 9:00 - 23:00<br> 0886 796 888</p>
         </div>
         <!-- /.Intro Section: Logo, Heading & Address -->
     </div>
@@ -63,8 +63,8 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <div class="fadeInDown wow">
-                    <h2 class="section-heading">About <span class="orange-accent">us</span></h2>
-                    <h3 class="section-subheading">We are a small bakery and we craft delicious desserts.</h3>
+                    <h2 class="section-heading">За <span class="orange-accent">нас</span></h2>
+                    <h3 class="section-subheading">Ние сме малка пекарна и ние произвеждаме вкусни десерти.</h3>
                 </div>
             </div>
         </div>
@@ -84,16 +84,15 @@
         <div class="fadeInUp wow">
             <div class="row">
                 <div class="col-md-10 col-md-offset-1">
-                    <p>It all started a few years ago when Julie gathered all her friends for her birthday party. Julie thought that it will be great to bake chocolate chip muffins and carrot cupcakes with summer tasting sangria.</p>
+                    <p>Всичко започна преди няколко години, когато Джули събра всичките си приятели за рождения си ден. Джули си помисли, че ще бъде страхотно да се пекат шоколадови чифтове кифлички и моркови с чаша тарталети с летни дегустации на сангрия.</p>
                     <p class="mrgn20-top">
-                        The birthday party was a huge success and all her friends loved the delicious desserts she prepared. A few months later Julie met Matt who shared her love for desserts and they decided to open a small bakery shop in the heart of
-                        Edinburgh, the city they have chosen to live.
+                        Рожденият ден беше огромен успех и всичките й приятели обичаха вкусните десерти, които подготви. Няколко месеца по-късно Джули се запознава с Мат, който споделя любовта си към десерти и реши да отвори малък магазин за хлебни изделия в сърцето на
+                        Единбург, градът, който са избрали да живеят.
                     </p>
                     <p class="mrgn20-top">
-                        Now, <strong>Full Spoon</strong> is a favourite place for people with a sweet tooth and they gather every day for a tasty dessert and coffee. The products used are all natural and <strong>
-                            Full
-                            Spoon
-                        </strong> smells like Christmas every day. Come for a bite whenever you need something sweet.
+                        Сега, <strong>Baserville</strong> Е любимо място за хора със сладък зъб и те се събират всеки ден за вкусен десерт и кафе. Използваните продукти са естествени и <strong>
+                            Baserville
+                        </strong> Всеки ден мирише на Коледа. Елате за хапка, когато имате нужда от нещо сладко.
                     </p>
                 </div>
             </div>
@@ -110,9 +109,9 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <div class="fadeInDown wow">
-                    <h2 class="section-heading">Our <span class="orange-accent">Promotions</span></h2>
+                    <h2 class="section-heading">Нашите <span class="orange-accent">Промоции</span></h2>
                     <h3 class="section-subheading">
-                        Come & try our daily specials.
+                        Елате & опитайте нашите ежедневни специалитети.
                     </h3>
                 </div>
             </div>
@@ -143,8 +142,8 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <div class="fadeInDown wow">
-                    <h2 class="section-heading">Our <span class="dark-accent">Events</span></h2>
-                    <h3 class="section-subheading">Come and enjoy local musicians and artists.</h3>
+                    <h2 class="section-heading">Нашите <span class="dark-accent">Събития</span></h2>
+                    <h3 class="section-subheading">Елате и се насладете на местни музиканти и художници.</h3>
                 </div>
             </div>
         </div>
@@ -165,8 +164,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <p class="mrgn20-btm">
-                        We organise live music evenings and weekend exhibitions every week. Every Friday you can enjoy some fresh music from the local talents. During the weekends we held small exhibitions to show the talent of local painters, photographers
-                        or everyone who is creative and wants to show their art. Stay in touch on Twitter and Facebook.
+                        Организираме вечери на живо на живо и изложения през уикенда всяка седмица. Всеки петък можете да се насладите на свежа музика от местните таланти. През уикендите проведохме малки изложби, за да покажем таланта на местните художници, фотографи
+                        Или всеки, който е творчески и иска да покаже своето изкуство. Останете във връзка с Twitter и Facebook.
                     </p>
                 </div>
             </div>
@@ -211,8 +210,8 @@
         <div class="row">
             <div class="col-lg-12 mrgn20-top text-center">
                 <div class="fadeInDown wow">
-                    <h2 class="section-heading">Subscribe us <span class="orange-accent">Today</span></h2>
-                    <h3 class="section-subheading">and get updates for special offers</h3>
+                    <h2 class="section-heading">Абонирайте се <span class="orange-accent">Сега</span></h2>
+                    <h3 class="section-subheading">И да получавате актуализации за специални оферти</h3>
                 </div>
             </div>
         </div>
@@ -236,14 +235,14 @@
                 <div class="row">
                     <div class="col-md-offset-3 col-md-6 text-center">
                         <div class="form-group">
-                            @Html.EditorFor(model => model.SubscribeModelEn.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Your Email *", @Name = "Email" } })
+                            @Html.EditorFor(model => model.SubscribeModelBg.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Вашият имейл *", @Name = "Email" } })
                             @Html.ValidationMessage("Email", "", new { @class = "text-danger" })
                         </div>
                         <div class="form-group">
-                            @Html.DropDownListFor(model => model.SubscribeModelEn.PreferedLanguage, Model.SubscribeModelEn.Languages, "Prefered language", new { @class = "form-control", @Name = "PreferedLanguage" })
+                            @Html.DropDownListFor(model => model.SubscribeModelBg.PreferedLanguage, Model.SubscribeModelBg.Languages, "Предпочитан Език", new { @class = "form-control", @Name = "PreferedLanguage" })
                             @Html.ValidationMessage("PreferedLanguage", "", new { @class = "text-danger" })
                         </div>
-                        <button class="btn btn-contact" type="submit">Subscribe</button>
+                        <button class="btn btn-contact" type="submit">Абонирай се</button>
                     </div>
                 </div>
             }
@@ -263,10 +262,10 @@
         <div class="row">
             <div class="col-lg-12 text-center mrgn20-btm">
                 <div class="fadeInDown wow">
-                    <h2 class="section-heading">Contact <span class="orange-accent">Us</span></h2>
+                    <h2 class="section-heading">Свържете се с <span class="orange-accent">Нас</span></h2>
                     @*<p><img alt="Contact Us" class="img-responsive center-block" src="~/CustomContent/img/bits/fork-knife.svg"> </p>*@
                     <p><img alt="Contact Us" class="img-responsive center-block" src="~/CustomContent/img/Icons/paw-green72.png"> </p>
-                    <p class="text-uppercase mrgn20-btm">16 Ivan Denkoglu St<br> Sofia, Bulgaria<br> 9:00 - 23:00<br> 0886 796 888</p>
+                    <p class="text-uppercase mrgn20-btm">ул. Иван Денкоглу 16<br> София, България<br> 9:00 - 23:00<br> 0886 796 888</p>
                     <ul class="list-inline social-buttons">
                         @*<li>
                                 <a class="fa fa-twitter" href="https://www.facebook.com/designify.me"></a>
@@ -308,8 +307,8 @@
         <div class="row">
             <div class="col-lg-12 mrgn20-top text-center">
                 <div class="fadeInDown wow">
-                    <h2 class="section-heading">Send us a <span class="orange-accent">Message</span></h2>
-                    <h3 class="section-subheading">Do you have any questions or you just want to reserve a table? Send us a message and we will answer asap.</h3>
+                    <h2 class="section-heading">Изпратете ни <span class="orange-accent">Съобщение</span></h2>
+                    <h3 class="section-subheading">Имате ли въпроси или просто искате да резервирате маса? Изпратете ни съобщение и ние ще отговорим най-бързо.</h3>
                 </div>
             </div>
         </div>
@@ -333,32 +332,32 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            @Html.EditorFor(model => model.ContactModelEn.Name, new { htmlAttributes = new { @class = "form-control", placeholder = "Your Name *", @Name = "Name" } })
+                            @Html.EditorFor(model => model.ContactModelBg.Name, new { htmlAttributes = new { @class = "form-control", placeholder = "Вашето име *", @Name = "Name" } })
                             @Html.ValidationMessage("Name", "", new { @class = "text-danger" })
                         </div>
                         <div class="form-group">
-                            @Html.EditorFor(model => model.ContactModelEn.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Your Email *", @Name = "Email" } })
+                            @Html.EditorFor(model => model.ContactModelBg.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Вашият имейл *", @Name = "Email" } })
                             @Html.ValidationMessage("Email", "", new { @class = "text-danger" })
                         </div>
                         <div class="form-group">
-                            @Html.EditorFor(model => model.ContactModelEn.PhoneNumber, new { htmlAttributes = new { @class = "form-control", placeholder = "Your Phone *", @Name = "PhoneNumber" } })
+                            @Html.EditorFor(model => model.ContactModelBg.PhoneNumber, new { htmlAttributes = new { @class = "form-control", placeholder = "Вашият телефон *", @Name = "PhoneNumber" } })
                             @Html.ValidationMessage("PhoneNumber", "", new { @class = "text-danger" })
                         </div>
                         <div class="form-group">
-                            @Html.DropDownListFor(model => model.ContactModelEn.Subject, Model.ContactModelEn.Subjects, "How cen we help you?", new { @class = "form-control", @Name = "Subject" })
+                            @Html.DropDownListFor(model => model.ContactModelBg.Subject, Model.ContactModelBg.Subjects, "Как да Ви бъдем полезни?", new { @class = "form-control", @Name = "Subject" })
                             @Html.ValidationMessage("Subject", "", new { @class = "text-danger" })
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            @Html.TextAreaFor(model => model.ContactModelEn.Message, new { @class = "form-control", placeholder = "Tell us a little bit of your event or evening with us *", @Name = "Message" })
+                            @Html.TextAreaFor(model => model.ContactModelBg.Message, new { @class = "form-control", placeholder = "Кажете ни малко от Вашето събитие или вечер с нас *", @Name = "Message" })
                             @Html.ValidationMessage("Message", "", new { @class = "text-danger" })
                         </div>
                     </div>
                     <div class="clearfix"> </div>
                     <div class="col-lg-12 text-left">
                         <div id="success"> </div>
-                        <button class="btn btn-contact" type="submit">Send Message</button>
+                        <button class="btn btn-contact" type="submit">Изпрати</button>
                     </div>
                 </div>
             }

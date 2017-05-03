@@ -1,13 +1,9 @@
-﻿using Baskerville.Models.Enums;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Baskerville.Models.ViewModels
+﻿namespace Baskerville.Models.ViewModels
 {
+    using Enums;
+    using System;
+    using System.ComponentModel.DataAnnotations;
+
     public class SubscriberViewModel
     {
         public int Id { get; set; }

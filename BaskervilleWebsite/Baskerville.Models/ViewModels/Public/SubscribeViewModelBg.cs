@@ -1,14 +1,10 @@
-﻿using Baskerville.Models.Constants;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Mvc;
-
-namespace Baskerville.Models.ViewModels.Public
+﻿namespace Baskerville.Models.ViewModels.Public
 {
+    using Constants;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.Web.Mvc;
+
     public class SubscribeViewModelBg
     {
         private readonly IEnumerable<SelectListItem> languages = new List<SelectListItem>
@@ -22,7 +18,7 @@ namespace Baskerville.Models.ViewModels.Public
         [Display(Name = "Имейл")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = PublicMessages.RequiredMessage)]
         [Display(Name = "Предпочитам Език")]
         public string PreferedLanguage { get; set; }
 

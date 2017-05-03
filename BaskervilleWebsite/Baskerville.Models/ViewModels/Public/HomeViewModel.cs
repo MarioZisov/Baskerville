@@ -1,13 +1,7 @@
-﻿using Baskerville.Models.ViewModels.Public;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
-
-namespace Baskerville.Models.ViewModels
+﻿namespace Baskerville.Models.ViewModels.Public
 {
+    using System.Web;
+
     public class HomeViewModel
     {
         public SubscribeViewModelEn SubscribeModelEn { get; set; }

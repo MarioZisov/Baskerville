@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Mvc;
-
-namespace Baskerville.Models.ViewModels.Public
+﻿namespace Baskerville.Models.ViewModels.Public
 {
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.Web.Mvc;
+
     public class SubscribeViewModelEn
     {
         private readonly IEnumerable<SelectListItem> languages = new List<SelectListItem>

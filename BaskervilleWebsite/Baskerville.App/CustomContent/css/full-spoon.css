@@ -489,7 +489,8 @@ header .intro-text .intro-heading {
 
 @media(min-width:768px) {
     header .intro-text p.address {
-        font-family: 'Catamaran', sans-serif, Helvetica, Arial, sans-serif;
+        /*font-family: 'Catamaran', sans-serif, Helvetica, Arial, sans-serif;*/
+        font-family: 'Alice', serif;
         font-weight: 500;
         padding-top: 150px;
         text-transform: uppercase;
@@ -500,7 +501,8 @@ header .intro-text .intro-heading {
         padding-bottom: 100px;
     }
     header .intro-text .intro-lead-in {
-        font-family: 'Catamaran', sans-serif, Helvetica, Arial, sans-serif;
+        /*font-family: 'Catamaran', sans-serif, Helvetica, Arial, sans-serif;*/
+        font-family: 'Alice', serif;
         font-size: 100px;
         line-height: 100px;
         text-transform: uppercase;
@@ -518,7 +520,8 @@ header .intro-text .intro-heading {
 
 @media(max-width:767px) {
     header .intro-text p.address {
-        font-family: 'Catamaran', sans-serif, Helvetica, Arial, sans-serif;
+        /*font-family: 'Catamaran', sans-serif, Helvetica, Arial, sans-serif;*/
+        font-family: 'Alice', serif;
         font-weight: 500;
         padding-top: 50px;
         text-transform: uppercase;
@@ -532,7 +535,8 @@ header .intro-text-sm {
 }
 
 header .intro-text-sm .intro-lead-in {
-    font-family: 'Catamaran', sans-serif, Helvetica, Arial, sans-serif;
+    /*font-family: 'Catamaran', sans-serif, Helvetica, Arial, sans-serif;*/
+    font-family: 'Alice', serif;
     font-size: 160px;
     line-height: 160px;
     text-transform: uppercase;
@@ -550,7 +554,8 @@ header .intro-text-sm .intro-heading {
 
 @media(min-width:768px) {
     header .intro-text-sm p.address {
-        font-family: 'Catamaran', sans-serif, Helvetica, Arial, sans-serif;
+        /*font-family: 'Catamaran', sans-serif, Helvetica, Arial, sans-serif;*/
+        font-family: 'Alice', serif;
         font-weight: 500;
         padding-top: 130px;
         text-transform: uppercase;
@@ -561,7 +566,8 @@ header .intro-text-sm .intro-heading {
         padding-bottom: 0px;
     }
     header .intro-text-sm .intro-lead-in {
-        font-family: 'Catamaran', sans-serif, Helvetica, Arial, sans-serif;
+        /*font-family: 'Catamaran', sans-serif, Helvetica, Arial, sans-serif;*/
+        font-family: 'Alice', serif;
         font-size: 50px;
         line-height: 50px;
         text-transform: uppercase;
@@ -579,7 +585,8 @@ header .intro-text-sm .intro-heading {
 
 @media(max-width:767px) {
     header .intro-text-sm p.address {
-        font-family: 'Catamaran', sans-serif, Helvetica, Arial, sans-serif;
+        /*font-family: 'Catamaran', sans-serif, Helvetica, Arial, sans-serif;*/
+        font-family: 'Alice', serif;
         font-weight: 500;
         padding-top: 30px;
         text-transform: uppercase;
