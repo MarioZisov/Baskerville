@@ -1,10 +1,8 @@
 ﻿@*@model Baskerville.Models.ViewModels.Public.MessagePageViewModel*@
 
 @{
-    ViewBag.Title = "Message";
+    ViewBag.Title = "Notification";
 }
-
-<h2>Response</h2>
 
     @Html.Partial("_NavBar")
     <!-- Header Small -->
@@ -13,10 +11,10 @@
             <!-- Intro Section: Logo and Heading -->
 
             <div class="intro-text-sm">
-                <div class="intro-lead-in">
-                    <img alt="Full Spoon" class="img-responsive center-block" height="80" src="~/CustomContent/img/full-spoon-logo.svg" width="450">
-                    <p><img alt="Full Spoon" src="~/CustomContent/img/bits/cake.svg"> </p>
-                    <div class="intro-heading"> Muffins & Cakes Café </div>
+                <div style="padding-bottom: 30px" class="intro-lead-in">
+                    <img alt="Baskerville" class="img-responsive center-block" height="80" src="~/CustomContent/img/baskerville5.png" width="450">
+                    @*<p><img alt="Full Spoon" src="~/CustomContent/img/bits/cake.svg"> </p>
+                    <div class="intro-heading"> Muffins & Cakes Café </div>*@
                 </div>
             </div>
             <!-- /.Intro Section: Logo and Heading -->
@@ -31,7 +29,7 @@
                 <div class="col-md-12 text-center">
                     <h3>@ViewBag.Header</h3>
                     <p>@ViewBag.Paragraph</p>
-                    <p><img src="~/CustomContent/img/bits/fork-knife.svg" class="img-responsive center-block" alt="Full Spoon" />
+                    <p><img src="~/CustomContent/img/icons/paw-green72.png" class="img-responsive center-block" alt="Baskerville" />
                 </div>
             </div>
         </div>

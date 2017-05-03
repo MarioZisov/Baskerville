@@ -7,30 +7,15 @@
     <meta content="" name="description">
     <meta content="" name="author">
     <!-- Favicons -->
-    <link rel="shortcut icon" href="~/CustomContent/img/favicon.png">
-    <link rel="apple-touch-icon" href="~/CustomContent/img/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="~/CustomContent/img/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="~/CustomContent/img/apple-touch-icon-114x114.png">
-    <title>Full Spoon - Restaurant Template </title> 
-    <!-- Bootstrap Core CSS -->
-    <link href="~/CustomContent/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Full Spoon Custom CSS -->
-    <link href="~/CustomContent/css/full-spoon.css" rel="stylesheet">
-    <link href="~/CustomContent/animate-css/animate.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="~/CustomContent/owl-carousel/owl.carousel.css">
-    <link rel="stylesheet" type="text/css" href="~/CustomContent/owl-carousel/owl.theme.css">
+    <link rel="shortcut icon" href="~/CustomContent/img/Icons/paw32.png">
+    <link rel="apple-touch-icon" href="~/CustomContent/img/Icons/paw57.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="~/CustomContent/imgIcons/paw72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="~/CustomContent/img/Icons/paw114.png">
+    <title>@ViewBag.Title - Club Baskerville | since 1999</title>
 
-    <!-- Full Spoon Custom Fonts -->
-    <link href="~/CustomContent/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Catamaran:400,600,300,700' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Amatic+SC:400,700' rel='stylesheet' type='text/css'>
-    <link href="https://fonts.googleapis.com/css?family=Alice" rel="stylesheet">
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    @Styles.Render("~/bundles/custom-styles")
+    @Styles.Render("~/bundles/fonts")
+
 </head>
 
 <body class="index" id="page-top">
@@ -39,30 +24,8 @@
     <!-- /.Loader -->
     @RenderBody()
 
-    <!-- jQuery -->
-    <script src="~/CustomContent/js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="~/CustomContent/js/bootstrap.min.js"></script>
-
+    @Scripts.Render("~/bundles/custom-jquery")
     @RenderSection("scripts", required: false)
-
-    <!-- Plugin JavaScript -->
-    <script src="~/CustomContent/js/isotope.pkgd.min.js"></script>
-    <script src="~/CustomContent/magnific-popup/jquery.magnific-popup.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-    <script src="~/CustomContent/js/classie.js"></script>
-    <script src="~/CustomContent/js/cbpAnimatedHeader.min.js"></script>
-    <script src="~/CustomContent/js/wow.min.js"></script>
-    <script src="~/CustomContent/owl-carousel/owl.carousel.js"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="~/CustomContent/js/fullspoon.js"></script>
-
-    <!-- Contact Form JavaScript -->
-    @*<script src="~/CustomContent/js/jqBootstrapValidation.js"></script>*@
-    @*<script src="~/CustomContent/js/contact_me.js"></script>*@
-
+    @Scripts.Render("~/bundles/custom-bootstrap")
 </body>
-
 </html>

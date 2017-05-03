@@ -1,5 +1,9 @@
 ﻿@model Baskerville.Models.ViewModels.HomeViewModel
 
+@{
+    ViewBag.Title = "Home";
+}
+
 <!-- Navigation -->
 <nav class="navbar navbar-default nav-justified navbar-fixed-top">
     <div class="container">
@@ -17,12 +21,14 @@
                 </li>
                 <li> <a class="page-scroll" href="#page-top">Home</a> </li>
                 <li> <a class="page-scroll" href="#about">About</a> </li>
-                <li> @Html.ActionLink("Menu", "Index", "Menu", null, new { @class = "page-scroll" }) </li>
+                <li> @Html.ActionLink("Menu", "index", "menu", null, new { @class = "page-scroll" }) </li>
                 <li> <a class="page-scroll" href="#menu">Promotions</a> </li>
                 <li> <a class="page-scroll" href="#events">Events</a> </li>
+                <li> <a class="page-scroll" href="#subscribe">Subscribe</a> </li>
                 <li> <a class="page-scroll" href="#contact">Contact us</a> </li>
-            </ul>
-        </div>
+                <li> <a href="/home">BG <img src="~/CustomContent/img/icons/flag-bg.png" alt="BG" /></a> </li>            
+            </ul>            
+        </div>        
         <!-- /.navbar-collapse -->
     </div>
     <!-- /.container-fluid -->
@@ -36,10 +42,12 @@
         <div class="intro-text">
             <div class="fadeInDown wow">
                 <div class="intro-lead-in">
-                    <img alt="Full Spoon" class="img-responsive center-block" height="123" src="~/CustomContent/img/full-spoon-logo.svg" width="682">
-                    <p class="mrgn40-btm"><img alt="Full Spoon" src="~/CustomContent/img/bits/cake.svg"> </p>
+                    <img alt="Full Spoon" class="img-responsive center-block" height="123" src="~/CustomContent/img/baskerville5.png" width="682">
+                    @*<img alt="Full Spoon" class="img-responsive center-block" height="100" src="~/CustomContent/img/paw.png" width="100">*@
+                    @*<img alt="Full Spoon" class="img-responsive center-block" height="123" src="~/CustomContent/img/full-spoon-logo.svg" width="682">*@
+                    @*<p class="mrgn40-btm"><img alt="Full Spoon" src="~/CustomContent/img/bits/cake.svg"> </p>*@
                 </div>
-                <div class="intro-heading"> Muffins & Cakes Café </div>
+                @*<div class="intro-heading"> Muffins & Cakes Café </div>*@
             </div>
             <p class="address  fadeInUp wow">16 Ivan Denkoglu St<br> Sofia, Bulgaria<br> 9:00 - 23:00<br> 0886 796 888</p>
         </div>
@@ -222,7 +230,7 @@
         <!-- /.Border -->
         <!-- Contact Form -->
         <div class="fadeInUp wow">
-            @using (Html.BeginForm(null, null, FormMethod.Post, new { @action = "/home/subscribe#subscribe", @id = "subscribeForm", name = "sentMessage" }))
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { @action = "en/home/subscribe#subscribe", @id = "subscribeForm", name = "sentMessage" }))
             {
                 @Html.AntiForgeryToken()
                 <div class="row">
@@ -256,24 +264,25 @@
             <div class="col-lg-12 text-center mrgn20-btm">
                 <div class="fadeInDown wow">
                     <h2 class="section-heading">Contact <span class="orange-accent">Us</span></h2>
-                    <p><img alt="Contact Us" class="img-responsive center-block" src="~/CustomContent/img/bits/fork-knife.svg"> </p>
+                    @*<p><img alt="Contact Us" class="img-responsive center-block" src="~/CustomContent/img/bits/fork-knife.svg"> </p>*@
+                    <p><img alt="Contact Us" class="img-responsive center-block" src="~/CustomContent/img/Icons/paw-green72.png"> </p>
                     <p class="text-uppercase mrgn20-btm">16 Ivan Denkoglu St<br> Sofia, Bulgaria<br> 9:00 - 23:00<br> 0886 796 888</p>
                     <ul class="list-inline social-buttons">
-                        <li>
-                            <a class="fa fa-twitter" href="https://www.facebook.com/designify.me"></a>
-                        </li>
+                        @*<li>
+                                <a class="fa fa-twitter" href="https://www.facebook.com/designify.me"></a>
+                            </li>*@
                         <li>
                             <a class="fa fa-facebook" href="https://www.facebook.com/designify.me"></a>
                         </li>
-                        <li>
-                            <a class="fa fa-linkedin" href="https://www.facebook.com/designify.me"></a>
-                        </li>
-                        <li>
-                            <a class="fa fa-google-plus" href="https://www.facebook.com/designify.me"></a>
-                        </li>
-                        <li>
-                            <a class="fa fa-pinterest-p" href="https://www.facebook.com/designify.me"></a>
-                        </li>
+                        @*<li>
+                                <a class="fa fa-linkedin" href="https://www.facebook.com/designify.me"></a>
+                            </li>
+                            <li>
+                                <a class="fa fa-google-plus" href="https://www.facebook.com/designify.me"></a>
+                            </li>
+                            <li>
+                                <a class="fa fa-pinterest-p" href="https://www.facebook.com/designify.me"></a>
+                            </li>*@
                     </ul>
                 </div>
             </div>
@@ -318,7 +327,7 @@
         <!-- /.Border -->
         <!-- Contact Form -->
         <div class="fadeInUp wow">
-            @using (Html.BeginForm(null, null, FormMethod.Post, new { @action = "/home/send#contactForm", @id = "contactForm", name = "sentMessage" }))
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { @action = "en/home/send#contactForm", @id = "contactForm", name = "sentMessage" }))
             {
                 @Html.AntiForgeryToken()
                 <div class="row">

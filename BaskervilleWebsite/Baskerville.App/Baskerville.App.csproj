@@ -222,7 +222,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
-    <Compile Include="Controllers\StaticContentController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\VerificationController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -443,11 +443,8 @@
     <Content Include="Areas\English\Views\Shared\_Footer.cshtml" />
     <Content Include="Areas\English\Views\Shared\_NavBar.cshtml" />
     <Content Include="Areas\English\Views\Shared\_PublicLayout.cshtml" />
-    <Content Include="Areas\English\Views\Shared\404.cshtml" />
     <Content Include="Areas\English\Views\Shared\MessagePage.cshtml" />
     <Content Include="Areas\English\Views\Home\Index.cshtml" />
-    <Content Include="Areas\English\Views\Home\Menu.cshtml" />
-    <Content Include="Areas\English\Views\Home\MessageSent.cshtml" />
     <Content Include="Areas\English\Views\Menu\Index.cshtml" />
     <Content Include="Areas\English\Views\_ViewStart.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />

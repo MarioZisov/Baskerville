@@ -8,12 +8,14 @@
         <!-- Navigation Links -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav nav-justified">
-                <li> @Html.ActionLink("Home", "Index", "Home", null, null, "home", null, new { @class = "page-scroll" }) </li>
-                <li> @Html.ActionLink("About", "Index", "Home", null, null, "about", null, new { @class = "page-scroll" }) </li>
-                <li> @Html.ActionLink("Menu", "Index", "Menu", null, new { @class = "page-scroll" }) </li>
-                <li> @Html.ActionLink("Promotions", "Index", "Home", null, null, "menu", null, new { @class = "page-scroll" }) </li>
-                <li> @Html.ActionLink("Events", "Index", "Home", null, null, "events", null, new { @class = "page-scroll" }) </li>
-                <li> @Html.ActionLink("Contact us", "Index", "Home", null, null, "contact", null, new { @class = "page-scroll" }) </li>
+                <li> @Html.ActionLink("Home", "index", "home", null, null, "home", null, new { @class = "page-scroll" }) </li>
+                <li> @Html.ActionLink("About", "index", "home", null, null, "about", null, new { @class = "page-scroll" }) </li>
+                <li> @Html.ActionLink("Menu", "index", "menu", null, new { @class = "page-scroll" }) </li>
+                <li> @Html.ActionLink("Promotions", "index", "home", null, null, "menu", null, new { @class = "page-scroll" }) </li>
+                <li> @Html.ActionLink("Events", "index", "home", null, null, "events", null, new { @class = "page-scroll" }) </li>
+                <li> @Html.ActionLink("Subscribe", "index", "home", null, null, "subscribe", null, new { @class = "page-scroll" }) </li>
+                <li> @Html.ActionLink("Contact us", "index", "home", null, null, "contact", null, new { @class = "page-scroll" }) </li>
+                <li> <a href="/home">BG <img src="~/CustomContent/img/icons/flag-bg.png" alt="BG" /></a> </li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
