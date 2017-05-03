@@ -85,7 +85,7 @@
 
             string verificationCode = CodeGenerator.GenerateVerificationCode(email);
 
-            if (this.subscribers.Exists(s => s.Email == email && !s.IsActive))
+            if (this.subscribers.Exists(s => s.Email == email && (!s.IsActive || s.IsRemoved)))
             {
                 var subscriberFromDb = this.subscribers.GetFirst(s => s.Email == email);
 
