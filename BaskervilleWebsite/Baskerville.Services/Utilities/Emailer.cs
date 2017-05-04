@@ -1,17 +1,13 @@
-﻿using Baskerville.Services.Constants;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Net;
-using System.Net.Configuration;
-using System.Net.Mail;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-
-namespace Baskerville.Services.Utilities
+﻿namespace Baskerville.Services.Utilities
 {
+    using Constants;
+    using System;
+    using System.Collections.Generic;
+    using System.Configuration;
+    using System.Net;
+    using System.Net.Configuration;
+    using System.Net.Mail;
+
     public class Emailer
     {
         private SmtpSection section;
@@ -31,12 +27,6 @@ namespace Baskerville.Services.Utilities
             this.client.Host = section.Network.Host;
             this.client.Credentials = new NetworkCredential(section.Network.UserName, section.Network.Password);
             this.client.EnableSsl = section.Network.EnableSsl;
-
-            //this.client = new SmtpClient();
-            //this.client.Port = 587;
-            //this.client.Host = "smtp.gmail.com";
-            //this.client.Credentials = new NetworkCredential("sensato.report@gmail.com", "t0beesensato");
-            //this.client.EnableSsl = true;
         }
 
         public bool SendEmail(string body, string subject, bool isHtml, string receiver)
@@ -53,7 +43,6 @@ namespace Baskerville.Services.Utilities
                 foreach (var receiver in receivers)
                 {
                     MailMessage message = new MailMessage();
-                    //message.From = new MailAddress("sensato.report@gmail.com", "Baskerville");
                     message.From = new MailAddress(this.section.From, "Club Baskerville");
                     message.Subject = subject;
                     message.Body = body;
