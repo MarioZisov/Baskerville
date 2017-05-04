@@ -41,7 +41,9 @@
                 return View("Details", model);
 
             this.service.UpdateUserRole(model);
-            return View("UsersList", model);
+
+            var usersListModel = this.service.GetAllUsers();
+            return View("UsersList", usersListModel);
         }
 
         [HttpPost]

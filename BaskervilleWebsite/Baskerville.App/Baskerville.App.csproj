@@ -402,7 +402,7 @@
     <Content Include="Areas\Admin\Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\Error.cshtml" />
+    <Content Include="Areas\Admin\Controllers\Error.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\Lockout.cshtml" />
     <Content Include="Areas\Admin\Views\Subscribers\SubscribersList.cshtml" />
     <Content Include="Areas\Admin\Views\Products\ProductsList.cshtml" />
