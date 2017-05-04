@@ -61,9 +61,21 @@
   <ItemGroup>
     <Compile Include="BaskervilleContext.cs" />
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Mocks\FakeDbContext.cs" />
+    <Compile Include="Mocks\FakeDbSet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Contracts\IDbContext.cs" />
     <Compile Include="Repository\Contracts\IRepository.cs" />
+    <Compile Include="Repository\CategoryRepository.cs" />
+    <Compile Include="Repository\UserLogRepository.cs" />
+    <Compile Include="Repository\StatisticsRepository.cs" />
+    <Compile Include="Repository\RoleRepository.cs" />
+    <Compile Include="Repository\UserRepository.cs" />
+    <Compile Include="Repository\ProductRepository.cs" />
+    <Compile Include="Repository\NewsRepositroy.cs" />
+    <Compile Include="Repository\PromotionRepository.cs" />
+    <Compile Include="Repository\SubscriberRepository.cs" />
+    <Compile Include="Repository\EventRepositroy.cs" />
     <Compile Include="Repository\Repository.cs" />
   </ItemGroup>
   <ItemGroup>

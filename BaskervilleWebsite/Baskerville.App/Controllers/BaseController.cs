@@ -1,5 +1,6 @@
 ﻿namespace Baskerville.App.Controllers
 {
+    using Data;
     using Services;
     using Services.Contracts;
     using System.Web.Mvc;
@@ -11,7 +12,7 @@
 
         protected BaseController()
         {
-            this.service = new VisitsService();
+            this.service = new VisitsService(new BaskervilleContext());
         }
 
         protected override void Initialize(RequestContext requestContext)

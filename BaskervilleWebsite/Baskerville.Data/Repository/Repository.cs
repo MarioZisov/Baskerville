@@ -1,14 +1,12 @@
-﻿using Baskerville.Data.Contracts.Repository;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Linq.Expressions;
-
-namespace Baskerville.Data.Repository
+﻿namespace Baskerville.Data.Repository
 {
+    using Contracts.Repository;
+    using System;
+    using System.Collections.Generic;
+    using System.Data.Entity;
+    using System.Linq;
+    using System.Linq.Expressions;
+
     public class Repository<T> : IRepository<T>
         where T : class
     {
@@ -21,7 +19,15 @@ namespace Baskerville.Data.Repository
         }
 
         protected IDbSet<T> Entities
-            => this.entities ?? this.context.Set<T>();
+        {
+            get
+            {
+                if (this.entities == null)
+                    this.entities = this.context.Set<T>();
+
+                return this.entities;
+            }
+        }
 
         public T GetById(object id)
         {

@@ -1,23 +1,19 @@
 ﻿namespace Baskerville.Services
 {
     using Data.Contracts.Repository;
-    using Models.DataModels;
-    using Data.Repository;
     using Utilities;
     using Contracts;
 
     public class VisitsService : Service, IVisitsService
     {
-        IRepository<Statistics> statistics;
-
-        public VisitsService()
+        public VisitsService(IDbContext context)
+            : base(context)
         {
-            this.statistics = new Repository<Statistics>(this.Context);
         }
 
         public void VisitsIncrement()
         {
-            var statIncr = new StatisticsIncrementer(this.statistics);
+            var statIncr = new StatisticsIncrementer(this.Statistics);
             statIncr.IncrementVistis();
         }
     }

@@ -4,7 +4,6 @@
     using System.Linq;
     using Data.Contracts.Repository;
     using Models.DataModels;
-    using Data.Repository;
     using Models.ViewModels;
     using AutoMapper;
     using Utilities;
@@ -15,16 +14,14 @@
 
     public class SubscribersService : Service, ISubscribersService
     {
-        private IRepository<Subscriber> subscribers;
-
-        public SubscribersService()
+        public SubscribersService(IDbContext context)
+            : base(context)
         {
-            this.subscribers = new Repository<Subscriber>(this.Context);
         }
 
         public IEnumerable<SubscriberViewModel> GetActiveSubscribers()
         {
-            var subscribersViewModel = this.subscribers
+            var subscribersViewModel = this.Subscribers
                 .Find(s => s.IsActive && !s.IsRemoved)
                 .Select(Mapper.Map<Subscriber, SubscriberViewModel>)
                 .ToList();
@@ -34,11 +31,11 @@
 
         public HttpStatusCode RemoveSubscriber(int id)
         {
-            var subscriber = this.subscribers.GetById(id);
+            var subscriber = this.Subscribers.GetById(id);
             if (subscriber != null)
             {
                 subscriber.IsRemoved = true;
-                this.subscribers.Update(subscriber);
+                this.Subscribers.Update(subscriber);
 
                 return HttpStatusCode.OK;
             }
@@ -48,12 +45,12 @@
 
         public void SendMessageToSubscribers(MessageViewModel model)
         {
-            var subscribersBg = this.subscribers
+            var subscribersBg = this.Subscribers
                 .Find(s => s.IsActive && !s.IsRemoved && s.PreferedLanguage == Language.BG
                 ).Select(s => s.Email)
                 .ToList();
 
-            var subscribersEn = this.subscribers
+            var subscribersEn = this.Subscribers
                 .Find(s => s.IsActive && !s.IsRemoved && s.PreferedLanguage == Language.EN)
                 .Select(s => s.Email)
                 .ToList();

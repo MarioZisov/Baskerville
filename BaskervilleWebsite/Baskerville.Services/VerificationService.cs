@@ -14,14 +14,11 @@
     {
         private const DisplayLanguage DefaultLanguage = DisplayLanguage.BG;
 
-        private IRepository<Subscriber> subscribers;
-        private IRepository<Statistics> statistics;
         private string currentSubscriberEmail;
-                
-        public VerificationService()
+
+        public VerificationService(IDbContext context)
+            : base(context)
         {
-            this.subscribers = new Repository<Subscriber>(this.Context);
-            this.statistics = new Repository<Statistics>(this.Context);
             this.Lang = DefaultLanguage;
         }
 
@@ -29,7 +26,7 @@
 
         public bool VerificateSubscribtionCode(string code)
         {
-            var subscriber = this.subscribers.GetFirstOrNull(s => s.SubscriptionVerificationCode == code && !s.IsActive && !s.IsRemoved);
+            var subscriber = this.Subscribers.GetFirstOrNull(s => s.SubscriptionVerificationCode == code && !s.IsActive && !s.IsRemoved);
 
             if (subscriber == null)
                 return false;
@@ -47,9 +44,9 @@
             subscriber.SubscriptionVerificationCode = null;
             subscriber.UnsubscribeVerificationCode = unsubsribeCode;
 
-            this.subscribers.Update(subscriber);
+            this.Subscribers.Update(subscriber);
 
-            var statIncr = new StatisticsIncrementer(this.statistics);
+            var statIncr = new StatisticsIncrementer(this.Statistics);
             statIncr.IncrementSubscribers();
 
             return true;
@@ -57,7 +54,7 @@
 
         public void SendWelcomeEmail()
         {
-            var subscriber = this.subscribers.GetFirst(s => s.Email == this.currentSubscriberEmail);
+            var subscriber = this.Subscribers.GetFirst(s => s.Email == this.currentSubscriberEmail);
             Emailer emailer = new Emailer(MailSettings.SensatoSettings);
 
             string verificationUrl = this.GenerateUnsubscribeUrl(subscriber.UnsubscribeVerificationCode);
@@ -70,7 +67,7 @@
 
         public bool VerificateUnsubscribeCode(string code)
         {
-            var subscriber = this.subscribers.GetFirstOrNull(s => s.UnsubscribeVerificationCode == code && s.IsActive && !s.IsRemoved);
+            var subscriber = this.Subscribers.GetFirstOrNull(s => s.UnsubscribeVerificationCode == code && s.IsActive && !s.IsRemoved);
 
             if (subscriber == null)
                 return false;
@@ -78,7 +75,7 @@
             subscriber.IsActive = false;
             subscriber.UnsubscribeDate = DateTime.Now;
 
-            this.subscribers.Update(subscriber);
+            this.Subscribers.Update(subscriber);
             return true;
         }
 

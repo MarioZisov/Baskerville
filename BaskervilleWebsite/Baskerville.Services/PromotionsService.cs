@@ -4,7 +4,6 @@
     using System.Linq;
     using Data.Contracts.Repository;
     using Models.DataModels;
-    using Data.Repository;
     using Models.ViewModels;
     using AutoMapper;
     using System.Net;
@@ -12,16 +11,14 @@
 
     public class PromotionsService : Service, IPromotionService
     {
-        private IRepository<Promotion> promotions;
-
-        public PromotionsService()
+        public PromotionsService(IDbContext context)
+            : base(context)
         {
-            this.promotions = new Repository<Promotion>(this.Context);
         }
 
         public IEnumerable<PromotionViewModel> GetAllPromotions()
         {
-            var model = this.promotions
+            var model = this.Promotions
                 .Find(e => !e.IsRemoved)
                 .Select(Mapper.Map<Promotion, PromotionViewModel>);
 
@@ -30,7 +27,7 @@
 
         public PromotionViewModel GetPromotion(int id)
         {
-            var entity = this.promotions.GetById(id);
+            var entity = this.Promotions.GetById(id);
             if (entity == null)
                 return null;
 
@@ -50,32 +47,32 @@
         {
             var entity = Mapper.Map<PromotionViewModel, Promotion>(model);
 
-            this.promotions.Insert(entity);
+            this.Promotions.Insert(entity);
         }
 
         public void UpdatePromotion(PromotionViewModel model)
         {
-            var entity = this.promotions.GetById(model.Id);
+            var entity = this.Promotions.GetById(model.Id);
             Mapper.Map(model, entity);
 
-            this.promotions.Update(entity);
+            this.Promotions.Update(entity);
         }
 
         public void RemovePromotion(int id)
         {
-            var entity = this.promotions.GetById(id);
+            var entity = this.Promotions.GetById(id);
             entity.IsRemoved = true;
-            this.promotions.Update(entity);
+            this.Promotions.Update(entity);
         }
 
         public HttpStatusCode UpdatePublicity(int id)
         {
-            var promo = this.promotions.GetById(id);
+            var promo = this.Promotions.GetById(id);
             if (promo == null)
                 return HttpStatusCode.NotFound;
 
             promo.IsPublic = !promo.IsPublic;
-            this.promotions.Update(promo);
+            this.Promotions.Update(promo);
 
             return HttpStatusCode.OK;
         }

@@ -4,7 +4,6 @@
     using System.Linq;
     using Data.Contracts.Repository;
     using Models.DataModels;
-    using Data.Repository;
     using Models.ViewModels;
     using AutoMapper;
     using System.Net;
@@ -12,16 +11,14 @@
 
     public class NewsService : Service, INewsService
     {
-        private IRepository<News> news;
-
-        public NewsService()
+        public NewsService(IDbContext context)
+            : base(context)
         {
-            this.news = new Repository<News>(this.Context);
         }
 
         public IEnumerable<NewsViewModel> GetAllNews()
         {
-            var model = this.news
+            var model = this.News
                 .Find(n => !n.IsRemoved)
                 .Select(Mapper.Map<News, NewsViewModel>)
                 .ToList();
@@ -31,7 +28,7 @@
 
         public NewsViewModel GetNewsById(int id)
         {
-            var newsFromDb = this.news.GetById(id);
+            var newsFromDb = this.News.GetById(id);
             if (newsFromDb == null)
                 return null;
 
@@ -41,39 +38,39 @@
 
         public HttpStatusCode DeleteNewsById(int id)
         {
-            var _news = this.news.GetById(id);
+            var _news = this.News.GetById(id);
 
             if (_news == null)
                 return HttpStatusCode.NotFound;
 
             _news.IsRemoved = true;
-            this.news.Update(_news);
+            this.News.Update(_news);
 
             return HttpStatusCode.OK;
         }
 
         public void UpdateNews(NewsViewModel model)
         {
-            var newsFromDb = this.news.GetById(model.Id);
+            var newsFromDb = this.News.GetById(model.Id);
 
             Mapper.Map(model, newsFromDb);
-            this.news.Update(newsFromDb);
+            this.News.Update(newsFromDb);
         }
 
         public void CreateNews(NewsViewModel model)
         {
             News _news = Mapper.Map<NewsViewModel, News>(model);
-            this.news.Insert(_news);
+            this.News.Insert(_news);
         }
 
         public HttpStatusCode UpdatePublicity(int id)
         {
-            var _news = this.news.GetById(id);
+            var _news = this.News.GetById(id);
             if (_news == null)
                 return HttpStatusCode.NotFound;
 
             _news.IsPublic = !_news.IsPublic;
-            this.news.Update(_news);
+            this.News.Update(_news);
 
             return HttpStatusCode.OK;
         }

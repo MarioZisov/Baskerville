@@ -2,8 +2,6 @@
 {
     using System.Linq;
     using Data.Contracts.Repository;
-    using Models.DataModels;
-    using Data.Repository;
     using System.Data.Entity;
     using Utilities.HtmlBuilders;
     using Models.ViewModels.Public;
@@ -14,14 +12,11 @@
     {
         private const DisplayLanguage DefaultLanguage = DisplayLanguage.BG;
 
-        private IRepository<ProductCategory> categories;
-        private IRepository<News> news;
         private HtmlBuilder htmlBuilder;
-        
-        public MenuService()
+
+        public MenuService(IDbContext context)
+            : base(context)
         {
-            this.categories = new Repository<ProductCategory>(this.Context);
-            this.news = new Repository<News>(this.Context);
             this.Lang = DefaultLanguage;
         }
 
@@ -29,7 +24,7 @@
 
         public MenuViewModel GetMenuModel()
         {
-            var filteredCategories = this.categories
+            var filteredCategories = this.Categoires
                 .Find(c => c.IsPrimary && !c.IsRemoved)
                 .Include("Products")
                 .Include("Subcategories.Products")
@@ -38,7 +33,7 @@
             this.htmlBuilder = new MenuBuilder(filteredCategories, this.Lang);
             var menuHtml = this.htmlBuilder.Render();
 
-            var allActiveNews = this.news
+            var allActiveNews = this.News
                 .Find(n => n.IsPublic && !n.IsRemoved)
                 .ToList();
 

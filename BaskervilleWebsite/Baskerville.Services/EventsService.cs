@@ -4,7 +4,6 @@
     using System.Linq;
     using Data.Contracts.Repository;
     using Models.DataModels;
-    using Data.Repository;
     using Models.ViewModels;
     using AutoMapper;
     using System.Net;
@@ -12,16 +11,14 @@
 
     public class EventsService : Service, IEventsService
     {
-        private IRepository<Event> events;
-
-        public EventsService()
+        public EventsService(IDbContext context)
+            : base(context)
         {
-            this.events = new Repository<Event>(this.Context);
         }
 
         public IEnumerable<EventViewModel> GetAllEvents()
         {
-            var eventsViewModels = this.events
+            var eventsViewModels = this.Events
                 .Find(e => !e.IsRemoved)
                 .Select(Mapper.Map<Event, EventViewModel>);
 
@@ -30,7 +27,7 @@
 
         public EventViewModel GetEvent(int id)
         {
-            var evnt = this.events.GetById(id);
+            var evnt = this.Events.GetById(id);
             if (evnt == null)
                 return null;
 
@@ -50,32 +47,32 @@
         {
             var entity = Mapper.Map<EventViewModel, Event>(model);
 
-            this.events.Insert(entity);
+            this.Events.Insert(entity);
         }
 
         public void UpdateEvent(EventViewModel model)
         {
-            var entity = this.events.GetById(model.Id);
+            var entity = this.Events.GetById(model.Id);
             Mapper.Map(model, entity);
 
-            this.events.Update(entity);
+            this.Events.Update(entity);
         }
 
         public void RemoveEvent(int id)
         {
-            var entity = this.events.GetById(id);
+            var entity = this.Events.GetById(id);
             entity.IsRemoved = true;
-            this.events.Update(entity);
+            this.Events.Update(entity);
         }
 
         public HttpStatusCode UpdatePublicity(int id)
         {
-            var @event = this.events.GetById(id);
+            var @event = this.Events.GetById(id);
             if (@event == null)
                 return HttpStatusCode.NotFound;
 
             @event.IsPublic = !@event.IsPublic;
-            this.events.Update(@event);
+            this.Events.Update(@event);
 
             return HttpStatusCode.OK;
         }

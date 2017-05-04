@@ -5,10 +5,8 @@
     using System.Web;
     using System.Web.Mvc;
     using Data.Contracts.Repository;
-    using Data.Repository;
     using Models.DataModels;
     using Models.Enums;
-    using Models.ViewModels;
     using Models.ViewModels.Public;
     using Constants;
     using Utilities;
@@ -20,20 +18,11 @@
     {
         private const DisplayLanguage DefaultLanguage = DisplayLanguage.BG;
 
-        private IRepository<Subscriber> subscribers;
-        private IRepository<ProductCategory> categories;
-        private IRepository<Promotion> promotions;
-        private IRepository<Event> events;
-        private IRepository<News> news;
         private HtmlBuilder htmlBuilder;
 
-        public HomeService()
+        public HomeService(IDbContext context)
+            : base(context)
         {
-            this.categories = new Repository<ProductCategory>(this.Context);
-            this.promotions = new Repository<Promotion>(this.Context);
-            this.events = new Repository<Event>(this.Context);
-            this.news = new Repository<News>(this.Context);
-            this.subscribers = new Repository<Subscriber>(this.Context);
             this.Lang = DefaultLanguage;
         }
 
@@ -60,7 +49,7 @@
         {
             if (model != null && model.Email != null)
             {
-                bool exists = this.subscribers.Exists(s => s.Email == model.Email && s.IsActive && !s.IsRemoved);
+                bool exists = this.Subscribers.Exists(s => s.Email == model.Email && s.IsActive && !s.IsRemoved);
 
                 if (exists)
                 {
@@ -87,9 +76,9 @@
 
             string verificationCode = CodeGenerator.GenerateVerificationCode(email);
 
-            if (this.subscribers.Exists(s => s.Email == email && (!s.IsActive || s.IsRemoved)))
+            if (this.Subscribers.Exists(s => s.Email == email && (!s.IsActive || s.IsRemoved)))
             {
-                var subscriberFromDb = this.subscribers.GetFirst(s => s.Email == email);
+                var subscriberFromDb = this.Subscribers.GetFirst(s => s.Email == email);
 
                 subscriberFromDb.Email = email;
                 subscriberFromDb.PreferedLanguage = lang;
@@ -101,7 +90,7 @@
                 subscriberFromDb.UnsubscribeDate = null;
                 subscriberFromDb.UnsubscribeVerificationCode = null;
 
-                this.subscribers.Update(subscriberFromDb);
+                this.Subscribers.Update(subscriberFromDb);
             }
             else
             {
@@ -118,7 +107,7 @@
                     UnsubscribeVerificationCode = null
                 };
 
-                this.subscribers.Insert(subscriber);
+                this.Subscribers.Insert(subscriber);
             }
 
             this.SendVerificationEmail(verificationCode, email);
@@ -126,7 +115,7 @@
 
         private HtmlString GetPromotionsHtml()
         {
-            var fitleredPromotions = this.promotions
+            var fitleredPromotions = this.Promotions
                 .Find(c => c.IsPublic && !c.IsRemoved)
                 .ToList();
 
@@ -138,7 +127,7 @@
 
         private HtmlString GetEventsHtml()
         {
-            var filteredEvents = this.events
+            var filteredEvents = this.Events
                 .Find(e => e.IsPublic && !e.IsRemoved)
                 .ToList();
 
@@ -150,7 +139,7 @@
 
         private HtmlString GetNewsHtml()
         {
-            var filteredNews = this.news
+            var filteredNews = this.News
                 .Find(n => n.IsPublic && !n.IsRemoved)
                 .ToList();
 

@@ -5,7 +5,6 @@
     using System.Linq;
     using Data.Contracts.Repository;
     using Models.DataModels;
-    using Data.Repository;
     using Microsoft.AspNet.Identity.EntityFramework;
     using Models.ViewModels;
     using System.Data.Entity;
@@ -15,23 +14,16 @@
 
     public class UsersService : Service, IUsersService
     {
-        private IRepository<ApplicationUser> users;
-        private IRepository<IdentityRole> roles;
-        private IRepository<IdentityUserRole> userRoles;
         private UserManager<ApplicationUser> userManager;
 
-        public UsersService()
+        public UsersService(IDbContext context) : base(context)
         {
-            this.users = new Repository<ApplicationUser>(this.Context);
-            this.roles = new Repository<IdentityRole>(this.Context);
-            this.userRoles = new Repository<IdentityUserRole>(this.Context);
-            this.userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>((DbContext)this.Context));
-
+            this.userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>((DbContext)context));
         }
 
         public UserViewModel GetUser(string id)
         {
-            var user = this.users.GetById(id);
+            var user = this.Users.GetById(id);
             if (user != null)
             {
                 UserViewModel model = new UserViewModel();
@@ -39,7 +31,7 @@
                 model.Username = user.UserName;
                 model.RoleName = this.userManager.GetRoles(user.Id)[0];
                 model.LastLogs = this.GetUserLogsById(user.Id, 10);
-                model.Roles = this.roles.GetAll().ToList();
+                model.Roles = this.Roles.GetAll().ToList();
 
                 return model;
             }
@@ -56,10 +48,10 @@
 
         public HttpStatusCode DeleteUser(string id)
         {
-            var user = this.users.GetById(id);
+            var user = this.Users.GetById(id);
             if (user != null)
             {
-                this.users.Delete(user);
+                this.Users.Delete(user);
                 return HttpStatusCode.OK;
             }
 
@@ -68,7 +60,7 @@
 
         public IEnumerable<UserListViewModel> GetAllUsers()
         {
-            var usersList = users
+            var usersList = this.Users
                 .GetAll()
                 .Include("Logs")
                 .ToList();
@@ -91,7 +83,7 @@
 
         private IEnumerable<DateTime> GetUserLogsById(string userId, int logsCount)
         {
-            var user = this.users.GetAll().Include("Logs").First(u => u.Id == userId);
+            var user = this.Users.GetAll().Include("Logs").First(u => u.Id == userId);
             var logs = user.Logs.Select(l => l.Date).OrderByDescending(l => l.Date).Take(logsCount);
 
             return logs;

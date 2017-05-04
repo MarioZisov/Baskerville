@@ -4,7 +4,6 @@
     using System.Linq;
     using Data.Contracts.Repository;
     using Models.DataModels;
-    using Data.Repository;
     using Models.ViewModels;
     using Models.Enums;
     using Utilities;
@@ -12,20 +11,14 @@
 
     public class StatisticsService : Service, IStatisticsService
     {
-        private IRepository<Statistics> statistics;
-        private IRepository<Subscriber> subscribers;
-        private IRepository<UserLog> userLogs;
-
-        public StatisticsService()
+        public StatisticsService(IDbContext context)
+            : base(context)
         {
-            this.statistics = new Repository<Statistics>(this.Context);
-            this.subscribers = new Repository<Subscriber>(this.Context);
-            this.userLogs = new Repository<UserLog>(this.Context);
         }
 
         public IEnumerable<BarChartViewModel> GetBarChartData(int year)
         {
-            var stats = this.statistics.Find(s => s.Year == year).ToList();
+            var stats = this.Statistics.Find(s => s.Year == year).ToList();
 
             ICollection<BarChartViewModel> models = new List<BarChartViewModel>();
             foreach (var stat in stats)
@@ -45,22 +38,22 @@
 
         public StatisticsViewModel GetStatistics()
         {
-            int enSpeakers = this.subscribers
+            int enSpeakers = this.Subscribers
                 .Find(s => s.IsActive && !s.IsRemoved && s.PreferedLanguage == Language.EN)
                 .Count();
 
-            int bgSpeakers = this.subscribers
+            int bgSpeakers = this.Subscribers
                 .Find(s => s.IsActive && !s.IsRemoved && s.PreferedLanguage == Language.BG)
                 .Count();
 
-            IEnumerable<short> yearsRange = this.statistics
+            IEnumerable<short> yearsRange = this.Statistics
                 .GetAll()
                 .Select(s => s.Year)
                 .Distinct()
                 .OrderByDescending(s => s)
                 .ToList();
 
-            var logs = this.userLogs
+            var logs = this.UserLogs
                 .GetAll()
                 .OrderByDescending(l => l.Date)
                 .Take(10)
@@ -71,7 +64,7 @@
                     })
                 .ToList();
 
-            int totalVisits = this.statistics.GetAll().Sum(s => s.HitsCount);
+            int totalVisits = this.Statistics.GetAll().Sum(s => s.HitsCount);
 
             var model = new StatisticsViewModel
             {

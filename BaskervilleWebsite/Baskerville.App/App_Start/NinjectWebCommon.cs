@@ -12,6 +12,8 @@ namespace Baskerville.App.App_Start
     using Ninject.Web.Common;
     using Services.Contracts;
     using Services;
+    using Data.Contracts.Repository;
+    using Data;
 
     public static class NinjectWebCommon 
     {
@@ -63,6 +65,7 @@ namespace Baskerville.App.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            kernel.Bind<IDbContext>().To<BaskervilleContext>();
             kernel.Bind<IEventsService>().To<EventsService>();
             kernel.Bind<IHomeService>().To<HomeService>();
             kernel.Bind<IMenuService>().To<MenuService>();
