@@ -22,7 +22,7 @@
 
         [HttpGet]
         public ActionResult Index()
-        {            
+        {
             var model = this.service.GetHomeModel();
             return View(model);
         }
@@ -34,11 +34,8 @@
             if (!ModelState.IsValid)
             {
                 var homeModel = this.service.GetHomeModel();
-                //check language
-                if (true)
-                    Mapper.Map(bindingModel, homeModel.ContactModelEn);
-                else
-                    Mapper.Map(bindingModel, homeModel.ContactModelBg);
+
+                Mapper.Map(bindingModel, homeModel.ContactModelEn);
 
                 return View("Index", homeModel);
             }
@@ -69,11 +66,8 @@
             if (!ModelState.IsValid)
             {
                 var homeModel = this.service.GetHomeModel();
-                //check language
-                if (true)
-                    Mapper.Map(bindingModel, homeModel.SubscribeModelEn);
-                else
-                    Mapper.Map(bindingModel, homeModel.SubscribeModelBg);
+
+                Mapper.Map(bindingModel, homeModel.SubscribeModelEn);
 
                 return View("Index", homeModel);
             }

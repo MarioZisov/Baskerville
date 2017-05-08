@@ -64,11 +64,8 @@
             if (!ModelState.IsValid)
             {
                 var homeModel = this.service.GetHomeModel();
-                //check language
-                if (true)
-                    Mapper.Map(bindingModel, homeModel.SubscribeModelEn);
-                else
-                    Mapper.Map(bindingModel, homeModel.SubscribeModelBg);
+
+                Mapper.Map(bindingModel, homeModel.SubscribeModelBg);
 
                 return View("Index", homeModel);
             }
