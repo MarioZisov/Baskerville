@@ -13,7 +13,7 @@ namespace Baskerville.Data.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = true;  
             AutomaticMigrationDataLossAllowed = true;
         }
 
@@ -21,8 +21,10 @@ namespace Baskerville.Data.Migrations
         {
             this.AddRoles(context);
 
+            this.AddAdmin(context);
+
             this.AddCategoriesWithSubcategories(context);
-        }
+        }        
 
         private void AddRoles(BaskervilleContext context)
         {
@@ -37,6 +39,21 @@ namespace Baskerville.Data.Migrations
                 roleManager.Create(new IdentityRole("Employee"));
 
                 context.SaveChanges();
+            }
+        }
+
+        private void AddAdmin(BaskervilleContext context)
+        {
+            if (!context.Users.Any())
+            {
+                var userStore = new UserStore<ApplicationUser>(context);
+                var userManager = new UserManager<ApplicationUser>(userStore);
+                var user = new ApplicationUser { UserName = "admin" };
+                var result = userManager.Create(user, "admin1");
+                if (result.Succeeded)
+                    userManager.AddToRole(user.Id, "Admin");
+
+                context.SaveChanges();                
             }
         }
 
